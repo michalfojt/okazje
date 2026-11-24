@@ -200,3 +200,23 @@ html[data-theme="light"] .pr-oimg img { mix-blend-mode: multiply; }
 .pr-tag { display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 999px; font-size: 12px; line-height: 20px; background: var(--ac-bg, rgba(138, 164, 255, .13)); color: var(--ac, #8aa4ff); white-space: nowrap; }
 .pr-hit-deal { font-weight: 600; margin-right: 8px; }
 .lf-scope { display: block; font-size: 12.5px; color: var(--mut, #929dab); }
+
+/* lista promocji w gazetkach */
+.pl-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 12px; }
+.pl-tools .search { flex: 1 1 260px; margin: 0; }
+.pl-tools select { min-height: 40px; }
+.pl-mine { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.pl-list { display: flex; flex-direction: column; gap: 6px; }
+.pl-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--panel, rgba(255, 255, 255, .04)); }
+.pl-row.mine { outline: 2px solid var(--ac, #8aa4ff); }
+.pl-main { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; min-width: 0; }
+.pl-main small { flex-basis: 100%; color: var(--mut, #929dab); font-size: 12.5px; }
+.pl-price { text-align: right; display: flex; flex-direction: column; gap: 2px; }
+.pl-d { display: inline-block; min-width: 52px; text-align: center; padding: 4px 8px; border-radius: 999px; font-weight: 700; font-size: 14px; background: rgba(128, 128, 128, .18); }
+.pl-d.top { background: #1f8a4c; color: #fff; }
+.pl-d.good { background: #5a9a2b; color: #fff; }
+.pl-d.mid { background: #b08a1a; color: #fff; }
+.pl-d.low, .pl-d.none { opacity: .65; }
+.pl-more { margin: 10px 0 18px; }
+@media (max-width: 560px) { .pl-row { grid-template-columns: 56px 1fr; } .pl-price { grid-column: 2; text-align: left; flex-direction: row; gap: 8px; } }
+.pl-tools .lf-search { max-width: none; flex: 1 1 260px; margin-bottom: 0; }

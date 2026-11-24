@@ -328,7 +328,7 @@ async function viewProducts() {
 /* =====================================================================
    Gazetki
    ===================================================================== */
-const G = { shops: [], leaflets: [], hitCount: {}, pname: {}, endedOpen: false, q: '' };
+const G = { shops: [], leaflets: [], promos: [], hitCount: {}, pname: {}, endedOpen: false, q: '', pshop: '', pmine: false, pmore: 1 };
 
 function leafletCard(l, ctx) {
   const st = leafStatus(l);
@@ -470,7 +470,8 @@ function shopForm(s, onSaved, onCancel) {
 }
 
 async function fetchGazetki() {
-  const [sh, pr] = await Promise.all([api('shops'), api('products').catch(() => ({ products: [] }))]);
+  const [sh, pr, pm] = await Promise.all([api('shops'), api('products').catch(() => ({ products: [] })), api('promos').catch(() => ({ promos: [] }))]);
+  G.promos = pm.promos || [];
   G.shops = sh.shops || [];
   G.leaflets = sh.leaflets || [];
   G.hitCount = {}; G.pname = {};
@@ -526,59 +527,80 @@ async function viewLeaflets() {
     endedWrap.replaceChildren(t, gridOld);
   };
 
-  /* --- wyszukiwarka po produktach gazetek --- */
-  const input = el('input', { type: 'text', placeholder: 'Szukaj produktu we wszystkich aktualnych gazetkach', 'aria-label': 'Szukaj w gazetkach', value: G.q, autocomplete: 'off' });
-  const searchHint = el('p', { class: 'hint lf-shint', hidden: true, text: 'Wpisz co najmniej 2 znaki.' });
-  let timer = null, seq = 0;
-  const runSearch = async () => {
-    const q = input.value.trim();
-    const my = ++seq;
-    searchHint.hidden = !(q.length === 1);
-    if (q.length < 2) { results.hidden = true; results.replaceChildren(); return; }
-    results.hidden = false;
-    results.replaceChildren(el('p', { class: 'hint', text: 'Szukam…' }));
-    try {
-      const r = await api('leaflet_search', { params: { q } });
-      if (my !== seq || gone('gazetki')) return;
-      results.replaceChildren(searchResults(r.results || [], q));
-    } catch (e) { if (my === seq) results.replaceChildren(el('p', { class: 'form-err', style: 'padding:0', text: e.message })); }
+  /* --- promocje ze wszystkich aktualnych gazetek --- */
+  const PAGE = 60;
+  const promoSub = el('span', { class: 'sub' });
+  const promoList = el('div', { class: 'pl-list' });
+  const promoMore = el('div', { class: 'pl-more' });
+  const input = el('input', { type: 'text', placeholder: 'Szukaj w promocjach (np. Dove, żel, lakier)', 'aria-label': 'Szukaj w promocjach', value: G.q, autocomplete: 'off' });
+  const shopSel = el('select', { 'aria-label': 'Sklep' });
+  const mineSw = switchEl(G.pmine, 'Tylko moje produkty');
+  const fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+  const discTag = d => {
+    if (!d) return el('span', { class: 'pl-d none', text: '–', title: 'Brak danych do oceny rabatu' });
+    const key = d.rating === 'bardzo dobra' ? 'top' : d.rating === 'dobra' ? 'good' : d.rating === 'średnia' ? 'mid' : 'low';
+    return el('span', { class: 'pl-d ' + key, text: (d.upto ? 'do ' : '~') + d.pct + '%', title: 'Ocena: ' + d.rating + ' (' + d.basis + (d.upto ? ', maksymalnie' : '') + ')' });
   };
-  input.addEventListener('input', () => { G.q = input.value; clearTimeout(timer); timer = setTimeout(runSearch, 300); });
-  const searchBox = el('div', { class: 'search lf-search' }, icon('search'), input);
-
-  const openFromResult = id => {
-    const c = ctx.cards[id];
-    if (!c) return;
-    c.open();
-    c.art.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  const promoRow = r => {
+    const main = el('div', { class: 'pl-main' }, el('b', { text: r.name }));
+    if (r.scope === 'brand' || r.scope === 'category') main.append(el('span', { class: 'pr-tag', text: (r.scope === 'category' ? 'kategoria: ' : 'cała marka: ') + (r.applies_to || '') }));
+    (r.mine || []).forEach(m => main.append(el('span', { class: 'lf-hit-tag', text: 'Twój produkt: ' + (m.name || '') })));
+    const per = period(r.valid_from, r.valid_to);
+    main.append(el('small', { text: (r.shop || 'sklep') + (per ? ' · ' + per : '') + (r.notes ? ' · ' + r.notes : '') }));
+    const price = el('div', { class: 'pl-price' });
+    if (r.deal) price.append(el('b', { text: r.deal }));
+    if (r.price) price.append(el('span', { text: r.price }));
+    if (r.old_price) price.append(el('span', { class: 'orig', text: r.old_price }));
+    return el('div', { class: 'pl-row' + ((r.mine || []).length ? ' mine' : '') }, discTag(r.discount), main, price);
   };
-  function searchResults(list, q) {
-    if (!list.length) return el('p', { class: 'hint', text: 'Nic nie znaleziono w aktualnych gazetkach dla „' + q + '”.' });
-    return el('div', { class: 'panel lf-resbox' },
-      el('div', { class: 'lf-reshead', text: list.length + ' ' + plural(list.length, 'wynik', 'wyniki', 'wyników') + (list.length >= 100 ? ' (pokazano pierwsze 100)' : '') }),
-      ...list.map(r => {
-        const it = r.item || {};
-        const per = period(r.valid_from, r.valid_to);
-        return el('button', { class: 'lf-res', type: 'button', onclick: () => openFromResult(r.leaflet_id) },
-          el('span', { class: 'lf-res-n' }, el('b', { text: it.name || '' }), el('small', { text: (r.shop || '') + ' · ' + (r.title || '') + (per ? ' · ' + per : '') })),
-          el('span', { class: 'lf-res-p' }, el('b', { text: it.price || it.deal || '' }), it.old_price ? el('span', { class: 'orig', text: it.old_price }) : null));
-      }));
-  }
+  const drawPromos = () => {
+    const q = fold(input.value).trim();
+    const rows = G.promos.filter(r => (!G.pshop || r.shop === G.pshop) && (!G.pmine || (r.mine || []).length)
+      && (q.length < 2 || fold((r.name || '') + ' ' + (r.applies_to || '') + ' ' + (r.deal || '') + ' ' + (r.shop || '')).includes(q)));
+    promoSub.textContent = G.promos.length ? rows.length + ' z ' + G.promos.length : 'brak';
+    if (!rows.length) {
+      promoList.replaceChildren(el('div', { class: 'empty lf-empty' }, el('h2', { text: G.promos.length ? 'Nic nie pasuje' : 'Brak zapisanych promocji' }),
+        el('p', { text: G.promos.length ? 'Zmień filtry albo szukaną frazę.' : 'Promocje pojawią się po przebiegu zadania, które odczyta aktualne gazetki.' })));
+      promoMore.replaceChildren();
+      return;
+    }
+    const n = Math.min(rows.length, PAGE * G.pmore);
+    promoList.replaceChildren(...rows.slice(0, n).map(promoRow));
+    if (n < rows.length) {
+      const b = el('button', { class: 'btn sm', type: 'button', text: 'Pokaż więcej (' + (rows.length - n) + ')' });
+      b.addEventListener('click', () => { G.pmore++; drawPromos(); });
+      promoMore.replaceChildren(b);
+    } else promoMore.replaceChildren();
+  };
+  const fillShopSel = () => {
+    const names = [...new Set(G.promos.map(r => r.shop).filter(Boolean))].sort((x, y) => x.localeCompare(y, 'pl'));
+    shopSel.replaceChildren(el('option', { value: '', text: 'Wszystkie sklepy' }), ...names.map(n => el('option', { value: n, text: n })));
+    shopSel.value = names.includes(G.pshop) ? G.pshop : '';
+    G.pshop = shopSel.value;
+  };
+  let timer = null;
+  input.addEventListener('input', () => { G.q = input.value; G.pmore = 1; clearTimeout(timer); timer = setTimeout(drawPromos, 150); });
+  shopSel.addEventListener('change', () => { G.pshop = shopSel.value; G.pmore = 1; drawPromos(); });
+  mineSw.cb.addEventListener('change', () => { G.pmine = mineSw.cb.checked; G.pmore = 1; drawPromos(); });
+  const promoTools = el('div', { class: 'pl-tools' }, el('div', { class: 'search lf-search' }, icon('search'), input), shopSel,
+    el('label', { class: 'pl-mine' }, mineSw.node, el('span', { text: 'Tylko moje produkty' })));
 
   async function reload() {
     await fetchGazetki();
-    drawShops(); drawLeaflets();
+    fillShopSel(); drawPromos(); drawShops(); drawLeaflets();
   }
 
   const head = el('div', { class: 'page-head' }, el('h1', { text: 'Gazetki' }));
   view.replaceChildren(head,
+    el('div', { class: 'section-title' }, el('h2', { text: 'Promocje w gazetkach' }), promoSub),
+    el('p', { class: 'hint', text: 'Wszystko, co zadanie odczytało z aktualnych gazetek, od najlepszego rabatu. „Drugi za 1 zł” i „1+1 gratis” liczone są jak 50%, „2+1” jak 33%. Twoje produkty są na górze.' }),
+    promoTools, promoList, promoMore,
+    el('div', { class: 'section-title' }, el('h2', { text: 'Aktualne gazetki' }), leafSub),
+    grid, endedWrap,
     el('div', { class: 'section-title' }, el('h2', { text: 'Sklepy' }), el('div', { class: 'pr-tools' }, shopsSub, addShopBtn)),
     el('p', { class: 'hint', text: 'Strony sklepów, z których zadanie wyszukujące czyta aktualne gazetki. Wyłączony sklep zostaje na liście, ale jego gazetki nie są sprawdzane.' }),
-    shopsPanel,
-    el('div', { class: 'section-title' }, el('h2', { text: 'Aktualne gazetki' }), leafSub),
-    searchBox, searchHint, results, grid, endedWrap);
-  drawShops(); drawLeaflets();
-  if (G.q.trim().length >= 2) runSearch();
+    shopsPanel);
+  fillShopSel(); drawPromos(); drawShops(); drawLeaflets();
 }
 
 /* ---------- rejestracja tras ---------- */

@@ -70,6 +70,10 @@ function api3(string $a, string $method, array $body): void {
             out($v);
         }
 
+        case 'promos': {
+            out(['promos' => leaflet_promos()]);
+        }
+
         case 'leaflet_search': {
             out(['results' => leaflet_search(text($_GET['q'] ?? '', 80))]);
         }

@@ -39,5 +39,7 @@ done
 php -d error_reporting=-1 "$HERE/snap_test.php" "$SITE" "$DATA" || exit 1
 php -d error_reporting=-1 "$HERE/match_test.php" "$SITE" "$DATA" || exit 1
 rm -f "$DATA"/*.json
+php -d error_reporting=-1 "$HERE/deal_test.php" "$SITE" "$DATA" || exit 1
+rm -f "$DATA"/*.json
 php -d error_reporting=-1 "$HERE/v3_test.php" "$SITE" "$DATA" "$TMP"
 exit $?

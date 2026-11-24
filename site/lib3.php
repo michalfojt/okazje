@@ -762,7 +762,7 @@ function products_view(): array {
         }
         $p['offers'] = array_slice($offers, 0, 12);
         $p['best'] = $best;
-        $p['hits'] = $hP[$id] ?? [];
+        $p['hits'] = array_map(fn($h) => $h + ['discount' => deal_score($h['deal'] ?? null, $h['price'] ?? null, $h['old_price'] ?? null)], $hP[$id] ?? []);
         $p['offers_count'] = count($offers);
         $rows[] = $p;
     }
@@ -804,6 +804,7 @@ function leaflet_view(string $id): ?array {
     foreach (hits_db()['hits'] as $h) {
         if (($h['leaflet_id'] ?? null) !== $id) continue;
         $h['product_name'] = $names[(string)($h['product_id'] ?? '')] ?? null;
+        $h['discount'] = deal_score($h['deal'] ?? null, $h['price'] ?? null, $h['old_price'] ?? null);
         $hits[] = $h;
     }
     usort($hits, fn($a, $b) => strcmp((string)($a['valid_from'] ?? '9999'), (string)($b['valid_from'] ?? '9999')));
@@ -1035,4 +1036,94 @@ function rematch_hits(): int {
         if ($changed) jwrite('hits', $hd);
         return $added;
     });
+}
+
+
+/* ---------- ocena atrakcyjności promocji ---------- */
+
+/** Pierwsza liczba z tekstu ceny ("5,49 zł" -> 5.49) albo null. */
+function money_num(mixed $v): ?float {
+    if (!is_string($v) && !is_numeric($v)) return null;
+    return preg_match('/(\d+(?:[.,]\d+)?)/', (string)$v, $m) ? (float)str_replace(',', '.', $m[1]) : null;
+}
+
+/**
+ * Szacuje efektywny rabat z warunku promocji ("drugi za 1 zł", "1+1 gratis", "-30%", "3 za 2") albo z ceny i ceny
+ * poprzedniej. "Drugi za 1 zł" liczone jest jak 50% (zakup dwóch sztuk, cena bazowa nieznana).
+ * @return ?array{pct:int,upto:bool,rating:string,basis:string}
+ */
+function deal_score(?string $deal, mixed $price = null, mixed $old = null): ?array {
+    $t = mb_strtolower(trim((string)$deal), 'UTF-8');
+    $t = strtr($t, ['ą' => 'a', 'ć' => 'c', 'ę' => 'e', 'ł' => 'l', 'ń' => 'n', 'ó' => 'o', 'ś' => 's', 'ź' => 'z', 'ż' => 'z']);
+    $t = str_replace(',', '.', $t);
+    $pct = null; $upto = false; $basis = '';
+    if ($t !== '') {
+        if (preg_match('/(?<!\d)(\d)\s*\+\s*(\d)(?!\d)/', $t, $m) && (int)$m[2] > 0) {
+            $pct = (int)round(100 * (int)$m[2] / ((int)$m[1] + (int)$m[2])); $basis = $m[1] . '+' . $m[2];
+        } elseif (preg_match('/(?<!\d)(\d)\s*za\s*(\d)(?!\s*(?:zl|pln|\.|\d))/', $t, $m) && (int)$m[1] > (int)$m[2] && (int)$m[2] > 0) {
+            $pct = (int)round(100 * ((int)$m[1] - (int)$m[2]) / (int)$m[1]); $basis = $m[1] . ' za ' . $m[2];
+        } elseif (preg_match('/\b(?:drugi|druga|drugie|2\.?\s*sztuk\w*|kolejn\w*)\b.{0,14}?\bza\s*(\d+(?:\.\d+)?)\s*(?:zl|pln)/', $t, $m)) {
+            if ((float)$m[1] <= 1.0) { $pct = 50; $basis = 'drugi za ' . $m[1] . ' zł'; }
+        } elseif (preg_match('/\b(?:drugi|druga|drugie)\b.{0,10}\bgratis/', $t)) {
+            $pct = 50; $basis = 'drugi gratis';
+        } elseif (preg_match('/\b(?:trzeci|trzecia|trzecie)\b.{0,10}\bgratis/', $t)) {
+            $pct = 33; $basis = 'trzeci gratis';
+        } elseif (preg_match('/(\d{1,2}(?:\.\d+)?)\s*%/', $t, $m)) {
+            $x = (float)$m[1];
+            if ($x > 0 && $x <= 90) {
+                $second = (bool)preg_match('/\b(?:drugi|druga|drugie|kolejn\w*)\b/', $t);
+                $pct = (int)round($second ? $x / 2 : $x);
+                $upto = (bool)preg_match('/\bdo\s*-?\s*\d/', $t);
+                $basis = ($second ? 'drugi ' : '') . '-' . (int)$x . '%';
+            }
+        }
+    }
+    if ($pct === null) {
+        $p = money_num($price); $o = money_num($old);
+        if ($p !== null && $o !== null && $o > $p && $p > 0) { $pct = (int)round(100 * ($o - $p) / $o); $basis = 'cena'; }
+    }
+    if ($pct === null || $pct <= 0) return null;
+    $eff = $upto ? $pct * 0.6 : $pct;
+    $rating = $eff >= 45 ? 'bardzo dobra' : ($eff >= 30 ? 'dobra' : ($eff >= 15 ? 'średnia' : 'słaba'));
+    return ['pct' => $pct, 'upto' => $upto, 'rating' => $rating, 'basis' => $basis];
+}
+
+/**
+ * Płaska lista pozycji ze wszystkich aktualnych gazetek z oceną promocji i oznaczeniem "mój produkt".
+ * Kolejność: najpierw trafienia z Moich produktów, potem malejąco wg rabatu.
+ * @return array<int,array>
+ */
+function leaflet_promos(int $limit = 600): array {
+    $today = date('Y-m-d');
+    $names = [];
+    foreach (products() as $p) { $names[(string)$p['id']] = (string)$p['name']; }
+    $my = [];
+    foreach (current_hits() as $h) {
+        $k = norm_url((string)($h['leaflet_url'] ?? '')) . '|' . slug((string)($h['item_name'] ?? ''));
+        $my[$k][] = ['product_id' => (string)$h['product_id'], 'name' => $names[(string)$h['product_id']] ?? null, 'match' => $h['match'] ?? 'item'];
+    }
+    $out = [];
+    foreach (leaflets_db()['leaflets'] as $l) {
+        if (!v3_current($l['valid_to'] ?? null, $today)) continue;
+        foreach ($l['items'] ?? [] as $it) {
+            $name = (string)($it['name'] ?? '');
+            if ($name === '') continue;
+            $k = norm_url((string)($l['url'] ?? '')) . '|' . slug($name);
+            $out[] = [
+                'leaflet_id' => (string)$l['id'], 'shop' => $l['shop'] ?? null, 'title' => $l['title'] ?? null, 'url' => $l['url'] ?? null,
+                'name' => $name, 'scope' => $it['scope'] ?? 'item', 'applies_to' => $it['applies_to'] ?? null, 'deal' => $it['deal'] ?? null,
+                'price' => $it['price'] ?? null, 'old_price' => $it['old_price'] ?? null, 'notes' => $it['notes'] ?? null,
+                'valid_from' => $it['valid_from'] ?? ($l['valid_from'] ?? null), 'valid_to' => $it['valid_to'] ?? ($l['valid_to'] ?? null),
+                'discount' => deal_score($it['deal'] ?? null, $it['price'] ?? null, $it['old_price'] ?? null),
+                'mine' => $my[$k] ?? [],
+            ];
+        }
+    }
+    usort($out, function ($a, $b) {
+        if (!empty($a['mine']) !== !empty($b['mine'])) return !empty($a['mine']) ? -1 : 1;
+        $ea = $a['discount'] ? $a['discount']['pct'] * ($a['discount']['upto'] ? 0.6 : 1) : -1;
+        $eb = $b['discount'] ? $b['discount']['pct'] * ($b['discount']['upto'] ? 0.6 : 1) : -1;
+        return ($eb <=> $ea) ?: strcmp((string)$a['shop'], (string)$b['shop']) ?: strcmp((string)$a['name'], (string)$b['name']);
+    });
+    return array_slice($out, 0, $limit);
 }

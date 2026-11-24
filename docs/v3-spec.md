@@ -119,3 +119,11 @@ Gazetki rzadko podają EAN albo pełną nazwę, częściej piszą "wszystkie pro
 - Trafienie ma pole `match`: `item` (ta sama pozycja: EAN albo marka i co najmniej 60% słów nazwy), `brand` (promocja na całą markę produktu), `keyword` (promocja na kategorię: fraza ze słów kluczowych w tekście pozycji). Pozycje zwykłe (`scope: item`) nie łapią się po samej marce ani po słowach kluczowych.
 - `rematch_hits()` (lib3.php) przegląda aktualne gazetki i aktywne produkty po każdym imporcie (ingest.php) i po zapisaniu produktu. Nowe trafienia mają `auto: true`, `alerted: false`, a feed oddaje je w `known_hits` z ceną, `deal`, `match` i nazwą produktu, żeby zadanie wysłało alert i oznaczyło je jako `alerted: true`.
 - To samo trafienie nie powstaje dwa razy: klucz to produkt, adres gazetki i nazwa pozycji (bez daty).
+
+## Promocje w gazetkach i ocena atrakcyjności
+
+- `deal_score($deal, $price, $old)` (lib3.php) szacuje efektywny rabat: "drugi za 1 zł" i "1+1 gratis" = 50%, "2+1 gratis" = 33%, "3 za 2" = 33%, "-30%" = 30%, "drugi -50%" = 25%, "do -50%" liczone jako maksimum (waga 0,6 przy ocenie). Gdy brak warunku, rabat liczony z ceny i ceny poprzedniej. Brak danych = brak oceny (null). Oceny: >=45% bardzo dobra, >=30% dobra, >=15% średnia, niżej słaba.
+- `leaflet_promos()` zwraca płaską listę pozycji ze wszystkich aktualnych gazetek (pola: shop, name, scope, applies_to, deal, price, old_price, discount, mine[]). `mine` to trafienia z Moich produktów (z current_hits). Sortowanie: najpierw "mine", potem malejąco wg rabatu.
+- API: `api3.php?a=promos`. Oceny rabatu są też w `hits[].discount` (widok produktów i gazetek).
+- Zakładka Gazetki: u góry lista "Promocje w gazetkach" (szukajka, filtr sklepu, "Tylko moje produkty", plakietka ~N%), niżej aktualne gazetki, na dole Sklepy.
+- Testy: tests/deal_test.php (w run.sh przed v3_test).
