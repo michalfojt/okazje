@@ -1,0 +1,137 @@
+{
+ "run": "2026-11-24T06:14:00+01:00",
+ "offers": [
+  {
+   "category": "apple",
+   "title": "Apple MacBook Air 13 M5, 16 GB RAM, 1 TB SSD (Apple Certified Refurbished)",
+   "url": "https://www.apple.com/pl/shop/product/fdh84ze/a",
+   "price": "7099,00 zł",
+   "original_price": "8299,00 zł",
+   "shop": "Apple Refurbished",
+   "promo_end": null,
+   "image_url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-mba13-m5-silver-202606?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1776416774882",
+   "notes": "Odnowiony MacBook Air z oficjalnej strony Apple z gwarancją Apple, o 1200 zł taniej niż nowy. Dostępność trzeba sprawdzić przy zakupie.",
+   "confidence": "high"
+  },
+  {
+   "category": "smarthome",
+   "title": "SwitchBot Plug Mini, gniazdko Wi-Fi z Matter",
+   "url": "https://www.pepper.pl/promocje/gniazdko-wifi-switchbot-plug-mini-matter-kompatybilne-z-alexa-apple-home-home-assistant-1397125",
+   "price": "38,63 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/tHPd3/1397125_1/re/768x768/qt/60/1397125_1.jpg",
+   "notes": "Gniazdko 16 A z Matter, działa z Home Assistant. Bez pomiaru energii. Cena z tytułu wpisu Pepper, aktualność niepotwierdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Shelly 1PM Mini Gen3, zestaw 2 szt.",
+   "url": "https://www.pepper.pl/promocje/black-friday-na-marke-shelly-na-amazonpl-okazja-zbiorcza-przykladowo-shelly-1pm-mini-gen3-2szt-za-7599-3799szt-zarowki-ekran-1394222",
+   "price": "75,99 zł (37,99 zł/szt.)",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ZOlmk/1394222_1/re/768x768/qt/60/1394222_1.jpg",
+   "notes": "Mikromoduł przekaźnikowy z pomiarem energii, dobrze współpracuje z Home Assistant. Cena z wpisu Pepper o wyprzedaży Shelly na Amazonie, niepotwierdzona na stronie sklepu.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Philips WiZ, żarówka LED RGB 8,5 W",
+   "url": "https://www.pepper.pl/promocje/philips-smart-zarowka-led-85w-60w-rgb-aplikacja-wiz-1396689",
+   "price": "24,99 zł",
+   "original_price": null,
+   "shop": "Action",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/GuT6c/1396689_1/re/768x768/qt/60/1396689_1.jpg",
+   "notes": "Żarówka Wi-Fi sterowana aplikacją WiZ. Matter niepotwierdzony, a Action ma ograniczoną dostępność w sklepach stacjonarnych. Cena z tytułu wpisu Pepper.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "PARKSIDE Performance PABSP 20 Li C4, wiertarko-wkrętarka 20 V z akumulatorem 4 Ah i ładowarką",
+   "url": "https://www.pepper.pl/promocje/kaufland-parkside-performance-akumulatorowa-wiertarko-wkretarka-20-v-pabsp-20-li-c4-z-akumulatorem-4-ah-i-ladowarka-45-a-1397582",
+   "price": "150 zł",
+   "original_price": null,
+   "shop": "Kaufland",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/VnUmV/1397582_1/re/768x768/qt/60/1397582_1.jpg",
+   "notes": "Zestaw z jednym akumulatorem 4 Ah i szybką ładowarką 4,5 A. Cena z tytułu wpisu Pepper, bez daty końca; w sklepach Kaufland oferta bywa limitowana.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Zestaw bitów Brüder Mannesmann, 113 elementów, stal S2",
+   "url": "https://www.pepper.pl/promocje/zestaw-bitow-bruder-mannesmann-113-elementow-stal-s2-1392855",
+   "price": "29,98 zł",
+   "original_price": null,
+   "shop": "Action",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/rxdRs/1392855_1/re/768x768/qt/60/1392855_1.jpg",
+   "notes": "Duży zestaw bitów ze stali S2 za niewielkie pieniądze. Aktualność oferty niepotwierdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SMLIGHT SLZB-06M, koordynator Zigbee (LAN, PoE, USB, Wi-Fi)",
+   "url": "https://allegro.pl/produkt/koordynator-slzb-06m-bramka-zigbee-efr32mg21-ethernet-poe-usb-lan-wifi-ha-23275357-c7de-4262-8430-fea17f6df194",
+   "price": "175,05 zł",
+   "original_price": "184,18 zł (z 30 dni)",
+   "shop": "Allegro (oursmarthome)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Koordynator na EFR32MG21 z Ethernetem i PoE, strona oferty podaje zgodność z Home Assistant, ZHA i Zigbee2MQTT. Limit 1 szt. na konto, dostawa 10,49 zł.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-03P, czujnik ruchu Zigbee 3.0",
+   "url": "https://www.morele.net/sonoff-czujnik-ruchu-zigbee-snzb-03p-bateria-14138532/",
+   "price": "44,99 zł",
+   "original_price": "52,84 zł",
+   "shop": "Morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/14138532_0_i1064.jpg",
+   "notes": "Czujnik PIR na baterię. Zgodność z ZHA i Zigbee2MQTT niepodana na stronie, ale to powszechnie używany model.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-06P, czujnik obecności z radarem mikrofalowym, Zigbee 3.0",
+   "url": "https://www.pepper.pl/promocje/inteligentny-czujnik-obecnosci-sonoff-snzb-06p-radar-mikrofalowy-zigbee-30-1388720",
+   "price": "49,90 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/RlUzj/1388720_1/re/768x768/qt/60/1388720_1.jpg",
+   "notes": "Uwaga: cena tylko z tytułu wpisu Pepper, status oferty niepotwierdzony. Radar obecności Zigbee 3.0, zgodność z ZHA i Zigbee2MQTT niepotwierdzona na stronie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff S60ZBTPF, gniazdko Zigbee 16 A z pomiarem energii",
+   "url": "https://www.pepper.pl/promocje/sonoff-s60zbtpf-wtyczka-zigbee-1394020",
+   "price": "49,50 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/6AItU/1394020_1/re/768x768/qt/60/1394020_1.jpg",
+   "notes": "Uwaga: cena tylko z tytułu wpisu Pepper, status oferty niepotwierdzony (x-kom ma ten model za 69,90 zł). Gniazdko z pomiarem energii.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-01P, okrągły przycisk Zigbee",
+   "url": "https://www.morele.net/sonoff-inteligentny-przelacznik-zigbee-sonoff-snzb-01p-okragly-13166993/",
+   "price": "45 zł",
+   "original_price": null,
+   "shop": "Morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/13166993_0_i1064.jpg",
+   "notes": "Cena katalogowa, bez promocji. Bezprzewodowy przycisk Zigbee 3.0 do scen i automatyzacji.",
+   "confidence": "medium"
+  }
+ ]
+}
