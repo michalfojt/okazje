@@ -1,0 +1,34 @@
+{
+ "run": "2026-11-24T13:28:00+01:00",
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ],
+ "product_offers": [
+  {
+   "product_id": "pebdfd81a",
+   "title": "Pieluchomajtki na noc Pampers Night Pants Maxi rozmiar 6, 15+ kg, 19 szt.",
+   "url": "https://allegro.pl/produkt/pieluchomajtki-na-noc-pampers-night-pants-maxi-rozmiar-6-15-kg-19-sztuk-efb808b4-2b64-4106-acc0-1006818c17e8",
+   "price": "28,40 zł",
+   "original_price": "39,90 zł",
+   "shop": "Allegro (e-msgroup)",
+   "promo_end": "2026-11-30",
+   "image_url": null,
+   "notes": "Kod producenta na stronie zgadza się z EAN 8006540234761. Nowe, 19 szt. Dostawa 0 zł z Allegro Smart!, bez Smart 10,49 zł.",
+   "confidence": "high"
+  },
+  {
+   "product_id": "pbd1696a5",
+   "title": "Dove Hydrate żel pod prysznic 450 ml",
+   "url": "https://allegro.pl/produkt/dove-hydrate-zel-pod-prysznic-450-ml-50521991-aba0-49aa-9bd1-31ab5b37e47d",
+   "price": "13,99 zł",
+   "original_price": null,
+   "shop": "Allegro (brandmall_pl)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "EAN 8720181466502 potwierdzony na stronie, nowy. Dostawa 10,49 zł, 0 zł ze Smart!. W gazetkach Biedronki ani Lidla nie znaleziono.",
+   "confidence": "high"
+  }
+ ]
+}
