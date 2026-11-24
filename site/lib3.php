@@ -840,6 +840,7 @@ function feed_products(): array {
         'id' => $p['id'], 'name' => $p['name'], 'ean' => $p['ean'] ?? '', 'desc' => $p['desc'] ?? '',
         'brand' => product_brand($p), 'keywords' => product_keywords($p),
         'category' => $p['category'] ?? '', 'sites' => $p['sites'] ?? [], 'last_searched' => $p['last_searched'] ?? null,
+        'added' => $p['added'] ?? null,
     ], $rows);
 }
 
@@ -856,7 +857,8 @@ function feed_leaflets_known(): array {
     foreach (leaflets_db()['leaflets'] as $l) {
         if (!v3_current($l['valid_to'] ?? null, $today)) continue;
         $out[] = ['shop_id' => $l['shop_id'] ?? null, 'shop' => $l['shop'] ?? null, 'url' => $l['url'], 'title' => $l['title'] ?? null,
-                  'valid_from' => $l['valid_from'] ?? null, 'valid_to' => $l['valid_to'] ?? null, 'items_count' => count($l['items'] ?? [])];
+                  'valid_from' => $l['valid_from'] ?? null, 'valid_to' => $l['valid_to'] ?? null, 'items_count' => count($l['items'] ?? []),
+                  'first_seen' => $l['first_seen'] ?? null];
     }
     return $out;
 }

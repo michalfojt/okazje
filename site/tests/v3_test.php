@@ -331,13 +331,13 @@ $H = fn(string $m, string $p, ?array $j = null, array $h = []) => http($port, $j
 eq(200, $code, 'feed: kod 200');
 eq(['generated', 'categories', 'extra_sources', 'missing_images', 'products', 'leaflet_shops', 'leaflets_known', 'known_hits'], array_keys((array)$f), 'feed: klucze i ich kolejność');
 eq([$B, $A], array_column($f['products'] ?? [], 'id'), 'feed: produkty (najpierw bez last_searched)');
-eq(['id', 'name', 'ean', 'desc', 'brand', 'keywords', 'category', 'sites', 'last_searched'], array_keys($f['products'][0] ?? []), 'feed: pola produktu');
+eq(['id', 'name', 'ean', 'desc', 'brand', 'keywords', 'category', 'sites', 'last_searched', 'added'], array_keys($f['products'][0] ?? []), 'feed: pola produktu');
 eq(['Biedronka', 'Lidl', 'Kaufland'], array_column($f['leaflet_shops'] ?? [], 'name'), 'feed: aktywne sklepy');
 eq(['id', 'name', 'url', 'note'], array_keys($f['leaflet_shops'][0] ?? []), 'feed: pola sklepu');
 eq(2, count($f['leaflets_known'] ?? []), 'feed: znane gazetki');
 $lk = array_column($f['leaflets_known'] ?? [], null, 'url');
 eq(3, $lk[$biedUrl]['items_count'] ?? null, 'feed: items_count gazetki');
-eq(['shop_id', 'shop', 'url', 'title', 'valid_from', 'valid_to', 'items_count'], array_keys($lk[$biedUrl] ?? []), 'feed: pola gazetki');
+eq(['shop_id', 'shop', 'url', 'title', 'valid_from', 'valid_to', 'items_count', 'first_seen'], array_keys($lk[$biedUrl] ?? []), 'feed: pola gazetki');
 eq(4, count($f['known_hits'] ?? []), 'feed: znane trafienia bez przeterminowanych');
 eq(['product_id', 'product_name', 'shop', 'leaflet_url', 'leaflet_title', 'item_name', 'price', 'old_price', 'deal', 'applies_to', 'match', 'notes', 'page', 'valid_from', 'valid_to', 'alerted'], array_keys($f['known_hits'][0] ?? []), 'feed: pola trafienia');
 check(!in_array('Sonoff stary', array_column($f['known_hits'] ?? [], 'item_name'), true), 'feed: przeterminowane trafienie pominięte');
