@@ -1,0 +1,56 @@
+{
+ "run": "2026-11-24T19:25:00+01:00",
+ "leaflet_hits": [
+  {
+   "product_id": "pbd1696a5",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Wszystkie produkty Dove",
+   "price": null,
+   "old_price": null,
+   "deal": "drugi za 1 zł",
+   "applies_to": "Dove",
+   "match": "brand",
+   "notes": "z kartą/apką Moja Biedronka, drugi tańszy produkt za 1 zł, mieszaj dowolnie, limit dzienny 2 szt. za 1 zł na kartę MB",
+   "page": 18,
+   "valid_from": "2026-11-23",
+   "valid_to": "2026-11-28",
+   "alerted": true
+  },
+  {
+   "product_id": "p34d596c4",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Wszystkie pieluszki i pieluchomajtki Pampers",
+   "price": null,
+   "old_price": null,
+   "deal": "drugi 60% taniej",
+   "applies_to": "Pampers",
+   "match": "brand",
+   "notes": "drugi tańszy produkt 60% taniej, mieszaj dowolnie",
+   "page": 57,
+   "valid_from": "2026-11-23",
+   "valid_to": "2026-11-28",
+   "alerted": true
+  },
+  {
+   "product_id": "pebdfd81a",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Wszystkie pieluszki i pieluchomajtki Pampers",
+   "price": null,
+   "old_price": null,
+   "deal": "drugi 60% taniej",
+   "applies_to": "Pampers",
+   "match": "brand",
+   "notes": "drugi tańszy produkt 60% taniej, mieszaj dowolnie",
+   "page": 57,
+   "valid_from": "2026-11-23",
+   "valid_to": "2026-11-28",
+   "alerted": true
+  }
+ ]
+}
