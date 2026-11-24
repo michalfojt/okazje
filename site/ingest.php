@@ -13,6 +13,7 @@ if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 define('OKZ', 1);
 require __DIR__ . '/lib.php';
 require_once __DIR__ . '/lib3.php';
+require_once __DIR__ . '/lib4.php';
 
 $args = array_slice($argv, 1);
 $localOnly = in_array('--local', $args, true);
@@ -101,4 +102,14 @@ if (array_sum($pr) > 0) $log("usunięto: gazetek {$pr['leaflets']}, ofert produk
 
 foreach (glob(__DIR__ . '/inbox/*.json') ?: [] as $f) {
     if (filemtime($f) < time() - (retention_days() + 2) * 86400) @unlink($f);
+}
+
+// 5. migawka feedu w GitHub (tylko gdy w panelu zapisano token)
+if (!$localOnly && !$pruneOnly && !$imagesOnly && snap_settings()['token'] !== '') {
+    try {
+        $r = snap_push();
+        if ($r['pushed'] || !$r['ok']) $log('migawka feedu: ' . $r['msg']);
+    } catch (Throwable $ex) {
+        $log('migawka feedu: ' . $ex->getMessage());
+    }
 }
