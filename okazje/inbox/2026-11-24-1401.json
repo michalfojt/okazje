@@ -1,0 +1,42 @@
+{
+ "run": "2026-11-24T14:01:00+01:00",
+ "offers": [
+  {
+   "category": "smarthome",
+   "title": "Kamera IP TP-Link Tapo C200",
+   "url": "https://www.morele.net/kamera-ip-tp-link-tapo-c200-6418187",
+   "price": "89,99 zł",
+   "original_price": null,
+   "shop": "Morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/6418187_0_i1064.jpg",
+   "notes": "Wewnętrzna kamera Wi-Fi z obrotem i pochyleniem, popularny model do Home Assistant. To cena ze strony sklepu bez potwierdzonej promocji, więc traktuj jako niską cenę bieżącą, a nie przecenę.",
+   "confidence": "medium"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://www.pepper.pl/promocje/sonoff-s60zbtpf-wtyczka-zigbee-1394020",
+   "image_url": "https://static.pepper.pl/threads/raw/6AItU/1394020_1/re/768x768/qt/60/1394020_1.jpg"
+  }
+ ],
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ],
+ "product_offers": [
+  {
+   "product_id": "pebdfd81a",
+   "title": "Pampers Night Pants Maxi rozmiar 6, 19 szt. (EAN 8006540234761)",
+   "url": "https://allegro.pl/produkt/pieluchomajtki-na-noc-pampers-night-pants-maxi-rozmiar-6-15-kg-19-sztuk-efb808b4-2b64-4106-acc0-1006818c17e8?offerId=19141182815",
+   "price": "28,40 zł",
+   "original_price": "39,90 zł",
+   "shop": "Allegro (e-msgroup)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "EAN zgodny z ofertą, nowy produkt. Dostawa 10,49 zł albo 0 zł z Allegro Smart.",
+   "confidence": "high"
+  }
+ ]
+}
