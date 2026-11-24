@@ -2,6 +2,7 @@
 declare(strict_types=1);
 define('OKZ', 1);
 require __DIR__ . '/lib.php';
+require_once __DIR__ . '/lib3.php';
 
 // Lista kategorii i stron do przeszukiwania dla zadania wyszukującego.
 // Dostęp: feed.php?token=... (token z config.php). Tylko odczyt.
@@ -31,4 +32,8 @@ foreach (offers_missing_image() as $id => $o) {
     $miss[] = ['url' => $o['url'], 'title' => $o['title'], 'shop' => $o['shop'] ?? null];
     if (count($miss) >= 15) break;
 }
-echo json_encode(['generated' => date('c'), 'categories' => $cats, 'extra_sources' => $src, 'missing_images' => $miss], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+echo json_encode([
+    'generated' => date('c'), 'categories' => $cats, 'extra_sources' => $src, 'missing_images' => $miss,
+    'products' => feed_products(), 'leaflet_shops' => feed_leaflet_shops(),
+    'leaflets_known' => feed_leaflets_known(), 'known_hits' => feed_known_hits(),
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);

@@ -495,6 +495,7 @@ function setTheme(t) {
 $('#theme').addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
 
+window.OKZ = { api, el, icon, ICON, toast, S, loadState, catName, card, fmtIso, fmtShort, safeHref, plural, discount, routes, route, view };
 window.addEventListener('hashchange', route);
 route();
 })();

@@ -4,7 +4,7 @@ DirectoryIndex index.php
   Header always set X-Robots-Tag "noindex, nofollow"
   Header always set X-Content-Type-Options "nosniff"
 </IfModule>
-<FilesMatch "^(config|lib|ingest|passwd)\.php$">
+<FilesMatch "^(config|lib|lib3|api3|ingest|passwd|deploy_lib)\.php$">
   Require all denied
 </FilesMatch>
 <FilesMatch "\.(json|md|sh|log|tmp)$">

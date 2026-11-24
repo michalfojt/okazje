@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="csrf" content="mock-csrf">
+<title>okazje - atrapa UI</title>
+<link rel="stylesheet" href="../assets/app.css">
+<link rel="stylesheet" href="../assets/app3.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/oferty"><span>okazje</span></a>
+  <nav class="tabs" aria-label="Sekcje">
+    <a href="#/oferty" data-tab="oferty">Oferty</a>
+    <a href="#/wybrane" data-tab="wybrane">Wybrane<span class="count" id="nFav" hidden></span></a>
+    <a href="#/produkty" data-tab="produkty">Moje produkty</a>
+    <a href="#/gazetki" data-tab="gazetki">Gazetki</a>
+    <a href="#/kategorie" data-tab="kategorie">Kategorie</a>
+  </nav>
+  <div class="tools">
+    <button class="icon-btn" id="theme" type="button" aria-label="Przełącz motyw"></button>
+  </div>
+</header>
+<main id="view" aria-live="polite"></main>
+<div id="toasts" role="status"></div>
+<!-- ui-mock.js musi być przed app.js (podmienia window.fetch) -->
+<script src="ui-mock.js"></script>
+<script src="../assets/app.js"></script>
+<script src="../assets/app3.js"></script>
+<!-- Użycie: python3 -m http.server z katalogu site/, potem /tests/ui-mock.html#/produkty
+     ?theme=light wymusza jasny motyw, ?delay=600 opóźnia odpowiedzi (ms). -->
+</body>
+</html>

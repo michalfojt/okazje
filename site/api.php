@@ -234,6 +234,8 @@ try {
         }
 
         default:
+            require __DIR__ . '/api3.php';
+            api3($a, $method, $body);
             fail('Nieznana akcja.', 404);
     }
 } catch (Throwable $e) {

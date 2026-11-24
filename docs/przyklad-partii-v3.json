@@ -1,0 +1,201 @@
+{
+  "run": "2026-11-24T14:00:00+01:00",
+  "offers": [
+    {
+      "category": "zigbee",
+      "title": "Sonoff ZBDongle-E koordynator Zigbee USB",
+      "url": "https://example.com/sklep-a/sonoff-zbdongle-e",
+      "price": "89,90 zł",
+      "original_price": "99,00 zł",
+      "shop": "Sklep A",
+      "promo_end": "2026-11-30",
+      "image_url": "https://example.com/img/zbdongle-e.jpg",
+      "notes": "Cena z opisu oferty, dostępność: wysyłka 24 h. Wersja E (EFR32MG21) zgodna z opisem produktu.",
+      "confidence": "high"
+    },
+    {
+      "category": "zigbee",
+      "title": "Sonoff SNZB-02D czujnik temperatury i wilgotności z wyświetlaczem",
+      "url": "https://example.com/sklep-b/sonoff-snzb-02d",
+      "price": "59,00 zł",
+      "original_price": null,
+      "shop": "Sklep B",
+      "promo_end": null,
+      "image_url": null,
+      "notes": "Brak zdjęcia w ofercie. Cena z listingu, nie sprawdzona w koszyku.",
+      "confidence": "medium"
+    }
+  ],
+  "searched_products": [
+    "p3f9a1c2e",
+    "p8d1e5b07"
+  ],
+  "product_offers": [
+    {
+      "product_id": "p3f9a1c2e",
+      "title": "Sonoff ZBDongle-E koordynator Zigbee USB",
+      "url": "https://example.com/sklep-a/sonoff-zbdongle-e",
+      "price": "89,90 zł",
+      "original_price": "99,00 zł",
+      "shop": "Sklep A",
+      "promo_end": "2026-11-30",
+      "image_url": "https://example.com/img/zbdongle-e.jpg",
+      "notes": "Wersja E, nie P. Dostawa z magazynu w Polsce.",
+      "confidence": "high"
+    },
+    {
+      "product_id": "p3f9a1c2e",
+      "title": "Koordynator Zigbee ZBDongle-E, wersja E (EFR32MG21)",
+      "url": "https://example.com/sklep-c/zbdongle-e-efr32mg21",
+      "price": "94,50 zł",
+      "original_price": null,
+      "shop": "Sklep C",
+      "promo_end": null,
+      "image_url": null,
+      "notes": "Cena z karty produktu. Nie sprawdzono, czy w tej cenie jest wysyłka.",
+      "confidence": "medium"
+    },
+    {
+      "product_id": "p8d1e5b07",
+      "title": "Sonoff SNZB-02D Zigbee czujnik temperatury i wilgotności LCD",
+      "url": "https://example.com/sklep-c/snzb-02d-lcd",
+      "price": "56,99 zł",
+      "original_price": "64,99 zł",
+      "shop": "Sklep C",
+      "promo_end": "2026-12-02",
+      "image_url": "https://example.com/img/snzb-02d.jpg",
+      "notes": "Przecena według sklepu. Cena przed obniżką z tej samej karty produktu.",
+      "confidence": "high"
+    }
+  ],
+  "leaflets": [
+    {
+      "shop_id": "s1a2b3c4d",
+      "shop": "Biedronka",
+      "title": "Gazetka od 24.11",
+      "url": "https://example.com/gazetki/biedronka/2026-11-24",
+      "valid_from": "2026-11-24",
+      "valid_to": "2026-11-29",
+      "cover_url": "https://example.com/img/gazetka-biedronka-1.jpg",
+      "items": [
+        {
+          "name": "Masło Extra 200 g",
+          "price": "6,99 zł",
+          "old_price": "8,49 zł",
+          "valid_from": "2026-11-24",
+          "valid_to": "2026-11-26",
+          "page": 3,
+          "notes": "przy zakupie 2 szt."
+        },
+        {
+          "name": "Pierś z kurczaka świeża, 1 kg",
+          "price": "19,98 zł",
+          "old_price": null,
+          "valid_from": "2026-11-24",
+          "valid_to": "2026-11-29",
+          "page": 5,
+          "notes": "cena za 1 kg, sprzedaż na wagę"
+        },
+        {
+          "name": "Kawa ziarnista Dark Roast 1 kg",
+          "price": "74,99 zł",
+          "old_price": "89,99 zł",
+          "valid_from": "2026-11-24",
+          "valid_to": "2026-11-29",
+          "page": 8,
+          "notes": null
+        },
+        {
+          "name": "Słuchawki bezprzewodowe Bluetooth",
+          "price": "99,00 zł",
+          "old_price": "129,00 zł",
+          "valid_from": "2026-11-27",
+          "valid_to": "2026-11-29",
+          "page": 14,
+          "notes": "do wyczerpania zapasów"
+        },
+        {
+          "name": "Pomarańcze klasa I, 1 kg",
+          "price": "5,49 zł",
+          "old_price": null,
+          "valid_from": null,
+          "valid_to": null,
+          "page": 2,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "shop_id": "s5e6f7a8b",
+      "shop": "Lidl",
+      "title": "Gazetka od 27.11 - elektronika i dom",
+      "url": "https://example.com/gazetki/lidl/2026-11-27",
+      "valid_from": "2026-11-27",
+      "valid_to": "2026-11-30",
+      "cover_url": "https://example.com/img/gazetka-lidl-1.jpg",
+      "items": [
+        {
+          "name": "Czajnik elektryczny 1,7 l",
+          "price": "49,99 zł",
+          "old_price": "59,99 zł",
+          "valid_from": "2026-11-27",
+          "valid_to": "2026-11-30",
+          "page": 4,
+          "notes": null
+        },
+        {
+          "name": "Czujnik temperatury i wilgotności Zigbee",
+          "price": "39,99 zł",
+          "old_price": null,
+          "valid_from": "2026-11-27",
+          "valid_to": "2026-11-30",
+          "page": 12,
+          "notes": "wymaga bramki Zigbee"
+        },
+        {
+          "name": "Ręcznik kąpielowy bambusowy 70 x 140 cm",
+          "price": "24,99 zł",
+          "old_price": null,
+          "valid_from": "2026-11-27",
+          "valid_to": "2026-11-30",
+          "page": 17,
+          "notes": null
+        },
+        {
+          "name": "Zestaw świec zapachowych, 3 szt.",
+          "price": "12,99 zł",
+          "old_price": "16,99 zł",
+          "valid_from": "2026-11-27",
+          "valid_to": "2026-11-30",
+          "page": 19,
+          "notes": null
+        },
+        {
+          "name": "Pendrive USB 3.0, 64 GB",
+          "price": "17,99 zł",
+          "old_price": null,
+          "valid_from": null,
+          "valid_to": null,
+          "page": 22,
+          "notes": "cena z karty produktowej w sklepie"
+        }
+      ]
+    }
+  ],
+  "leaflet_hits": [
+    {
+      "product_id": "p8d1e5b07",
+      "shop": "Lidl",
+      "leaflet_url": "https://example.com/gazetki/lidl/2026-11-27",
+      "leaflet_title": "Gazetka od 27.11 - elektronika i dom",
+      "item_name": "Czujnik temperatury i wilgotności Zigbee",
+      "price": "39,99 zł",
+      "old_price": null,
+      "valid_from": "2026-11-27",
+      "valid_to": "2026-11-30",
+      "page": 12,
+      "notes": "wymaga bramki Zigbee",
+      "alerted": true
+    }
+  ]
+}

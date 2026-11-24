@@ -49,6 +49,7 @@ $tag = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.586 2
 })();
 </script>
 <link rel="stylesheet" href="assets/app.css?v=<?= $v('app.css') ?>">
+<link rel="stylesheet" href="assets/app3.css?v=<?= $v('app3.css') ?>">
 </head>
 <?php if (!$user): ?>
 <body class="login-page">
@@ -73,6 +74,8 @@ $tag = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.586 2
   <nav class="tabs" aria-label="Sekcje">
     <a href="#/oferty" data-tab="oferty">Oferty</a>
     <a href="#/wybrane" data-tab="wybrane">Wybrane<span class="count" id="nFav" hidden></span></a>
+    <a href="#/produkty" data-tab="produkty">Moje produkty</a>
+    <a href="#/gazetki" data-tab="gazetki">Gazetki</a>
     <a href="#/kategorie" data-tab="kategorie">Kategorie</a>
   </nav>
   <div class="tools">
@@ -88,6 +91,7 @@ $tag = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.586 2
 <main id="view" aria-live="polite"></main>
 <div id="toasts" role="status"></div>
 <script src="assets/app.js?v=<?= $v('app.js') ?>"></script>
+<script src="assets/app3.js?v=<?= $v('app3.js') ?>"></script>
 </body>
 <?php endif; ?>
 </html>

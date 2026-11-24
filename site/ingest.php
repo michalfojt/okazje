@@ -12,6 +12,7 @@ declare(strict_types=1);
 if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 define('OKZ', 1);
 require __DIR__ . '/lib.php';
+require_once __DIR__ . '/lib3.php';
 
 $args = array_slice($argv, 1);
 $localOnly = in_array('--local', $args, true);
@@ -19,6 +20,17 @@ $pruneOnly = in_array('--prune', $args, true);
 $imagesOnly = in_array('--images', $args, true);
 $log = fn(string $m) => print(date('Y-m-d H:i:s') . " $m\n");
 $namePat = '/^\d{4}-\d{2}-\d{2}-\d{4}\.json$/';
+// Nowe pola partii (produkty, gazetki, trafienia). Statusów none i duplicate nie logujemy.
+$logExtras = function (string $prefix, array $x, array $r) use ($log): void {
+    if (in_array($x['status'], ['none', 'duplicate'], true)) return;
+    if ($x['status'] === 'too_old' && $r['status'] === 'too_old') return; // ten sam powód jest już w logu partii ofert
+    $line = "$prefix: extras " . $x['status'];
+    if ($x['status'] === 'ok') {
+        $line .= ", produkty: {$x['products']}, gazetki: {$x['leaflets']}, pozycji: {$x['items']}, trafień: {$x['hits']}";
+        if (($x['rejected'] ?? 0) > 0) $line .= ", odrzuconych: {$x['rejected']}";
+    }
+    $log($line);
+};
 if (($n = purge_search_images()) > 0) $log("usunięto zdjęcia z wyszukiwarki: $n");
 
 if (!$pruneOnly && !$imagesOnly) {
@@ -32,6 +44,7 @@ if (!$pruneOnly && !$imagesOnly) {
         $r = ingest_batch($j, $name);
         if ($r['status'] !== 'duplicate') $log("$name: " . $r['status'] . (isset($r['count']) ? ", ofert: {$r['count']}" : ''));
         foreach ($GLOBALS['img_hint_errs'] ?? [] as $e) $log("  zdjęcie z paczki odrzucone, $e");
+        $logExtras($name, ingest_extras($j, $name), $r);
     }
 
     // 2. GitHub (publiczne repo, API bez tokena: limit 60 zapytań/h, cron co 15 min wystarcza)
@@ -39,6 +52,7 @@ if (!$pruneOnly && !$imagesOnly) {
     if (!$localOnly && is_array($gh) && !empty($gh['repo'])) {
         $db = jread('offers', ['offers' => [], 'batches' => []]);
         $done = array_merge(array_column($db['batches'], 'file'), $db['img_files'] ?? []);
+        $extrasDone = extras_files();
         $api = 'https://api.github.com/repos/' . $gh['repo'] . '/contents/' . trim((string)$gh['path'], '/') . '?ref=' . rawurlencode((string)($gh['ref'] ?? 'main'));
         $raw = http_get($api, 1000000, 15, ['Accept: application/vnd.github+json']);
         $list = $raw ? json_decode($raw, true) : null;
@@ -49,14 +63,19 @@ if (!$pruneOnly && !$imagesOnly) {
             usort($list, fn($a, $b) => strcmp($a['name'] ?? '', $b['name'] ?? ''));
             foreach ($list as $it) {
                 $name = (string)($it['name'] ?? '');
-                if (!preg_match($namePat, $name) || substr($name, 0, 10) < $cutName || in_array($name, $done, true)) continue;
+                if (!preg_match($namePat, $name) || substr($name, 0, 10) < $cutName || (in_array($name, $done, true) && in_array($name, $extrasDone, true))) continue;
                 $url = (string)($it['download_url'] ?? '');
                 $body = $url ? http_get($url, 2000000) : null;
                 $j = $body ? json_decode($body, true) : null;
                 if (!is_array($j)) { $log("GitHub $name: nie udało się pobrać"); continue; }
                 $r = ingest_batch($j, $name);
-                $log("GitHub $name: " . $r['status'] . (isset($r['count']) ? ", ofert: {$r['count']}" : ''));
+                if ($r['status'] !== 'duplicate') $log("GitHub $name: " . $r['status'] . (isset($r['count']) ? ", ofert: {$r['count']}" : ''));
                 foreach ($GLOBALS['img_hint_errs'] ?? [] as $e) $log("  zdjęcie z paczki odrzucone, $e");
+                $x = ingest_extras($j, $name);
+                $logExtras("GitHub $name", $x, $r);
+                // plik obsłużony w całości trafia na obie listy, żeby nie pobierać go co 15 min
+                if ($x['status'] === 'none') extras_mark_file($name);
+                if ($r['status'] === 'empty' && in_array($x['status'], ['none', 'ok', 'duplicate'], true)) offers_mark_file($name);
             }
         }
     }
@@ -76,6 +95,9 @@ $removed = locked(function () {
     return $n;
 });
 if ($removed > 0) $log("usunięto starych ofert: $removed");
+
+$pr = prune_extras();
+if (array_sum($pr) > 0) $log("usunięto: gazetek {$pr['leaflets']}, ofert produktów {$pr['offers']}, trafień {$pr['hits']}");
 
 foreach (glob(__DIR__ . '/inbox/*.json') ?: [] as $f) {
     if (filemtime($f) < time() - (retention_days() + 2) * 86400) @unlink($f);
