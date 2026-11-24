@@ -1,0 +1,125 @@
+{
+ "run": "2026-11-24T13:12:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "UGREEN DXP2800 - 2-dyskowy NAS (Intel N100, 8 GB RAM)",
+   "url": "https://www.x-kom.pl/p/1515514-dysk-sieciowy-nas-ugreen-dxp2800-2-dyskowy-n100-8gb.html",
+   "price": "1619,00 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Nowy 2-dyskowy NAS z Intel N100 i 8 GB RAM, gwarancja producenta 24 mies. Strona nie pokazuje ceny przed obniżką ani daty końca, więc to cena bieżąca, nie potwierdzona promocja. Do porównania z Synology i QNAP w podobnej cenie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Używana stacja dokująca Lenovo ThinkPad USB-C Dock Gen 2 (40AS) + zasilacz 135 W",
+   "url": "https://rnew.pl/pl/products/uzywana-stacja-dokujaca-lenovo-thinkpad-usb-c-dock-gen-2-40as-zasilacz-135w-kabel-usb-c-81841.html",
+   "price": "419,00 zł",
+   "original_price": null,
+   "shop": "rnew.pl",
+   "promo_end": null,
+   "image_url": "https://rnew.pl/hpeciai/3133e61f8d036da1fecf4d348cbb58f3/pol_pl_Uzywana-Stacja-dokujaca-Lenovo-ThinkPad-USB-C-Dock-Gen-2-40AS-Zasilacz-135W-Kabel-USB-C-81841_1.jpg",
+   "notes": "Używana stacja dokująca do ThinkPadów, w zestawie zasilacz 135 W i kabel USB-C. Opis gwarancji jest niespójny (3 mies. w karcie, 12 mies. w innych sekcjach), warto to sprawdzić przed zakupem.",
+   "confidence": "high"
+  },
+  {
+   "category": "smarthome",
+   "title": "Kamera IP zewnętrzna TP-Link Tapo C545D",
+   "url": "https://www.pepper.pl/promocje/kamera-ip-zewnetrzna-tp-link-tapo-c545d-tapoc545d-1395988",
+   "price": "299,99 zł",
+   "original_price": null,
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/Xey39/1395988_1/re/768x768/qt/60/1395988_1.jpg",
+   "notes": "Kamera zewnętrzna Tapo, cena z tytułu wpisu Pepper. Rozdzielczość i obsługa integracji z Home Assistant nie są potwierdzone na stronie, brak daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Shelly BLU Door/Window (brązowy), czujnik otwarcia Bluetooth",
+   "url": "https://www.pepper.pl/promocje/shelly-blu-doorwindow-brazowy-czujnik-otwarcia-bluetooth-za-46-zl-zamiast-7190-zl-36-1391587",
+   "price": "46 zł",
+   "original_price": "71,90 zł",
+   "shop": "wg wpisu Pepper (sklep nieznany)",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/Zz3os/1391587_1/re/768x768/qt/60/1391587_1.jpg",
+   "notes": "Czujnik otwarcia na Bluetooth, współpracuje z Home Assistant przez bramki Shelly. Sklep nie jest podany w pobranym tekście wpisu, cena z tytułu, status oferty niepotwierdzony.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Karta pamięci Samsung EVO Plus (2024) 256 GB microSDXC + adapter",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-samsung-evo-plus-2024-256gb-microsdxc-adapter-1484056.html",
+   "price": "129,00 zł",
+   "original_price": "177,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Karta microSDXC 256 GB z adapterem, obniżka ok. 28%. Cena z listy Black Friday MediaMarkt, parametry znane tylko z nazwy, brak daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Karta pamięci SanDisk Extreme Plus SDXC 256 GB 240/160 MB/s",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-sandisk-extreme-plus-sdxc-256gb-240mbs-160mbs-1508155.html",
+   "price": "379,00 zł",
+   "original_price": "499,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Pełnowymiarowa karta SD (nie microSD) do aparatów, odczyt 240 MB/s i zapis 160 MB/s wg nazwy. Cena z listy Black Friday, brak daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Mikrofon USB Razer Seiren V3 Mini",
+   "url": "https://mediamarkt.pl/pl/product/_mikrofon-razer-razer-seiren-v3-mini-czarny-1486904.html",
+   "price": "129,00 zł",
+   "original_price": "189,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Mikrofon USB do komputera i streamingu, nie do montażu na kamerze. Obniżka ok. 32% wg listy Black Friday, brak daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-04P - czujnik otwarcia drzwi i okien Zigbee",
+   "url": "https://www.x-kom.pl/p/1347524-czujnik-sonoff-czujnik-drzwi-i-okien-zigbee-snzb-04p.html",
+   "price": "49,90 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Czujnik drzwi/okien na baterię. Cena katalogowa, bez potwierdzonej promocji. Strona x-kom podaje dodawanie do Home Assistant przez ZHA lub Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-05P - czujnik zalania Zigbee z kablem WLDC200",
+   "url": "https://www.x-kom.pl/p/1347513-czujnik-sonoff-czujnik-wycieku-wody-zigbee-snzb-05p-z-wldc200.html",
+   "price": "79,90 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Czujnik zalania z przedłużającym kablem. Cena katalogowa, bez potwierdzonej promocji. Zgodność z ZHA i Zigbee2MQTT wg strony x-kom.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff SNZB-02P - czujnik temperatury i wilgotności Zigbee",
+   "url": "https://www.x-kom.pl/p/1347505-czujnik-sonoff-czujnik-temperatury-i-wilgotnosci-zigbee-snzb-02p.html",
+   "price": "52,50 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Czujnik temperatury i wilgotności. Cena katalogowa, bez potwierdzonej promocji. Zgodność z ZHA/Zigbee2MQTT nie jest podana na stronie, ale model jest powszechnie używany w Home Assistant.",
+   "confidence": "medium"
+  }
+ ]
+}
