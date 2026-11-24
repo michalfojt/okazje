@@ -1,0 +1,149 @@
+{
+ "run": "2026-11-24T10:01:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "Lenovo ThinkPad X1 Carbon G12 (Core Ultra 7 165U, 32 GB RAM, 1 TB SSD), odnowiony",
+   "url": "https://mediamarkt.pl/pl/product/_laptop-lenovo-thinkpad-x1-carbon-g12-intel-core-ultra-7-165u-1749-ghz-12-rdzeni-14-watkow-12-mb-pamieci-cache-32-gb-ram-ssd-onboard-graphics-windows-czarny-182224847.html",
+   "price": "10 246,76 zł",
+   "original_price": "10 786,06 zł",
+   "shop": "MediaMarkt (PCrefurb Scandinavia PL)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Sprzęt używany/odnowiony, stan bardzo dobry. Generacja 12, procesor Core Ultra 7 165U, dysk 1 TB, 32 GB RAM wg opisu oferty. Gwarancja nie jest podana, tylko ustawowa. Cena wyjściowa to poprzednia najniższa z 30 dni. Dane z opisu sklepu, nie sprawdzone drugi raz.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Lenovo ThinkPad X1 Carbon G13 (Core Ultra 7 258V, 32 GB RAM, 1 TB SSD), odnowiony",
+   "url": "https://mediamarkt.pl/pl/product/_laptop-lenovo-thinkpad-x1-carbon-g13-intel-core-ultra-7-258v-22-48-ghz-8-rdzeni-8-watkow-12-mb-pamieci-podrecznej-32-gb-ram-1-tb-ssd-arctm-140v-windows-11-pro-czarny-178948384.html",
+   "price": "12 081,15 zł",
+   "original_price": "12 717,00 zł",
+   "shop": "MediaMarkt (PCrefurb Scandinavia PL)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Sprzęt odnowiony, stan jak nowy. Generacja 13, procesor Core Ultra 7 258V, dysk 1 TB, 32 GB RAM wg opisu oferty. Gwarancja nie jest podana, tylko ustawowa. Cena wysoka, a rabat symboliczny (poprzednia najniższa cena z 30 dni).",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Mac mini M6 (12-rdzeniowy CPU i GPU, 16 GB RAM, 256 GB SSD), 3 lata gwarancji",
+   "url": "https://www.pepper.pl/promocje/apple-mac-mini-12-rdzeniowy-procesor-apple-m6-gpu-12-rdzeni-ram-16-gb-dysk-256-gb-ssd-3-lata-gwarancji-ispot-w-opisie-cortland-1380918",
+   "price": "3999 zł",
+   "original_price": null,
+   "shop": "iSpot (wg wpisu Pepper)",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/BY7kf/1380918_1/re/768x768/qt/60/1380918_1.jpg",
+   "notes": "Wpis Pepper z ceną z tytułu, sklep wywnioskowany z opisu, więc cenę warto sprawdzić przed zakupem. Podobną cenę (3949 zł) podaje thinkapple.pl dla Media Expert.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Odnowiony MacBook Air 15\" z M5 (10 CPU, 10 GPU), północ",
+   "url": "https://www.apple.com/pl/shop/product/g1lw0ze/a",
+   "price": "7449 zł",
+   "original_price": null,
+   "shop": "Apple Refurbished",
+   "promo_end": null,
+   "image_url": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/refurb-mba15-m5-midnight-202606?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1776416776532",
+   "notes": "Sprzęt odnowiony z gwarancją Apple. Strona nie podaje ceny nowego modelu, więc oszczędności nie da się wyliczyć.",
+   "confidence": "high"
+  },
+  {
+   "category": "apple",
+   "title": "Apple AirPods Pro 3 ANC",
+   "url": "https://www.x-kom.pl/p/1362333-sluchawki-bezprzewodowe-apple-airpods-pro-3-anc.html",
+   "price": "959 zł",
+   "original_price": "999 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena 959 zł z kodem black-weeks2, limit 3 sztuk. Bez kodu 999 zł.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Watch Ultra 3 GPS + Cellular 49 mm, tytan, pasek Alpine/Trail",
+   "url": "https://thinkapple.pl/2026/11/18/hit-black-weeks-apple-watch-ultra-3-za-2799-zl/amp/",
+   "price": "2799 zł",
+   "original_price": null,
+   "shop": "Allegro (Lantre)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Oferta z artykułu thinkapple.pl, sprzedawca Lantre na Allegro. Cena wyjściowa nie jest podana wprost (ok. 3799 zł wg artykułu).",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Zestaw 3 narzędzi akumulatorowych Bosch Professional (GSR 18V-65, GBH 18V-22, GWS 18V-8)",
+   "url": "https://www.leroymerlin.pl/produkty/zestaw-3-narzedzi-akumulatorowych-wiertarko-wkretarka-gsr-18v-65-mlotowiertarka-gbh-18v-22-szlifierka-katowa-gws-18v-8-v4-5867-v-bosch-professional-96989835.html",
+   "price": "1669 zł",
+   "original_price": "1998 zł",
+   "shop": "Leroy Merlin",
+   "promo_end": "2026-12-01",
+   "image_url": "https://media.adeo.com/media/5228553/media.png",
+   "notes": "Wiertarko-wkrętarka, młotowiertarka i szlifierka kątowa 18 V w jednym zestawie, rabat ok. 16%. Promocja do 1 grudnia.",
+   "confidence": "high"
+  },
+  {
+   "category": "dzialka",
+   "title": "PARKSIDE Performance szlifierko-wiertarka akumulatorowa 12 V PPFBSA 12 C3",
+   "url": "https://www.pepper.pl/promocje/parkside-performance-akumulatorowa-szlifierko-wiertarka-parkside-12-v-ppfbsa-12-c3-od-2711-1388917",
+   "price": "149 zł",
+   "original_price": null,
+   "shop": "Lidl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/llITp/1388917_1/re/768x768/qt/60/1388917_1.jpg",
+   "notes": "Zestaw z akumulatorem i ładowarką. Promocja w Lidlu od 27.11, data końca nieznana. Cena z wpisu Pepper.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "PARKSIDE Performance wiertarko-wkrętarka 20 V PABSP 20 Li C4, akumulator 4 Ah i ładowarka",
+   "url": "https://www.pepper.pl/promocje/kaufland-parkside-performance-akumulatorowa-wiertarko-wkretarka-20-v-pabsp-20-li-c4-z-akumulatorem-4-ah-i-ladowarka-45-a-1397582",
+   "price": "150 zł",
+   "original_price": null,
+   "shop": "Kaufland",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/VnUmV/1397582_1/re/768x768/qt/60/1397582_1.jpg",
+   "notes": "Zestaw z akumulatorem 4 Ah i szybką ładowarką. Cena z wpisu Pepper, strony sklepu nie sprawdzono.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Wkrętarka akumulatorowa Meec Tools 35 Nm, 18 V, 2,0 Ah",
+   "url": "https://www.pepper.pl/promocje/wkretarka-akumulatorowa-35-nm-20-ah-18-v-1397530",
+   "price": "179 zł",
+   "original_price": null,
+   "shop": "Jula",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/PDPOC/1397530_1/re/768x768/qt/60/1397530_1.jpg",
+   "notes": "Prosta wkrętarka do domu i na działkę. Brak ceny sprzed promocji i daty końca, cena z wpisu Pepper.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff ZBDongle-E (Zigbee 3.0 USB Dongle Plus-E)",
+   "url": "https://www.morele.net/sonoff-bramka-zigbee-zigbee-3-0-usb-dongle-plus-e-12923240/",
+   "price": "79 zł",
+   "original_price": null,
+   "shop": "Morele",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/12923240_0_i1064.jpg",
+   "notes": "Koordynator Zigbee USB, zgodny z ZHA i Zigbee2MQTT (wg opisu Botland). To cena katalogowa, bez potwierdzonej promocji.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff S60ZBTPF, gniazdko Zigbee z pomiarem energii",
+   "url": "https://www.x-kom.pl/p/1489953-gniazdo-smart-plug-sonoff-inteligentne-gniazdko-s60zbtpf-zigbee.html",
+   "price": "69,90 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Gniazdko z pomiarem zużycia energii. Cena katalogowa, bez potwierdzonej promocji. Zgodność z ZHA/Zigbee2MQTT nie jest podana w sklepie.",
+   "confidence": "medium"
+  }
+ ]
+}
