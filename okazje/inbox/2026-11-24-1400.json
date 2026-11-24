@@ -1,0 +1,89 @@
+{
+ "run": "2026-11-24T14:00:00+01:00",
+ "offers": [
+  {
+   "category": "apple",
+   "title": "Apple MacBook Neo 13\" A18 Pro 8/256 GB",
+   "url": "https://www.ppe.pl/promocje/tech/laptopy/406859/najtanszy-laptop-apple-teraz-jeszcze-taniej-model-macbook-neo-z-18-pro-13-za-rekordowe-2765-zl.html",
+   "price": "2765 zł",
+   "original_price": "2999 zł",
+   "shop": "Komputronik (Allegro)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Najtańszy laptop Apple, cena z artykułu ppe.pl, sprzedaje Komputronik przez Allegro. Data końca promocji nieznana, cenę sprawdź przed zakupem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Odnowiony MacBook Neo A18 Pro, srebrny (Apple Refurbished)",
+   "url": "https://www.apple.com/pl/shop/product/fhfa4ze/a/odnowiony-macbook-neo-czip-apple-a18-pro-srebrny",
+   "price": "2999 zł",
+   "original_price": null,
+   "shop": "Apple Refurbished",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Sprzęt odnowiony z oficjalnej strony Apple, z gwarancją Apple. Cena regularna nie jest podana, więc to cena katalogowa, nie promocja.",
+   "confidence": "high"
+  },
+  {
+   "category": "apple",
+   "title": "Mac mini 16 GB / 256 GB",
+   "url": "https://thinkapple.pl/2026/11/17/black-friday-weeks-2026-najlepsze-promocje-na-apple/amp/",
+   "price": "3949 zł",
+   "original_price": "4499 zł",
+   "shop": "Amazon",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia thinkapple.pl z 17.11, bez weryfikacji na Amazon. Link prowadzi do zestawienia, nie do oferty.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple MacBook Air 13\" M5 16 GB / 512 GB",
+   "url": "https://www.x-kom.pl/p/1506294-laptop-133-i-mniejsze-apple-macbook-air-m5-16gb-512-mac-os-ksiezycowa-poswiata-8r-gpu-us.html?sm=aNpVpNLP",
+   "price": "5667 zł",
+   "original_price": "6799 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia thinkapple.pl. Kolor w linku (księżycowa poświata) różni się od podanego w zestawieniu (północ), sprawdź na stronie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Watch Series 11 42 mm GPS, gwiezdna szarość, pasek czarny S/M",
+   "url": "https://thinkapple.pl/2026/11/17/black-friday-weeks-2026-najlepsze-promocje-na-apple/amp/",
+   "price": "1599 zł",
+   "original_price": "1799 zł",
+   "shop": "Media Expert",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia thinkapple.pl, bez bezpośredniego linku do sklepu i bez daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Karta pamięci SanDisk Extreme microSDXC 128 GB 190/90 MB/s A2 V30",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-sandisk-extreme-microsdxc-128-gb-19090-mbs-a2-c10-v30-uhs-i-u3-1470081.html",
+   "price": "159,99 zł",
+   "original_price": "199,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Szybka karta do kamer sportowych i dronów. Cena sprzed obniżki to najniższa z 30 dni wg sklepu. Data końca promocji nieznana.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Latarka Vayox VA0116 akumulatorowa USB-C, 800 lm",
+   "url": "https://www.morele.net/latarka-vayox-latarka-klasyczna-akumulatorowa-usb-c-taktyczna-va0116-vayox-800-lumenow-14803285/",
+   "price": "45 zł",
+   "original_price": "51,09 zł",
+   "shop": "morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/14803285_0_i1064.jpg",
+   "notes": "Mała latarka ładowana przez USB-C. Obniżka niewielka, ale cena niska. Data końca nieznana.",
+   "confidence": "medium"
+  }
+ ]
+}
