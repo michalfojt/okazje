@@ -288,6 +288,14 @@ eq(true, $hd['hits'][$hidA]['alerted'] ?? null, 'trafienie: alerted = stare || n
 eq($run2, array_column(products(), null, 'id')[$A]['last_searched'] ?? null, 'last_searched przesunięte na nowszy przebieg');
 eq([$name1, $name2], extras_files(), 'extras_files: oba pliki');
 
+// dopisanie nowej pozycji do znanej gazetki dokłada ją do zapisanych (nie kasuje reszty), a ta sama nazwa nadpisuje starą
+$before = count($ld['leaflets'][$bidLid]['items']);
+ingest_extras(['run' => date('c', $now + 120), 'leaflets' => [['shop_id' => $ld['leaflets'][$bidLid]['shop_id'], 'shop' => 'Biedronka', 'title' => 'Gazetka Biedronka', 'url' => $biedUrl,
+    'valid_from' => $biedFrom, 'valid_to' => 'jutro', 'items' => [['name' => 'Dove - wszystkie produkty', 'scope' => 'brand', 'applies_to' => 'Dove', 'deal' => 'drugi za 1 zł']]]]], 'merge-test.json');
+$ldm = jread('leaflets', []);
+eq($before + 1, count($ldm['leaflets'][$bidLid]['items']), 'gazetka: nowa pozycja dołączona do zapisanych');
+eq('4,99 zł', $ldm['leaflets'][$bidLid]['items'][0]['price'] ?? null, 'gazetka: stare pozycje zostają po dopisaniu');
+
 /* ================= 3. serwer HTTP: feed i API ================= */
 
 $sock = stream_socket_server('tcp://127.0.0.1:0', $en, $es);
@@ -336,7 +344,7 @@ eq(['Biedronka', 'Lidl', 'Kaufland'], array_column($f['leaflet_shops'] ?? [], 'n
 eq(['id', 'name', 'url', 'note'], array_keys($f['leaflet_shops'][0] ?? []), 'feed: pola sklepu');
 eq(2, count($f['leaflets_known'] ?? []), 'feed: znane gazetki');
 $lk = array_column($f['leaflets_known'] ?? [], null, 'url');
-eq(3, $lk[$biedUrl]['items_count'] ?? null, 'feed: items_count gazetki');
+eq(4, $lk[$biedUrl]['items_count'] ?? null, 'feed: items_count gazetki');
 eq(['shop_id', 'shop', 'url', 'title', 'valid_from', 'valid_to', 'items_count', 'first_seen'], array_keys($lk[$biedUrl] ?? []), 'feed: pola gazetki');
 eq(4, count($f['known_hits'] ?? []), 'feed: znane trafienia bez przeterminowanych');
 eq(['product_id', 'product_name', 'shop', 'leaflet_url', 'leaflet_title', 'item_name', 'price', 'old_price', 'deal', 'applies_to', 'match', 'notes', 'page', 'valid_from', 'valid_to', 'alerted'], array_keys($f['known_hits'][0] ?? []), 'feed: pola trafienia');
@@ -424,7 +432,7 @@ eq(3, count($j['shops'] ?? []), 'shops: trzy sklepy');
 eq(2, count($j['leaflets'] ?? []), 'shops: dwie gazetki');
 $lv = array_column($j['leaflets'] ?? [], null, 'id');
 check(!array_key_exists('items', $lv[$bidLid] ?? ['items' => 1]), 'shops: gazetka bez items');
-eq(3, $lv[$bidLid]['items_count'] ?? null, 'shops: items_count');
+eq(4, $lv[$bidLid]['items_count'] ?? null, 'shops: items_count');
 eq(true, $lv[$bidLid]['current'] ?? null, 'shops: current');
 eq(2, $lv[$lidlLid]['items_count'] ?? null, 'shops: items_count Lidla');
 eq(2, $lv[$lidlLid]['hits_count'] ?? null, 'shops: hits_count Lidla (tylko aktualne)');

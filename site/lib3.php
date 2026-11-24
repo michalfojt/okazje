@@ -610,7 +610,11 @@ function ingest_extras(array $batch, string $file): array {
             foreach ($leaflets as $lid => $n) {
                 $lid = (string)$lid;
                 $old = $ld['leaflets'][$lid] ?? null;
-                $items = $n['items'] ?: ($old['items'] ?? []); // pusta lista nie kasuje wcześniej wczytanych pozycji
+                // pusta lista nie kasuje wcześniej wczytanych pozycji, a nowe pozycje są dołączane do zapisanych (klucz: nazwa),
+                // dzięki czemu zadanie może dopisać do znanej gazetki tylko to, czego jeszcze w niej nie ma
+                $items = [];
+                foreach (array_merge($old['items'] ?? [], $n['items'] ?? []) as $it) $items[slug((string)($it['name'] ?? ''))] = $it;
+                $items = array_values($items);
                 $ld['leaflets'][$lid] = [
                     'id'         => $lid,
                     'shop_id'    => $n['shop_id'] ?? ($old['shop_id'] ?? null),
