@@ -110,14 +110,23 @@ function offerCard(o) {
       el('div', { class: 'pr-odate', text: o.last_seen ? 'widziana ' + fmtShort(o.last_seen) : '' })));
 }
 
+/** Znacznik typu trafienia: cała marka albo kategoria (zwykła pozycja bez znacznika). */
+function matchTag(m) {
+  if (m === 'brand') return el('span', { class: 'pr-tag', text: 'cała marka', title: 'Promocja na wszystkie produkty tej marki: sprawdź, czy obejmuje Twój wariant' });
+  if (m === 'keyword') return el('span', { class: 'pr-tag', text: 'kategoria', title: 'Promocja na kategorię pasującą do słów kluczowych produktu' });
+  return null;
+}
+
 function hitRow(h) {
   const per = period(h.valid_from, h.valid_to);
   return el('div', { class: 'pr-hit' },
     el('div', { class: 'pr-hit-main' },
       el('span', { class: 'pr-hit-shop', text: h.shop || 'gazetka' }),
-      el('span', { class: 'pr-hit-name', text: h.item_name })),
+      el('span', { class: 'pr-hit-name', text: h.item_name }),
+      matchTag(h.match)),
     el('div', { class: 'pr-hit-meta' },
-      el('span', { class: 'price', text: h.price || 'brak ceny' }),
+      h.deal ? el('span', { class: 'pr-hit-deal', text: h.deal }) : null,
+      h.price || !h.deal ? el('span', { class: 'price', text: h.price || 'brak ceny' }) : null,
       h.old_price ? el('span', { class: 'orig', text: h.old_price }) : null,
       per ? el('span', { class: 'pr-hit-per', text: per }) : null,
       h.page ? el('span', { class: 'pr-hit-per', text: 'str. ' + h.page }) : null,
@@ -212,6 +221,8 @@ function productForm(p, onSaved, onCancel) {
   const cat = el('select', { 'aria-label': 'Kategoria' }, el('option', { value: '', text: 'Bez kategorii' }),
     ...S.cats.filter(c => !c.virtual).map(c => el('option', { value: c.key, text: c.name })));
   cat.value = p ? p.category || '' : '';
+  const brand = el('input', { type: 'text', maxlength: '60', placeholder: 'puste = pierwsze słowo nazwy', 'aria-label': 'Marka', value: p ? p.brand || '' : '' });
+  const keywords = el('input', { type: 'text', maxlength: '200', placeholder: 'np. żel pod prysznic, kosmetyki do mycia', 'aria-label': 'Słowa kluczowe', value: p ? p.keywords || '' : '' });
   const desc = el('textarea', { maxlength: '1500', placeholder: 'Wersja, model, czego nie mylić, ważne cechy', 'aria-label': 'Opis dla wyszukiwarki' });
   desc.value = p ? p.desc || '' : '';
   const sites = el('textarea', { placeholder: 'https://sklep.pl\nhttps://inny-sklep.pl', 'aria-label': 'Strony priorytetowe', spellcheck: 'false', autocapitalize: 'none' });
@@ -224,6 +235,8 @@ function productForm(p, onSaved, onCancel) {
     field('Nazwa', name, 'wide'),
     field('EAN', ean),
     field('Kategoria', cat),
+    field('Marka (promocje na całą markę)', brand),
+    field('Słowa kluczowe (promocje na kategorię, po przecinku)', keywords, 'wide'),
     field('Opis dla wyszukiwarki', desc, 'wide'),
     field('Strony priorytetowe (jeden adres w linii)', sites, 'wide'),
     el('div', { class: 'pr-f wide pr-formfoot' },
@@ -236,7 +249,7 @@ function productForm(p, onSaved, onCancel) {
     if (!name.value.trim()) { err.textContent = 'Wpisz nazwę produktu.'; err.hidden = false; name.focus(); return; }
     save.disabled = true;
     try {
-      const body = { name: name.value, ean: ean.value, desc: desc.value, category: cat.value, sites: sites.value, active: sw.cb.checked };
+      const body = { name: name.value, ean: ean.value, desc: desc.value, category: cat.value, brand: brand.value, keywords: keywords.value, sites: sites.value, active: sw.cb.checked };
       if (p) body.id = p.id;
       await api('prod_save', { method: 'POST', body });
       await onSaved();
@@ -383,10 +396,12 @@ function leafletDetail(d) {
     const h = hitMap.get((it.name || '').trim().toLowerCase());
     const name = el('td', { class: 'n' }, el('span', { text: it.name }));
     if (h) name.append(el('span', { class: 'lf-hit-tag', text: G.pname[h.product_id] ? 'Twój produkt: ' + G.pname[h.product_id] : 'Twój produkt' }));
+    if (it.applies_to) name.append(el('span', { class: 'lf-scope', text: (it.scope === 'category' ? 'kategoria: ' : 'marka: ') + it.applies_to }));
+    if (it.deal && it.price) name.append(el('span', { class: 'lf-scope', text: it.deal }));
     if (it.notes) name.append(el('span', { class: 'lf-note', text: it.notes }));
     return el('tr', { class: h ? 'hit' : '' },
       name,
-      el('td', { class: 'p', text: it.price || '' }),
+      el('td', { class: 'p', text: it.price || it.deal || '' }),
       el('td', { class: 'o', text: it.old_price || '' }),
       el('td', { class: 'd', text: period(it.valid_from, it.valid_to) }),
       el('td', { class: 'g', text: it.page ? 'str. ' + it.page : '' }));
@@ -546,7 +561,7 @@ async function viewLeaflets() {
         const per = period(r.valid_from, r.valid_to);
         return el('button', { class: 'lf-res', type: 'button', onclick: () => openFromResult(r.leaflet_id) },
           el('span', { class: 'lf-res-n' }, el('b', { text: it.name || '' }), el('small', { text: (r.shop || '') + ' · ' + (r.title || '') + (per ? ' · ' + per : '') })),
-          el('span', { class: 'lf-res-p' }, el('b', { text: it.price || '' }), it.old_price ? el('span', { class: 'orig', text: it.old_price }) : null));
+          el('span', { class: 'lf-res-p' }, el('b', { text: it.price || it.deal || '' }), it.old_price ? el('span', { class: 'orig', text: it.old_price }) : null));
       }));
   }
 

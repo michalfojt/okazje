@@ -109,3 +109,13 @@ Oferty produktu w `products`: `unset image_src`, pola jak w kartach ofert. `hits
 - Dostęp tylko po zalogowaniu (`auth_user()`), POST z CSRF. GET pokazuje prostą stronę: lista plików z `site/MANIFEST.json` w repo (`https://raw.githubusercontent.com/michalfojt/okazje/main/site/MANIFEST.json`) ze statusem: zgodny / inny / brak na serwerze (porównanie sha256), przycisk „Wdróż zmienione".
 - POST: dla każdego pliku z manifestu o innym sha256 - pobierz `https://raw.githubusercontent.com/michalfojt/okazje/main/site/<path>`, sprawdź sha256 z manifestu, skopiuj obecną wersję do `data/backup/<RRRRmmdd-HHMMSS>/<path>`, zapisz nowy plik atomowo (tmp + rename). Ścieżki tylko z białej listy wzorców: `^[a-z0-9_]+\.php$`, `^assets/[a-z0-9_]+\.(js|css)$`, `^\.htaccess$`; nigdy `config.php`, nic w `data/`, `img/`, `inbox/`. Pliki spoza manifestu nie są ruszane ani usuwane.
 - Manifest: `{"generated":"ISO","commit":"<sha lub null>","files":{"lib.php":"<sha256>",...}}` generowany przez `tools/manifest.py` z zawartości `site/` (pomija `MANIFEST.json`, `README.md`, `.gitattributes`).
+
+## Dopasowanie po marce i kategorii (dodatek)
+
+Gazetki rzadko podają EAN albo pełną nazwę, częściej piszą "wszystkie produkty Dove, drugi za 1 zł". Dlatego:
+
+- Produkt ma pola `brand` (puste = pierwsze słowo nazwy) i `keywords` (frazy po przecinku, np. "żel pod prysznic").
+- Pozycja gazetki ma pola `applies_to` (czego dotyczy promocja, np. "wszystkie produkty Dove"), `deal` (np. "drugi za 1 zł", "2+1", "-30%") i `scope` (`item`, `brand`, `category`; domyślnie `brand`, gdy jest `applies_to`). Cena może być pusta.
+- Trafienie ma pole `match`: `item` (ta sama pozycja: EAN albo marka i co najmniej 60% słów nazwy), `brand` (promocja na całą markę produktu), `keyword` (promocja na kategorię: fraza ze słów kluczowych w tekście pozycji). Pozycje zwykłe (`scope: item`) nie łapią się po samej marce ani po słowach kluczowych.
+- `rematch_hits()` (lib3.php) przegląda aktualne gazetki i aktywne produkty po każdym imporcie (ingest.php) i po zapisaniu produktu. Nowe trafienia mają `auto: true`, `alerted: false`, a feed oddaje je w `known_hits` z ceną, `deal`, `match` i nazwą produktu, żeby zadanie wysłało alert i oznaczyło je jako `alerted: true`.
+- To samo trafienie nie powstaje dwa razy: klucz to produkt, adres gazetki i nazwa pozycji (bez daty).

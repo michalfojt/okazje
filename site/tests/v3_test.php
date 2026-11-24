@@ -241,7 +241,7 @@ eq([], glob("$site/img/lf-*") ?: [], 'brak plików okładek');
 eq($runIso, $lb['first_seen'] ?? null, 'gazetka: first_seen');
 
 $hd = jread('hits', []);
-eq(3, count($hd['hits'] ?? []), 'trzy trafienia');
+eq(5, count($hd['hits'] ?? []), 'pięć trafień: 3 z partii i 2 automatyczne (masło w gazetkach Biedronki i Lidla)');
 $hidA = hit_id($A, $lidlUrl, 'Sonoff ZBDongle-E', $lidlFrom);
 $hA = $hd['hits'][$hidA] ?? [];
 eq($lidlLid, g($hA, 'leaflet_id'), 'trafienie: leaflet_id dopasowany po adresie gazetki');
@@ -277,7 +277,7 @@ $ld = jread('leaflets', []);
 $hd = jread('hits', []);
 eq(3, count($po['offers']), 'ponowny import: 3 oferty bez duplikatów');
 eq(2, count($ld['leaflets']), 'ponowny import: 2 gazetki bez duplikatów');
-eq(3, count($hd['hits']), 'ponowny import: 3 trafienia bez duplikatów');
+eq(5, count($hd['hits']), 'ponowny import: 5 trafień bez duplikatów');
 eq($runIso, $po['offers'][$k1]['first_seen'] ?? null, 'oferta: first_seen zostaje');
 eq($run2, $po['offers'][$k1]['last_seen'] ?? null, 'oferta: last_seen odświeżone');
 eq($runIso, $ld['leaflets'][$bidLid]['first_seen'] ?? null, 'gazetka: first_seen zostaje');
@@ -331,15 +331,15 @@ $H = fn(string $m, string $p, ?array $j = null, array $h = []) => http($port, $j
 eq(200, $code, 'feed: kod 200');
 eq(['generated', 'categories', 'extra_sources', 'missing_images', 'products', 'leaflet_shops', 'leaflets_known', 'known_hits'], array_keys((array)$f), 'feed: klucze i ich kolejność');
 eq([$B, $A], array_column($f['products'] ?? [], 'id'), 'feed: produkty (najpierw bez last_searched)');
-eq(['id', 'name', 'ean', 'desc', 'category', 'sites', 'last_searched'], array_keys($f['products'][0] ?? []), 'feed: pola produktu');
+eq(['id', 'name', 'ean', 'desc', 'brand', 'keywords', 'category', 'sites', 'last_searched'], array_keys($f['products'][0] ?? []), 'feed: pola produktu');
 eq(['Biedronka', 'Lidl', 'Kaufland'], array_column($f['leaflet_shops'] ?? [], 'name'), 'feed: aktywne sklepy');
 eq(['id', 'name', 'url', 'note'], array_keys($f['leaflet_shops'][0] ?? []), 'feed: pola sklepu');
 eq(2, count($f['leaflets_known'] ?? []), 'feed: znane gazetki');
 $lk = array_column($f['leaflets_known'] ?? [], null, 'url');
 eq(3, $lk[$biedUrl]['items_count'] ?? null, 'feed: items_count gazetki');
 eq(['shop_id', 'shop', 'url', 'title', 'valid_from', 'valid_to', 'items_count'], array_keys($lk[$biedUrl] ?? []), 'feed: pola gazetki');
-eq(2, count($f['known_hits'] ?? []), 'feed: znane trafienia bez przeterminowanych');
-eq(['product_id', 'shop', 'leaflet_url', 'item_name', 'valid_from', 'valid_to', 'alerted'], array_keys($f['known_hits'][0] ?? []), 'feed: pola trafienia');
+eq(4, count($f['known_hits'] ?? []), 'feed: znane trafienia bez przeterminowanych');
+eq(['product_id', 'product_name', 'shop', 'leaflet_url', 'leaflet_title', 'item_name', 'price', 'old_price', 'deal', 'applies_to', 'match', 'notes', 'page', 'valid_from', 'valid_to', 'alerted'], array_keys($f['known_hits'][0] ?? []), 'feed: pola trafienia');
 check(!in_array('Sonoff stary', array_column($f['known_hits'] ?? [], 'item_name'), true), 'feed: przeterminowane trafienie pominięte');
 eq(403, $H('GET', '/feed.php?token=zly')[0], 'feed: zły token');
 eq(403, $H('GET', '/feed.php')[0], 'feed: brak tokenu');
@@ -387,7 +387,7 @@ eq('Sonoff ZBDongle-E', $va['hits'][0]['item_name'] ?? null, 'products: trafieni
 check(!array_key_exists('image_src', $va['offers'][0] ?? []), 'products: oferty bez image_src');
 $vb = $pv[$B] ?? [];
 eq(1, $vb['offers_count'] ?? null, 'products: offers_count B');
-eq(1, count($vb['hits'] ?? []), 'products: trafienie B');
+eq(3, count($vb['hits'] ?? []), 'products: trafienie B');
 eq(['offers', 'best', 'hits', 'offers_count'], array_slice(array_keys($va), -4), 'products: kolejność nowych pól');
 
 // prod_save
@@ -427,7 +427,7 @@ check(!array_key_exists('items', $lv[$bidLid] ?? ['items' => 1]), 'shops: gazetk
 eq(3, $lv[$bidLid]['items_count'] ?? null, 'shops: items_count');
 eq(true, $lv[$bidLid]['current'] ?? null, 'shops: current');
 eq(2, $lv[$lidlLid]['items_count'] ?? null, 'shops: items_count Lidla');
-eq(1, $lv[$lidlLid]['hits_count'] ?? null, 'shops: hits_count Lidla (tylko aktualne)');
+eq(2, $lv[$lidlLid]['hits_count'] ?? null, 'shops: hits_count Lidla (tylko aktualne)');
 
 // shop_save / toggle / delete
 [$code, , $j] = $HP('shop_save', ['name' => 'Netto', 'url' => 'https://www.netto.pl/gazetka', 'note' => 'Leszno', 'active' => true]);
@@ -450,7 +450,7 @@ eq(3, count(shops()), 'sklepy po usunięciu Netto');
 [$code, , $j] = $H('GET', "/api.php?a=leaflet&id=$lidlLid");
 eq(200, $code, 'leaflet: 200');
 eq(2, count($j['leaflet']['items'] ?? []), 'leaflet: items');
-eq(2, count($j['hits'] ?? []), 'leaflet: trafienia tej gazetki');
+eq(3, count($j['hits'] ?? []), 'leaflet: trafienia tej gazetki');
 eq('Sonoff ZBDongle-E', $j['hits'][0]['product_name'] ?? null, 'leaflet: product_name w trafieniu');
 eq(400, $H('GET', '/api.php?a=leaflet&id=zle')[0], 'leaflet: złe id');
 eq(404, $H('GET', '/api.php?a=leaflet&id=' . str_repeat('a', 12))[0], 'leaflet: nieznane id');

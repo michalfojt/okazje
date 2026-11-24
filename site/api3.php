@@ -24,6 +24,7 @@ function api3(string $a, string $method, array $body): void {
         case 'prod_save': {
             $post();
             $r = product_save($body);
+            if (!empty($r['ok'])) rematch_hits();
             $res($r, ['product' => $r['product'] ?? null]);
         }
 

@@ -97,6 +97,8 @@ $removed = locked(function () {
 });
 if ($removed > 0) $log("usunięto starych ofert: $removed");
 
+if (!$pruneOnly && !$imagesOnly && ($nh = rematch_hits()) > 0) $log("nowe trafienia w gazetkach (dopasowanie po marce i słowach): $nh");
+
 $pr = prune_extras();
 if (array_sum($pr) > 0) $log("usunięto: gazetek {$pr['leaflets']}, ofert produktów {$pr['offers']}, trafień {$pr['hits']}");
 

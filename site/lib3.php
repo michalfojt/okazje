@@ -128,6 +128,8 @@ function norm_product(array $in, ?array $old = null, ?array $catKeys = null): ar
         'ean'           => $ean,
         'desc'          => v3_str($in['desc'] ?? null, 1500, true) ?? '',
         'category'      => $cat,
+        'brand'         => array_key_exists('brand', $in) ? (v3_str($in['brand'], 60) ?? '') : (string)($old['brand'] ?? ''),
+        'keywords'      => array_key_exists('keywords', $in) ? (v3_str($in['keywords'], 200) ?? '') : (string)($old['keywords'] ?? ''),
         'sites'         => $sites,
         'active'        => v3_bool($in['active'] ?? null, (bool)($old['active'] ?? true)),
         'added'         => (string)($old['added'] ?? $now),
@@ -375,6 +377,11 @@ function norm_leaflet_item(mixed $it): ?array {
     if ($name === null) return null;
     $page = $it['page'] ?? null;
     $page = (is_int($page) || (is_string($page) && ctype_digit($page))) && (int)$page > 0 && (int)$page < 100000 ? (int)$page : null;
+    // promocja na całą markę lub kategorię: applies_to mówi, czego dotyczy ("wszystkie produkty Dove")
+    $appliesTo = v3_str($it['applies_to'] ?? null, 120);
+    $scope = v3_str($it['scope'] ?? null, 12);
+    if (!in_array($scope, ['item', 'brand', 'category'], true)) $scope = $appliesTo !== null ? 'brand' : 'item';
+    if ($appliesTo === null && $scope !== 'item') $scope = 'item';
     return [
         'name'       => $name,
         'price'      => v3_str($it['price'] ?? null, 40),
@@ -383,6 +390,9 @@ function norm_leaflet_item(mixed $it): ?array {
         'valid_to'   => norm_date($it['valid_to'] ?? null),
         'page'       => $page,
         'notes'      => v3_str($it['notes'] ?? null, 200),
+        'applies_to' => $appliesTo,
+        'deal'       => v3_str($it['deal'] ?? null, 80),
+        'scope'      => $scope,
     ];
 }
 
@@ -429,6 +439,16 @@ function hit_id(string $productId, ?string $leafletUrl, string $itemName, ?strin
     return substr(sha1($productId . '|' . norm_url((string)$leafletUrl) . '|' . slug($itemName) . '|' . ($validFrom ?? '')), 0, 12);
 }
 
+/** Klucz istniejącego trafienia tego samego produktu, w tej samej gazetce i o tej samej nazwie pozycji (niezależnie od daty). */
+function find_hit_key(array $hits, string $productId, ?string $leafletUrl, string $itemName): ?string {
+    $nu = norm_url((string)$leafletUrl);
+    $sn = slug($itemName);
+    foreach ($hits as $k => $h) {
+        if (($h['product_id'] ?? '') === $productId && norm_url((string)($h['leaflet_url'] ?? '')) === $nu && slug((string)($h['item_name'] ?? '')) === $sn) return (string)$k;
+    }
+    return null;
+}
+
 /** @param array<string,true> $pids znane id produktów */
 function norm_hit(array $h, array $pids): ?array {
     $pid = v3_str($h['product_id'] ?? null, 20);
@@ -453,6 +473,9 @@ function norm_hit(array $h, array $pids): ?array {
         'valid_to'      => norm_date($h['valid_to'] ?? null),
         'page'          => $page,
         'notes'         => v3_str($h['notes'] ?? null, 300),
+        'match'         => in_array(($m = v3_str($h['match'] ?? null, 10)), ['item', 'brand', 'keyword'], true) ? $m : null,
+        'deal'          => v3_str($h['deal'] ?? null, 80),
+        'applies_to'    => v3_str($h['applies_to'] ?? null, 120),
         'alerted'       => v3_bool($h['alerted'] ?? null, false),
     ];
 }
@@ -613,9 +636,15 @@ function ingest_extras(array $batch, string $file): array {
             foreach ($hits as $hid => $h) {
                 $hid = (string)$hid;
                 if (!isset($live[$h['product_id']])) { $rejected++; continue; }
+                $hid = find_hit_key($hd['hits'], $h['product_id'], $h['leaflet_url'], $h['item_name']) ?? $hid;
+                $h['id'] = $hid;
                 $old = $hd['hits'][$hid] ?? null;
                 $h['leaflet_id'] = find_leaflet_id($ld['leaflets'], $h['leaflet_url'], $h['valid_from']) ?? ($old['leaflet_id'] ?? null);
                 $h['alerted'] = (bool)($old['alerted'] ?? false) || $h['alerted'];
+                foreach (['match', 'deal', 'applies_to', 'price', 'old_price', 'valid_to', 'page', 'notes', 'leaflet_title'] as $keep) {
+                    if (($h[$keep] ?? null) === null && ($old[$keep] ?? null) !== null) $h[$keep] = $old[$keep];
+                }
+                if (!empty($old['auto'])) $h['auto'] = true;
                 $h['found'] = $old['found'] ?? $iso;
                 $hd['hits'][$hid] = $h;
                 $nHits++;
@@ -786,7 +815,7 @@ function leaflet_search(string $q, int $limit = 100): array {
     foreach (leaflets_db()['leaflets'] as $l) {
         if (!v3_current($l['valid_to'] ?? null, $today)) continue;
         foreach ($l['items'] ?? [] as $it) {
-            if (!str_contains(slug((string)($it['name'] ?? '')), $needle)) continue;
+            if (!str_contains(slug((string)($it['name'] ?? '') . ' ' . (string)($it['applies_to'] ?? '')), $needle)) continue;
             $out[] = ['leaflet_id' => (string)$l['id'], 'shop' => $l['shop'] ?? null, 'title' => $l['title'] ?? null,
                       'valid_from' => $l['valid_from'] ?? null, 'valid_to' => $l['valid_to'] ?? null, 'item' => $it];
             if (count($out) >= $limit) return $out;
@@ -809,6 +838,7 @@ function feed_products(): array {
     });
     return array_map(fn($p) => [
         'id' => $p['id'], 'name' => $p['name'], 'ean' => $p['ean'] ?? '', 'desc' => $p['desc'] ?? '',
+        'brand' => product_brand($p), 'keywords' => product_keywords($p),
         'category' => $p['category'] ?? '', 'sites' => $p['sites'] ?? [], 'last_searched' => $p['last_searched'] ?? null,
     ], $rows);
 }
@@ -832,9 +862,171 @@ function feed_leaflets_known(): array {
 }
 
 function feed_known_hits(): array {
+    $names = array_column(products(), 'name', 'id');
     return array_map(fn($h) => [
-        'product_id' => $h['product_id'], 'shop' => $h['shop'] ?? null, 'leaflet_url' => $h['leaflet_url'] ?? null,
-        'item_name' => $h['item_name'], 'valid_from' => $h['valid_from'] ?? null, 'valid_to' => $h['valid_to'] ?? null,
+        'product_id' => $h['product_id'], 'product_name' => $names[$h['product_id']] ?? null,
+        'shop' => $h['shop'] ?? null, 'leaflet_url' => $h['leaflet_url'] ?? null, 'leaflet_title' => $h['leaflet_title'] ?? null,
+        'item_name' => $h['item_name'], 'price' => $h['price'] ?? null, 'old_price' => $h['old_price'] ?? null,
+        'deal' => $h['deal'] ?? null, 'applies_to' => $h['applies_to'] ?? null, 'match' => $h['match'] ?? 'item',
+        'notes' => $h['notes'] ?? null, 'page' => $h['page'] ?? null,
+        'valid_from' => $h['valid_from'] ?? null, 'valid_to' => $h['valid_to'] ?? null,
         'alerted' => !empty($h['alerted']),
     ], current_hits());
+}
+
+
+/* ---------- dopasowanie produktów do pozycji gazetek ---------- */
+// Gazetki często nie podają EAN ani pełnej nazwy: piszą "wszystkie produkty Dove, drugi za 1 zł"
+// albo "kosmetyki do mycia -30%". Dopasowanie działa na trzech poziomach:
+//   item    - ta sama pozycja (EAN w tekście albo marka i większość słów nazwy),
+//   brand   - promocja na całą markę produktu (pozycja z applies_to lub scope brand/category),
+//   keyword - promocja na kategorię: fraza z pola "słowa kluczowe" produktu w tekście pozycji.
+
+/** Tekst do porównań: małe litery, bez polskich znaków, tylko litery i cyfry, spacje na brzegach. */
+function fold_text(string $s): string {
+    $s = mb_strtolower($s, 'UTF-8');
+    $s = strtr($s, ['ą' => 'a', 'ć' => 'c', 'ę' => 'e', 'ł' => 'l', 'ń' => 'n', 'ó' => 'o', 'ś' => 's', 'ź' => 'z', 'ż' => 'z',
+        'ä' => 'a', 'ö' => 'o', 'ü' => 'u', 'é' => 'e', 'è' => 'e', 'à' => 'a', 'â' => 'a', 'ç' => 'c', 'ñ' => 'n', 'ß' => 'ss']);
+    return ' ' . trim((string)preg_replace('/[^a-z0-9]+/', ' ', $s)) . ' ';
+}
+
+/** Marka produktu: pole brand, a gdy puste pierwsze słowo nazwy. */
+function product_brand(array $p): string {
+    $b = trim((string)($p['brand'] ?? ''));
+    if ($b !== '') return $b;
+    $first = preg_split('/\s+/u', trim((string)($p['name'] ?? '')), 2)[0] ?? '';
+    return mb_strlen($first) >= 3 ? $first : '';
+}
+
+/** @return list<string> */
+function product_keywords(array $p): array {
+    $out = [];
+    foreach (preg_split('/[,;\n]+/u', (string)($p['keywords'] ?? '')) ?: [] as $k) {
+        $k = trim($k);
+        if ($k !== '' && mb_strlen($k) >= 3) $out[] = mb_substr($k, 0, 60);
+    }
+    return array_slice($out, 0, 10);
+}
+
+/** Czy słowo $w z tekstu pasuje do słowa $t z frazy (odmiana: wspólny rdzeń bez 2 ostatnich liter). */
+function word_like(string $w, string $t): bool {
+    if ($w === $t) return true;
+    $n = strlen($t);
+    if ($n < 4) return str_starts_with($w, $t) && strlen($w) <= $n + 2; // "zel" -> "zele", ale nie "zelazko"
+    return str_starts_with($w, substr($t, 0, max(3, $n - 2)));
+}
+
+/** Czy wszystkie słowa frazy (już po fold_text) występują w tekście (po fold_text). */
+function phrase_in(string $text, string $phrase): bool {
+    $words = array_values(array_filter(explode(' ', trim($text)), fn($x) => $x !== ''));
+    $toks = array_values(array_filter(explode(' ', trim($phrase)), fn($x) => $x !== ''));
+    if (!$toks) return false;
+    foreach ($toks as $t) {
+        $ok = false;
+        foreach ($words as $w) { if (word_like($w, $t)) { $ok = true; break; } }
+        if (!$ok) return false;
+    }
+    return true;
+}
+
+/** Słowa nazwy produktu istotne dla dopasowania (bez marki, liczb, jednostek i spójników). */
+function name_tokens(array $p): array {
+    $stop = ['bez' => 1, 'dla' => 1, 'pod' => 1, 'nad' => 1, 'oraz' => 1, 'the' => 1, 'and' => 1, 'set' => 1, 'ml' => 1, 'kg' => 1,
+        'szt' => 1, 'pak' => 1, 'cm' => 1, 'mm' => 1, 'mg' => 1, 'gb' => 1, 'tb' => 1, 'mah' => 1];
+    $brand = trim(fold_text(product_brand($p)));
+    $brandWords = $brand === '' ? [] : array_flip(explode(' ', $brand));
+    $out = [];
+    foreach (explode(' ', trim(fold_text((string)($p['name'] ?? '')))) as $t) {
+        if ($t === '' || strlen($t) < 3 || isset($stop[$t]) || isset($brandWords[$t]) || preg_match('/^\d+[a-z]{0,3}$/', $t)) continue;
+        $out[] = $t;
+    }
+    return array_values(array_unique($out));
+}
+
+/**
+ * Dopasowanie jednej pozycji gazetki do produktu.
+ * @return ?string 'item' | 'brand' | 'keyword' albo null
+ */
+function match_item_to_product(array $p, array $it): ?string {
+    $text = fold_text((string)($it['name'] ?? '') . ' ' . (string)($it['applies_to'] ?? ''));
+    $ean = (string)($p['ean'] ?? '');
+    if ($ean !== '' && str_contains(preg_replace('/\D+/', '', (string)($it['name'] ?? '') . ' ' . (string)($it['notes'] ?? '')), $ean)) return 'item';
+
+    $brand = trim(fold_text(product_brand($p)));
+    $hasBrand = $brand !== '' && str_contains($text, ' ' . $brand . ' ');
+    if ($hasBrand) {
+        $toks = name_tokens($p);
+        if ($toks) {
+            $words = array_values(array_filter(explode(' ', trim($text)), fn($x) => $x !== ''));
+            $hit = 0;
+            foreach ($toks as $t) {
+                foreach ($words as $w) { if (word_like($w, $t)) { $hit++; break; } }
+            }
+            if ($hit >= (int)ceil(0.6 * count($toks))) return 'item';
+        }
+    }
+    $wide = ($it['scope'] ?? 'item') !== 'item' || trim((string)($it['applies_to'] ?? '')) !== '';
+    if (!$wide) return null;
+    if ($hasBrand) return 'brand';
+    foreach (product_keywords($p) as $k) {
+        if (phrase_in($text, fold_text($k))) return 'keyword';
+    }
+    return null;
+}
+
+/**
+ * Szuka trafień wśród aktualnych gazetek i zapisuje nowe w hits.json (alerted: false, auto: true).
+ * Istniejące trafienia zachowują alerted i datę znalezienia. Wywoływać poza locked().
+ * @return int liczba nowych trafień
+ */
+function rematch_hits(): int {
+    $prods = array_values(array_filter(products(), fn($p) => !empty($p['active'])));
+    if (!$prods) return 0;
+    $today = date('Y-m-d');
+    $new = [];
+    foreach (leaflets_db()['leaflets'] as $l) {
+        if (!v3_current($l['valid_to'] ?? null, $today)) continue;
+        foreach ($l['items'] ?? [] as $it) {
+            foreach ($prods as $p) {
+                $m = match_item_to_product($p, $it);
+                if ($m === null) continue;
+                $vf = $it['valid_from'] ?? ($l['valid_from'] ?? null);
+                $name = (string)$it['name'];
+                $hid = hit_id((string)$p['id'], $l['url'] ?? null, $name, $vf);
+                $new[$hid] = [
+                    'id' => $hid, 'product_id' => (string)$p['id'], 'leaflet_id' => (string)($l['id'] ?? ''),
+                    'shop' => $l['shop'] ?? null, 'leaflet_url' => $l['url'] ?? null, 'leaflet_title' => $l['title'] ?? null,
+                    'item_name' => $name, 'price' => $it['price'] ?? null, 'old_price' => $it['old_price'] ?? null,
+                    'valid_from' => $vf, 'valid_to' => $it['valid_to'] ?? ($l['valid_to'] ?? null),
+                    'page' => $it['page'] ?? null, 'notes' => $it['notes'] ?? null,
+                    'match' => $m, 'deal' => $it['deal'] ?? null, 'applies_to' => $it['applies_to'] ?? null,
+                    'alerted' => false, 'auto' => true,
+                ];
+            }
+        }
+    }
+    if (!$new) return 0;
+    return (int)locked(function () use ($new) {
+        $hd = hits_db();
+        $added = 0;
+        $changed = false;
+        foreach ($new as $hid => $h) {
+            $hid = find_hit_key($hd['hits'], $h['product_id'], $h['leaflet_url'], $h['item_name']) ?? (string)$hid;
+            $old = $hd['hits'][$hid] ?? null;
+            if ($old === null) {
+                $h['id'] = $hid;
+                $h['found'] = date('c');
+                $hd['hits'][$hid] = $h;
+                $added++;
+                $changed = true;
+                continue;
+            }
+            // uzupełnij tylko brakujące pola istniejącego trafienia
+            foreach (['match', 'deal', 'applies_to', 'price', 'old_price', 'valid_to', 'page', 'notes', 'leaflet_title'] as $k) {
+                if (($old[$k] ?? null) === null && ($h[$k] ?? null) !== null) { $hd['hits'][$hid][$k] = $h[$k]; $changed = true; }
+            }
+        }
+        if ($changed) jwrite('hits', $hd);
+        return $added;
+    });
 }
