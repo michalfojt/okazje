@@ -1,0 +1,78 @@
+{
+ "run": "2026-11-24T19:23:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "Synology OUTLET DS925+ (stan: jak nowy)",
+   "url": "https://www.x-kom.pl/p/1609783-dysk-sieciowy-nas-synology-outlet-ds925.html",
+   "price": "4049 zł",
+   "original_price": "4499 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Outlet 4-zatokowego NAS-a Synology DS925+ z uszkodzonym kartonem i drobnymi rysami. Około 10% taniej niż nowy. Gwarancja nie jest podana na stronie, dostępność to ostatnie sztuki. Egzemplarz outletowy (używany/odnowiony).",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Mac mini M6 16 GB / 256 GB",
+   "url": "https://www.pepper.pl/promocje/apple-mac-mini-m616gb256gb-1372887",
+   "price": "4099 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/CV9K8/1372887_1/re/768x768/qt/60/1372887_1.jpg",
+   "notes": "Mac mini z M6 w wersji 16/256 GB. Cena z wpisu Pepper, bez ceny przekreślonej i bez potwierdzenia na stronie sklepu, więc aktualność niepewna.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "SBS Tripod bezprzewodowy ze światłem LED i mikrofonem",
+   "url": "https://www.pepper.pl/promocje/sbs-tripod-bezprzewodowy-ze-swiatlem-led-i-mikrofonem-1392091",
+   "price": "9,99 zł",
+   "original_price": null,
+   "shop": "Neonet",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ehtl9/1392091_1/re/768x768/qt/60/1392091_1.jpg",
+   "notes": "Mały statyw z pilotem, lampką LED i mikrofonem, do telefonu. Cena z wpisu Pepper, niesprawdzona w sklepie, więc może być już nieaktualna. Prosty sprzęt, nie oczekuj jakości z wyższej półki.",
+   "confidence": "medium"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://www.pepper.pl/promocje/karta-pamieci-sandisk-512gb-microsdxc-ultra-1392976",
+   "image_url": "https://static.pepper.pl/threads/raw/fsMmv/1392976_1/re/768x768/qt/60/1392976_1.jpg"
+  }
+ ],
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ],
+ "product_offers": [
+  {
+   "product_id": "pebdfd81a",
+   "title": "Pampers Night Pants Maxi rozmiar 6, 19 szt. (EAN 8006540234761)",
+   "url": "https://allegro.pl/produkt/pieluchomajtki-na-noc-pampers-night-pants-maxi-rozmiar-6-15-kg-19-sztuk-efb808b4-2b64-4106-acc0-1006818c17e8",
+   "price": "28,40 zł",
+   "original_price": "39,90 zł",
+   "shop": "Allegro (e-msgroup)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Najniższa cena na karcie produktu. Dostawa 10,49 zł albo 0 zł z Allegro Smart. Nie potwierdzono, czy to cena brutto.",
+   "confidence": "medium"
+  },
+  {
+   "product_id": "pbd1696a5",
+   "title": "Dove Hydrate żel pod prysznic 450 ml (EAN 8720181466502)",
+   "url": "https://allegro.pl/oferta/dove-zel-450ml-hydrate-15797709694",
+   "price": "13,99 zł",
+   "original_price": null,
+   "shop": "Allegro (brandmall_pl)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Dostawa 10,49 zł albo 0 zł z Allegro Smart. Strona sugeruje, że oferta mogła przestać być aktywna. Promocji w Biedronce nie znaleziono.",
+   "confidence": "medium"
+  }
+ ]
+}
