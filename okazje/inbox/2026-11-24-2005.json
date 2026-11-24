@@ -1,0 +1,142 @@
+{
+ "run": "2026-11-24T20:05:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "UGREEN Powerbank 20000 mAh PB726, 165 W, wbudowany kabel",
+   "url": "https://www.pepper.pl/promocje/black-weeks-npugreen-powerbank-20000mah-pb726-usb-usb-c-165w-wbudowany-kabel-za-199-zl-wiecej-w-opisie-1398146",
+   "price": "199 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/rY517/1398146_1/re/768x768/qt/60/1398146_1.jpg",
+   "notes": "Powerbank 20000 mAh z USB-C do 165 W i wbudowanym kablem, wystarczy do laptopa. Cena z wpisu Pepper (Black Weeks), nie sprawdzono, czy oferta jeszcze trwa.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "UGREEN Hub USB-C z HDMI 4K i czytnikiem kart SD/TF",
+   "url": "https://www.pepper.pl/promocje/ugreen-hub-usb-c-z-wyjsciem-hdmi-4k-czytnikiem-kart-sdtf-1398243",
+   "price": "68,99 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ghIk9/1398243_1/re/768x768/qt/60/1398243_1.jpg",
+   "notes": "Hub USB-C z wyjściem HDMI 4K i czytnikiem kart, przydatny do ThinkPada lub MacBooka. Cena z wpisu Pepper, Amazon nie był sprawdzany bezpośrednio.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Powerbank Baseus QPow3 20000 mAh 45 W z 2 kablami USB-C",
+   "url": "https://www.pepper.pl/promocje/powerbank-baseus-qpow3-20-000-mah-45-w-z-2-kablami-usb-c-1397480",
+   "price": "126,92 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/hR56c/1397480_1/re/768x768/qt/60/1397480_1.jpg",
+   "notes": "Powerbank 20000 mAh, 45 W, z dwoma wbudowanymi kablami USB-C. Cena z wpisu Pepper, bez potwierdzenia aktywności oferty.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "NAS Ugreen DXP2800 (2 zatoki, Intel N100, 8 GB DDR5, 2.5GbE, HDMI 4K)",
+   "url": "https://www.pepper.pl/promocje/nas-ugreen-dxp2800-2-dyskowy-intel-n100-8gb-ddr5-25gbe-4k-hdmi-1392267",
+   "price": "1449 zł",
+   "original_price": null,
+   "shop": "Komputronik",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/gQ2MP/1392267_1/re/768x768/qt/60/1392267_1.jpg",
+   "notes": "Dwuzatokowy NAS z Intel N100 i 2.5GbE, bez dysków. Starszy wpis tego modelu miał 1189 zł (wygasły), więc obecna cena jest wyższa; status oferty niepotwierdzony.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "UGREEN NAS UPS US2000 (zasilanie awaryjne do NAS)",
+   "url": "https://www.pepper.pl/promocje/ugreen-nas-ups-us2000-zasilanie-awaryjne-1389752",
+   "price": "329,99 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Zasilacz awaryjny dla NAS-a Ugreen. Cena z tytułu wpisu Pepper, status oferty nieznany.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Mac mini M6 (12-core CPU/GPU, 16 GB RAM, 256 GB SSD, srebrny)",
+   "url": "https://lantre.pl/apple-mac-mini-m6-16-gb-256-gb-12-core-cpu-12-core-gpu-gigabit-ethernet-srebrny-silver-mhqk4ze-a.html",
+   "price": "3799 zł",
+   "original_price": "4499 zł",
+   "shop": "Lantre",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia ThinkApple (Black Friday, 24.11.2026); strona sklepu była niedostępna, więc nie zweryfikowano. Wcześniej w inboxie był Mac mini M6 za 4099 zł, ta cena jest niższa.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple MacBook Neo 13, A18 Pro, 8 GB RAM, 256 GB, różowy",
+   "url": "https://allegro.pl/produkt/laptop-apple-macbook-neo-13-apple-a18-pro-8gb-256gb-rozowy-673f8e6e-1300-4f2e-97af-4e3abf966f4c",
+   "price": "3151 zł",
+   "original_price": "3699 zł",
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia ThinkApple, nie sprawdzona na stronie Allegro; data końca promocji nieznana.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple MacBook Neo 13, A18 Pro, 8 GB RAM, 512 GB, cytrusowożółty",
+   "url": "https://allegro.pl/produkt/laptop-apple-macbook-neo-13-apple-a18-pro-8-gb-512-gb-cytrusowozolty-61284276-97ab-467f-ac91-0e909ae15783",
+   "price": "3495 zł",
+   "original_price": "4199 zł",
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia ThinkApple, nie sprawdzona na stronie Allegro; data końca promocji nieznana.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple iPhone 17 256 GB",
+   "url": "https://ispot.pl/black-friday-ispot",
+   "price": "4249 zł",
+   "original_price": "4499 zł",
+   "shop": "iSpot",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z zestawienia ThinkApple i regulaminu promocji iSpot; x-kom ma według tego samego źródła 4199 zł w kolorach lawendowym i szałwiowym. Strony sklepu nie udało się pobrać.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Karta pamięci SanDisk Extreme Plus microSDXC 256 GB (190/130 MB/s)",
+   "url": "https://www.pepper.pl/promocje/httpsmediamarktplplproduct-karta-pamieci-sandisk-extreme-plus-microsdxc-256gb-250mbs-170mbs-1508151html-1393419",
+   "price": "249 zł",
+   "original_price": null,
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/iU00x/1393419_1/re/768x768/qt/60/1393419_1.jpg",
+   "notes": "Karta microSDXC 256 GB do kamer sportowych i dronów. Cena z wpisu Pepper, bez ceny poprzedniej i daty końca; warto sprawdzić w sklepie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF ZBDongle-E Zigbee 3.0 USB Dongle Plus (koordynator)",
+   "url": "https://elecena.pl/product/29887165/zbdongle-e-zigbee-gateway",
+   "price": "92,03 zł",
+   "original_price": null,
+   "shop": "elecena.pl",
+   "promo_end": null,
+   "image_url": "https://s3-eu-west-1.amazonaws.com/s.elecena.pl/a/b/d/abdcdfb16f0fa893d8e580f1643c7ccd.jpg",
+   "notes": "Koordynator Zigbee; sklep wymienia Home Assistant i Zigbee2MQTT. Rabat -20% w historii ceny datowany na czerwiec 2026, więc aktualna promocja niepotwierdzona; traktuj jako cenę katalogową.",
+   "confidence": "medium"
+  }
+ ],
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ]
+}
