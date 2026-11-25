@@ -89,6 +89,24 @@ const extLink = (href, text, cls = '') =>
 /* =====================================================================
    Moje produkty
    ===================================================================== */
+/* wybór sklepu i sortowania pamiętany w przeglądarce (bez pamięci też działa) */
+function load(k, d) { try { return localStorage.getItem('okz-' + k) || d; } catch (e) { return d; } }
+function save(k, v) { try { localStorage.setItem('okz-' + k, v); } catch (e) { /* brak storage */ } }
+
+const SORTS = [['best', 'Atrakcyjność: od najlepszych'], ['worst', 'Atrakcyjność: od najsłabszych'], ['disc', 'Rabat: od największego'], ['price', 'Cena: od najniższej'], ['name', 'Nazwa: A-Z']];
+/* serwer zwraca listę w kolejności "best"; sortowanie jest stabilne, więc przy remisie ta kolejność zostaje */
+function sortPromos(rows, mode) {
+  if (mode === 'best') return rows;
+  const num = (v, d) => (v == null ? d : v);
+  const cmp = {
+    worst: (a, b) => (a.score.unsure - b.score.unsure) || (a.score.v - b.score.v) || (num(a.score.pct, 0) - num(b.score.pct, 0)),
+    disc: (a, b) => num(b.score.pct, -1) - num(a.score.pct, -1),
+    price: (a, b) => num(a.score.eff, Infinity) - num(b.score.eff, Infinity) || 0,
+    name: (a, b) => (a.name || '').localeCompare(b.name || '', 'pl'),
+  }[mode];
+  return cmp ? rows.slice().sort(cmp) : rows;
+}
+
 const P = { list: [], q: '', cat: '', open: new Set() };
 
 function offerCard(o) {
@@ -110,6 +128,50 @@ function offerCard(o) {
       el('div', { class: 'pr-odate', text: o.last_seen ? 'widziana ' + fmtShort(o.last_seen) : '' })));
 }
 
+/* ---------- ocena atrakcyjności 1-10 ---------- */
+
+/**
+ * Plakietka z oceną i rozwijane uzasadnienie. `refresh` wywoływane po rozłączeniu lub przywróceniu porównania.
+ * @return {{badge: Node, box: Node}}
+ */
+function scoreView(s, refresh, isOpen, onToggle) {
+  if (!s) return { badge: el('span', { class: 'sc sc-none', text: '–' }), box: null };
+  const key = s.v >= 9 ? 'sc-top' : s.v >= 7 ? 'sc-good' : s.v >= 5 ? 'sc-mid' : 'sc-low';
+  const box = el('div', { class: 'sc-box', hidden: true });
+  const badge = el('button', { class: 'sc ' + (s.unsure ? 'sc-none' : key), type: 'button', 'aria-expanded': 'false',
+    'aria-label': 'Atrakcyjność ' + s.v + ' na 10' + (s.unsure ? ', niepewna' : '') + '. Pokaż uzasadnienie', title: s.why.join('\n') },
+  el('b', { text: s.v + (s.unsure ? '?' : '') }), el('small', { text: '/10' }));
+  const fill = () => {
+    const parts = [el('ul', {}, ...s.why.map(w => el('li', { text: w })))];
+    if (s.cmp && s.cmp.length) {
+      parts.push(el('div', { class: 'sc-cmp-h', text: 'Porównane z' }));
+      s.cmp.forEach(c => {
+        const b = el('button', { class: 'btn sm ghost', type: 'button', text: c.excluded ? 'Przywróć' : 'To inny produkt' });
+        b.addEventListener('click', async () => {
+          b.disabled = true;
+          try { await api('hist_split', { method: 'POST', body: { pair: c.pair, split: !c.excluded } }); await refresh(); }
+          catch (e) { b.disabled = false; toast(e.message, true); }
+        });
+        parts.push(el('div', { class: 'sc-cmp' + (c.excluded ? ' sc-excl' : '') },
+          el('span', { class: 'sc-cmp-n', text: c.name }),
+          el('span', { class: 'sc-cmp-m', text: [c.shop || 'sklep', period(c.from, c.to), c.value, c.same_size ? '' : 'inna gramatura'].filter(Boolean).join(' · ') }),
+          b));
+      });
+    }
+    box.replaceChildren(...parts);
+  };
+  const set = open => {
+    if (open) fill();
+    box.hidden = !open;
+    badge.setAttribute('aria-expanded', String(open));
+  };
+  badge.addEventListener('click', () => { set(box.hidden); if (onToggle) onToggle(!box.hidden); });
+  if (isOpen) set(true);
+  return { badge, box };
+}
+const turboTag = s => (s && s.turbo ? el('span', { class: 'sc-tag turbo', text: 'turbo okazja' })
+  : s && s.fake ? el('span', { class: 'sc-tag fake', text: 'pozorna okazja' }) : null);
+
 /** Znacznik typu trafienia: cała marka albo kategoria (zwykła pozycja bez znacznika). */
 function matchTag(m) {
   if (m === 'brand') return el('span', { class: 'pr-tag', text: 'cała marka', title: 'Promocja na wszystkie produkty tej marki: sprawdź, czy obejmuje Twój wariant' });
@@ -119,8 +181,11 @@ function matchTag(m) {
 
 function hitRow(h) {
   const per = period(h.valid_from, h.valid_to);
+  const sc = scoreView(h.score, async () => { O.route(); });
   return el('div', { class: 'pr-hit' },
     el('div', { class: 'pr-hit-main' },
+      sc.badge,
+      turboTag(h.score),
       el('span', { class: 'pr-hit-shop', text: h.shop || 'gazetka' }),
       el('span', { class: 'pr-hit-name', text: h.item_name }),
       matchTag(h.match)),
@@ -131,7 +196,8 @@ function hitRow(h) {
       per ? el('span', { class: 'pr-hit-per', text: per }) : null,
       h.page ? el('span', { class: 'pr-hit-per', text: 'str. ' + h.page }) : null,
       h.leaflet_url ? extLink(h.leaflet_url, 'Gazetka', 'open-link') : null),
-    h.notes ? el('div', { class: 'pr-hit-notes', text: h.notes }) : null);
+    h.notes ? el('div', { class: 'pr-hit-notes', text: h.notes }) : null,
+    sc.box);
 }
 
 function productItem(p, reload) {
@@ -328,7 +394,7 @@ async function viewProducts() {
 /* =====================================================================
    Gazetki
    ===================================================================== */
-const G = { shops: [], leaflets: [], promos: [], hitCount: {}, pname: {}, endedOpen: false, q: '', pshop: '', pmine: false, pmore: 1 };
+const G = { shops: [], leaflets: [], promos: [], hitCount: {}, pname: {}, endedOpen: false, q: '', pshop: load('pshop', ''), psort: load('psort', 'best'), pmine: false, pturbo: false, pmore: 1, open: new Set() };
 
 function leafletCard(l, ctx) {
   const st = leafStatus(l);
@@ -394,22 +460,28 @@ function leafletDetail(d) {
 
   const rows = items.map(it => {
     const h = hitMap.get((it.name || '').trim().toLowerCase());
+    const sc = scoreView(it.score, async () => { O.route(); });
     const name = el('td', { class: 'n' }, el('span', { text: it.name }));
+    const tag = turboTag(it.score);
+    if (tag) name.append(tag);
     if (h) name.append(el('span', { class: 'lf-hit-tag', text: G.pname[h.product_id] ? 'Twój produkt: ' + G.pname[h.product_id] : 'Twój produkt' }));
     if (it.applies_to) name.append(el('span', { class: 'lf-scope', text: (it.scope === 'category' ? 'kategoria: ' : 'marka: ') + it.applies_to }));
     if (it.deal && it.price) name.append(el('span', { class: 'lf-scope', text: it.deal }));
     if (it.notes) name.append(el('span', { class: 'lf-note', text: it.notes }));
+    if (sc.box) name.append(sc.box);
     return el('tr', { class: h ? 'hit' : '' },
+      el('td', { class: 's' }, sc.badge),
       name,
       el('td', { class: 'p', text: it.price || it.deal || '' }),
       el('td', { class: 'o', text: it.old_price || '' }),
       el('td', { class: 'd', text: period(it.valid_from, it.valid_to) }),
       el('td', { class: 'g', text: it.page ? 'str. ' + it.page : '' }));
   });
-  rows.sort((a, b) => (b.classList.contains('hit') ? 1 : 0) - (a.classList.contains('hit') ? 1 : 0));
+  const val = i => (items[i].score ? items[i].score.v - (items[i].score.unsure ? 0.5 : 0) : 0);
+  const order = rows.map((r, i) => i).sort((a, b) => (rows[b].classList.contains('hit') ? 1 : 0) - (rows[a].classList.contains('hit') ? 1 : 0) || val(b) - val(a));
   const table = el('table', { class: 'lf-table' },
-    el('thead', {}, el('tr', {}, el('th', { text: 'Produkt' }), el('th', { text: 'Cena' }), el('th', { text: 'Stara cena' }), el('th', { text: 'Okres' }), el('th', { text: 'Strona' }))),
-    el('tbody', {}, ...rows));
+    el('thead', {}, el('tr', {}, el('th', { text: 'Ocena' }), el('th', { text: 'Produkt' }), el('th', { text: 'Cena' }), el('th', { text: 'Stara cena' }), el('th', { text: 'Okres' }), el('th', { text: 'Strona' }))),
+    el('tbody', {}, ...order.map(i => rows[i])));
   return el('div', { class: 'lf-dwrap' }, top, el('div', { class: 'lf-tablewrap' }, table));
 }
 
@@ -536,13 +608,17 @@ async function viewLeaflets() {
   const shopSel = el('select', { 'aria-label': 'Sklep' });
   const mineSw = switchEl(G.pmine, 'Tylko moje produkty');
   const fold = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
-  const discTag = d => {
-    if (!d) return el('span', { class: 'pl-d none', text: '–', title: 'Brak danych do oceny rabatu' });
-    const key = d.rating === 'bardzo dobra' ? 'top' : d.rating === 'dobra' ? 'good' : d.rating === 'średnia' ? 'mid' : 'low';
-    return el('span', { class: 'pl-d ' + key, text: (d.upto ? 'do ' : '~') + d.pct + '%', title: 'Ocena: ' + d.rating + ' (' + d.basis + (d.upto ? ', maksymalnie' : '') + ')' });
+  const refreshPromos = async () => {
+    const pm = await api('promos');
+    G.promos = pm.promos || [];
+    drawPromos();
   };
   const promoRow = r => {
+    const key = r.leaflet_id + '|' + r.name;
+    const sc = scoreView(r.score, refreshPromos, G.open.has(key), open => (open ? G.open.add(key) : G.open.delete(key)));
     const main = el('div', { class: 'pl-main' }, el('b', { text: r.name }));
+    const tag = turboTag(r.score);
+    if (tag) main.append(tag);
     if (r.scope === 'brand' || r.scope === 'category') main.append(el('span', { class: 'pr-tag', text: (r.scope === 'category' ? 'kategoria: ' : 'cała marka: ') + (r.applies_to || '') }));
     (r.mine || []).forEach(m => main.append(el('span', { class: 'lf-hit-tag', text: 'Twój produkt: ' + (m.name || '') })));
     const per = period(r.valid_from, r.valid_to);
@@ -551,16 +627,17 @@ async function viewLeaflets() {
     if (r.deal) price.append(el('b', { text: r.deal }));
     if (r.price) price.append(el('span', { text: r.price }));
     if (r.old_price) price.append(el('span', { class: 'orig', text: r.old_price }));
-    return el('div', { class: 'pl-row' + ((r.mine || []).length ? ' mine' : '') }, discTag(r.discount), main, price);
+    return el('div', { class: 'pl-row' + ((r.mine || []).length ? ' mine' : '') }, sc.badge, main, price, sc.box);
   };
   const drawPromos = () => {
     const q = fold(input.value).trim();
-    const rows = G.promos.filter(r => (!G.pshop || r.shop === G.pshop) && (!G.pmine || (r.mine || []).length)
-      && (q.length < 2 || fold((r.name || '') + ' ' + (r.applies_to || '') + ' ' + (r.deal || '') + ' ' + (r.shop || '')).includes(q)));
+    const rows = sortPromos(G.promos.filter(r => (!G.pshop || r.shop === G.pshop) && (!G.pmine || (r.mine || []).length) && (!G.pturbo || r.score.turbo)
+      && (q.length < 2 || fold((r.name || '') + ' ' + (r.applies_to || '') + ' ' + (r.deal || '') + ' ' + (r.shop || '')).includes(q))), G.psort);
     promoSub.textContent = G.promos.length ? rows.length + ' z ' + G.promos.length : 'brak';
     if (!rows.length) {
       promoList.replaceChildren(el('div', { class: 'empty lf-empty' }, el('h2', { text: G.promos.length ? 'Nic nie pasuje' : 'Brak zapisanych promocji' }),
-        el('p', { text: G.promos.length ? 'Zmień filtry albo szukaną frazę.' : 'Promocje pojawią się po przebiegu zadania, które odczyta aktualne gazetki.' })));
+        el('p', { text: !G.promos.length ? 'Promocje pojawią się po przebiegu zadania, które odczyta aktualne gazetki.'
+          : G.pturbo ? 'Nie ma teraz turbo okazji. Wymagają co najmniej 3 wcześniejszych promocji z minimum 4 tygodni.' : 'Zmień filtry albo szukaną frazę.' })));
       promoMore.replaceChildren();
       return;
     }
@@ -580,10 +657,17 @@ async function viewLeaflets() {
   };
   let timer = null;
   input.addEventListener('input', () => { G.q = input.value; G.pmore = 1; clearTimeout(timer); timer = setTimeout(drawPromos, 150); });
-  shopSel.addEventListener('change', () => { G.pshop = shopSel.value; G.pmore = 1; drawPromos(); });
+  shopSel.addEventListener('change', () => { G.pshop = shopSel.value; save('pshop', G.pshop); G.pmore = 1; drawPromos(); });
+  const sortSel = el('select', { 'aria-label': 'Sortowanie' }, ...SORTS.map(([v, t]) => el('option', { value: v, text: t })));
+  sortSel.value = SORTS.some(x => x[0] === G.psort) ? G.psort : 'best';
+  G.psort = sortSel.value;
+  sortSel.addEventListener('change', () => { G.psort = sortSel.value; save('psort', G.psort); G.pmore = 1; drawPromos(); });
+  const turboSw = switchEl(G.pturbo, 'Tylko turbo okazje');
+  turboSw.cb.addEventListener('change', () => { G.pturbo = turboSw.cb.checked; G.pmore = 1; drawPromos(); });
   mineSw.cb.addEventListener('change', () => { G.pmine = mineSw.cb.checked; G.pmore = 1; drawPromos(); });
-  const promoTools = el('div', { class: 'pl-tools' }, el('div', { class: 'search lf-search' }, icon('search'), input), shopSel,
-    el('label', { class: 'pl-mine' }, mineSw.node, el('span', { text: 'Tylko moje produkty' })));
+  const promoTools = el('div', { class: 'pl-tools' }, el('div', { class: 'search lf-search' }, icon('search'), input), shopSel, sortSel,
+    el('label', { class: 'pl-mine' }, mineSw.node, el('span', { text: 'Tylko moje produkty' })),
+    el('label', { class: 'pl-mine' }, turboSw.node, el('span', { text: 'Tylko turbo okazje' })));
 
   async function reload() {
     await fetchGazetki();
@@ -593,7 +677,7 @@ async function viewLeaflets() {
   const head = el('div', { class: 'page-head' }, el('h1', { text: 'Gazetki' }));
   view.replaceChildren(head,
     el('div', { class: 'section-title' }, el('h2', { text: 'Promocje w gazetkach' }), promoSub),
-    el('p', { class: 'hint', text: 'Wszystko, co zadanie odczytało z aktualnych gazetek, od najlepszego rabatu. „Drugi za 1 zł” i „1+1 gratis” liczone są jak 50%, „2+1” jak 33%. Twoje produkty są na górze.' }),
+    el('p', { class: 'hint', text: 'Atrakcyjność 1-10 liczona z realnego rabatu po spełnieniu warunku i z porównania z wcześniejszymi promocjami w archiwum. „3?” oznacza brak podstaw do oceny. Dotknij oceny, żeby zobaczyć uzasadnienie.' }),
     promoTools, promoList, promoMore,
     el('div', { class: 'section-title' }, el('h2', { text: 'Aktualne gazetki' }), leafSub),
     grid, endedWrap,

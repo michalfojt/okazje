@@ -74,6 +74,12 @@ function api3(string $a, string $method, array $body): void {
             out(['promos' => leaflet_promos()]);
         }
 
+        case 'hist_split': {
+            $post();
+            if (!arch_split_set(text($body['pair'] ?? '', 40), (bool)($body['split'] ?? true))) fail('Nieprawidłowe porównanie.');
+            out(['ok' => true]);
+        }
+
         case 'leaflet_search': {
             out(['results' => leaflet_search(text($_GET['q'] ?? '', 80))]);
         }

@@ -9,6 +9,7 @@ Partie wyników nie są pisane przez ludzi. Zadanie cykliczne „Okazje dla Mich
 Kod w tym katalogu:
 
 - `lib.php` - wspólne funkcje: odczyt i zapis JSON (`jread()`, `jwrite()`), blokada zapisu (`locked()`), normalizacja adresów, import partii v2, konfiguracja (`cfg()`).
+- `lib5.php` - archiwum pozycji gazetek i ocena atrakcyjności.
 - `lib3.php` - funkcje v3: produkty, sklepy z gazetkami, gazetki, oferty produktów, trafienia, import dodatkowych pól partii. Plik w trakcie wdrażania, jeszcze go nie ma w repo.
 - `api.php` - API dla zakładek (`api.php?a=...`). Akcje v3 są w `api3.php`, dołączanym z gałęzi `default:`.
 - `api3.php` - akcje v3 (`products`, `prod_save`, `shops`, `leaflet`, `leaflet_search` i pozostałe z tabeli w specyfikacji). Plik w trakcie wdrażania.
@@ -40,6 +41,16 @@ Katalogi, których nie ma w repo, istnieją tylko na serwerze:
 Plik partii nazywa się `RRRR-MM-DD-GGMM.json` i leży w `inbox/`. Pola `run`, `offers` i `images` są bez zmian. Pola v3 (`searched_products`, `product_offers`, `leaflets`, `leaflet_hits`) są opcjonalne.
 
 Pełny opis pól i reguły importu są w `docs/v3-spec.md`. Przykład z danymi zmyślonymi jest w `docs/przyklad-partii-v3.json`.
+
+## Atrakcyjność 1-10 i archiwum (lib5.php)
+
+- Każda pozycja gazetki trafia na stałe do `data/arch-RRRR-MM.json` (miesiąc początku promocji). Zapis przy imporcie, w cronie (`arch_sync()`) i przed usunięciem starej gazetki.
+- Punkty za realny rabat po spełnieniu warunku: poniżej 10% = 2, od 10 = 3, 20 = 4, 25 = 5, 33 = 6, 40 = 7, 45 = 8, 55 = 9, 65 = 10. „Do -X%” liczone jako 60% X. Karta i zakup kilku sztuk nie obniżają oceny.
+- Historia: promocje z 365 dni zakończone przed początkiem bieżącej, jedna na sklep i datę. Porównanie ceny za kg, l, szt lub opakowanie z medianą (marka i kategoria: głębokość rabatu). Waga 30% przy 1 obserwacji, 50% przy 2, 70% od 3; inna gramatura: połowa wagi.
+- Turbo okazja: ta sama gramatura, co najmniej 3 obserwacje z 28 dni, cena nie wyższa od minimum i co najmniej 15% poniżej mediany. Pozorna okazja: rabat od 25%, ale cena nie niższa od mediany (min. 2 obserwacje), ocena najwyżej 5.
+- Brak rabatu i historii: 3 z oznaczeniem niepewności.
+- „To inny produkt” zapisuje rozłączoną parę w `data/arch_split.json` (API `hist_split`).
+- Pozycje gazetek w partii mogą mieć opcjonalne pola `brand`, `size`, `unit_price`.
 
 ## Cron
 

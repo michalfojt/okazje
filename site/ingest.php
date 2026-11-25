@@ -99,6 +99,8 @@ if ($removed > 0) $log("usunięto starych ofert: $removed");
 
 if (!$pruneOnly && !$imagesOnly && ($nh = rematch_hits()) > 0) $log("nowe trafienia w gazetkach (dopasowanie po marce i słowach): $nh");
 
+if (!$pruneOnly && ($na = arch_sync()) > 0) $log("archiwum gazetek: nowych pozycji $na");
+
 $pr = prune_extras();
 if (array_sum($pr) > 0) $log("usunięto: gazetek {$pr['leaflets']}, ofert produktów {$pr['offers']}, trafień {$pr['hits']}");
 

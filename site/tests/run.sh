@@ -31,7 +31,7 @@ echo "<?php\nreturn ", var_export([
 ' "$DATA" > "$SITE/config.php"
 
 rc=0
-for f in lib lib3 lib4 api api3 ingest feed index snapshot; do
+for f in lib lib3 lib4 lib5 api api3 ingest feed index snapshot; do
     out="$(php -l "$SITE/$f.php" 2>&1)" || { echo "BŁĄD składni $f.php: $out"; rc=1; }
 done
 [ "$rc" -eq 0 ] || exit 1
@@ -40,6 +40,9 @@ php -d error_reporting=-1 "$HERE/snap_test.php" "$SITE" "$DATA" || exit 1
 php -d error_reporting=-1 "$HERE/match_test.php" "$SITE" "$DATA" || exit 1
 rm -f "$DATA"/*.json
 php -d error_reporting=-1 "$HERE/deal_test.php" "$SITE" "$DATA" || exit 1
+rm -f "$DATA"/*.json
+rm -f "$DATA"/*.json
+php -d error_reporting=-1 "$HERE/score_test.php" "$SITE" "$DATA" || exit 1
 rm -f "$DATA"/*.json
 php -d error_reporting=-1 "$HERE/v3_test.php" "$SITE" "$DATA" "$TMP"
 exit $?

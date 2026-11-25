@@ -53,10 +53,11 @@ $prod = product_save(['name' => 'Dove Hydrate żel pod prysznic bez SLES 450 ml'
 rematch_hits();
 $pr = leaflet_promos();
 eqv(4, count($pr), 'lista promocji: cztery pozycje');
-eqv('Wszystkie produkty Dove', $pr[0]['name'] ?? null, 'mój produkt (Dove) na górze listy');
-eqv(true, !empty($pr[0]['mine']), 'pozycja z oznaczeniem "mine"');
-eqv('brand', $pr[0]['mine'][0]['match'] ?? null, 'typ dopasowania brand');
-eqv('Taft lakier do włosów 250 ml', $pr[1]['name'] ?? null, 'dalej malejąco wg rabatu: 1+1 gratis');
+$by = array_column($pr, null, 'name');
+eqv(true, !empty($by['Wszystkie produkty Dove']['mine']), 'pozycja z oznaczeniem "mine"');
+eqv('brand', $by['Wszystkie produkty Dove']['mine'][0]['match'] ?? null, 'typ dopasowania brand');
+eqv([8, 8, 5, 3], array_map(fn($r) => $r['score']['v'], $pr), 'od najlepszej oceny, bez przypinania moich produktów');
+eqv(true, $pr[3]['score']['unsure'], 'brak podstaw: 3?');
 eqv([null, 'Chleb'], [$pr[3]['discount'], $pr[3]['name']], 'pozycja bez rabatu na końcu');
 $pv = products_view();
 eqv(50, $pv[0]['hits'][0]['discount']['pct'] ?? null, 'trafienie w widoku produktu ma ocenę rabatu');
