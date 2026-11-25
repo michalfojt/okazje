@@ -304,10 +304,79 @@ function receiptInfo(r) {
     d ? 'ostatnio ' + d[3] + '.' + d[2] + '.' + d[1] : '', price ? 'cena ' + price : ''].filter(Boolean).join(' · ');
 }
 
-/* import paragonów: z pliku wysyłamy tylko pozycje i stopkę fiskalną (bez karty i płatności) */
-async function readReceipts(files) {
+/* odczyt zdjęcia paragonu (OCR w przeglądarce); pliki silnika podaje ocr.php z tego samego serwera */
+let ocrLib = null;
+function loadOcr() {
+  if (!ocrLib) ocrLib = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'ocr.php?f=tesseract.min.js';
+    s.onload = () => resolve(window.Tesseract);
+    s.onerror = () => { ocrLib = null; s.remove(); reject(new Error('Nie udało się pobrać modułu do odczytu zdjęć. Spróbuj ponownie.')); };
+    document.head.append(s);
+  });
+  return ocrLib;
+}
+async function ocrWorker(onProgress) {
+  const T = await loadOcr();
+  const abs = f => new URL('ocr.php?f=' + f, location.href).href;
+  /* moduł WebAssembly z jedną instrukcją SIMD: starsze przeglądarki dostają wolniejszy wariant */
+  const simd = WebAssembly.validate(new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 5, 1, 96, 0, 1, 123, 3, 2, 1, 0, 10, 10, 1, 8, 0, 65, 0, 253, 15, 253, 98, 11]));
+  let fail;
+  const failed = new Promise((_, reject) => { fail = () => reject(new Error('Nie udało się uruchomić odczytu zdjęć. Spróbuj ponownie.')); });
+  const w = await Promise.race([failed, T.createWorker('pol', 1, {
+    workerPath: abs('worker.min.js'), workerBlobURL: false, corePath: abs(simd ? 'core-simd.wasm.js' : 'core-basic.wasm.js'),
+    langPath: abs('lang'), logger: m => { if (m.status === 'recognizing text') onProgress(m.progress); }, errorHandler: fail,
+  })]);
+  await w.setParameters({ tessedit_pageseg_mode: '6' });
+  return w;
+}
+/* czarno-biała kopia o szerokości ok. 1200 px: małe zrzuty ekranu bez powiększenia czytają się źle */
+async function ocrImage(file) {
+  /* createImageBitmap, bo zasady CSP strony nie pozwalają na <img> z adresem blob: */
+  const img = await createImageBitmap(file);
+  try {
+    const w = img.width, h = img.height;
+    /* limit powierzchni płótna w przeglądarkach mobilnych to ok. 16 mln pikseli */
+    const k = Math.min(w < 1000 ? 1250 / w : 1, Math.sqrt(16e6 / (w * h)));
+    const c = document.createElement('canvas');
+    c.width = Math.floor(w * k); c.height = Math.floor(h * k);
+    const g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+    g.imageSmoothingQuality = 'high';
+    g.filter = 'grayscale(1)';
+    g.drawImage(img, 0, 0, c.width, c.height);
+    return { canvas: c, low: w < 600 };
+  } finally { img.close(); }
+}
+const isImage = f => /^image\//.test(f.type) || /\.(png|jpe?g|webp)$/i.test(f.name);
+
+/* import paragonów: z JSON wysyłamy tylko pozycje i stopkę fiskalną, ze zdjęcia tylko tekst od daty
+   do numeru paragonu oraz początek z nazwą sklepu (bez płatności i kodu kreskowego) */
+function trimReceiptText(t) {
+  const lines = t.split('\n');
+  const end = lines.findIndex(l => /^\s*(p[łl]atno|aby zwr)/i.test(l));
+  return (end > 0 ? lines.slice(0, end) : lines).join('\n').slice(0, 30000);
+}
+async function readReceipts(files, status) {
   const out = [], bad = [];
-  for (const f of files) {
+  const images = files.filter(isImage);
+  if (images.length) {
+    status('Przygotowuję odczyt zdjęć (za pierwszym razem pobiera ok. 7 MB)…');
+    let i = 0;
+    const note = p => status('Czytam zdjęcie ' + (i + 1) + ' z ' + images.length + '… ' + Math.round(p * 100) + '%');
+    const worker = await ocrWorker(note);
+    try {
+      for (; i < images.length; i++) {
+        note(0);
+        try {
+          const { canvas, low } = await ocrImage(images[i]);
+          const { data } = await worker.recognize(canvas);
+          out.push({ text: trimReceiptText(data.text), low });
+        } catch (e) { bad.push(images[i].name); }
+      }
+    } finally { await worker.terminate(); }
+  }
+  for (const f of files.filter(f => !isImage(f))) {
     try {
       if (f.size > 2 * 1024 * 1024) throw new Error('za duży');
       const j = JSON.parse(await f.text());
@@ -321,7 +390,7 @@ async function readReceipts(files) {
 }
 
 function receiptImport(box, reload) {
-  const input = el('input', { type: 'file', accept: '.json,application/json', multiple: true, hidden: true, 'aria-label': 'Pliki paragonów' });
+  const input = el('input', { type: 'file', accept: '.json,application/json,image/png,image/jpeg,image/webp', multiple: true, hidden: true, 'aria-label': 'Pliki paragonów' });
   const btn = el('button', { class: 'btn', type: 'button', onclick: () => input.click() }, icon('plus'), 'Wgraj paragony');
   const send = async (receipts, bad, restore) => {
     const d = await api('receipt_import', { method: 'POST', body: { receipts, restore } });
@@ -329,6 +398,7 @@ function receiptImport(box, reload) {
     const unread = bad.length + r.bad;
     const lines = ['Paragony: ' + r.receipts + '. Dodane produkty: ' + r.added + ', zaktualizowane: ' + r.updated + '.' +
       (!r.added && !r.updated && !r.ignored ? ' Nic nowego.' : '')];
+    if (r.oneoff && r.oneoff.length) lines.push('Pominięte jako zakupy jednorazowe: ' + r.oneoff.join(', ') + '.');
     if (r.over_limit) lines.push('Pominięte z powodu limitu produktów: ' + r.over_limit + '.');
     if (unread) lines.push('Nieodczytane pliki: ' + unread + (bad.length ? ' (' + bad.join(', ') + ')' : '') + '.');
     const info = el('div', { class: 'pr-import', role: 'status' }, ...lines.map(t => el('p', { text: t })));
@@ -351,10 +421,12 @@ function receiptImport(box, reload) {
     btn.disabled = true;
     try {
       if (files.length > 30) throw new Error('Maksymalnie 30 plików naraz.');
-      const { out, bad } = await readReceipts(files);
+      const progress = el('p');
+      const status = t => { progress.textContent = t; if (!progress.isConnected) box.replaceChildren(el('div', { class: 'pr-import', role: 'status' }, progress)); };
+      const { out, bad } = await readReceipts(files, status);
       if (!out.length) throw new Error('Nie udało się odczytać paragonu: ' + bad.join(', '));
       await send(out, bad, false);
-    } catch (e) { toast(e.message, true); }
+    } catch (e) { box.replaceChildren(); toast(e.message, true); }
     btn.disabled = false;
   });
   return [btn, input];
@@ -454,7 +526,7 @@ async function viewProducts() {
     if (!P.list.length) {
       holder.replaceChildren(el('div', { class: 'empty' },
         el('h2', { text: 'Nie masz jeszcze produktów' }),
-        el('p', { text: 'Dodaj produkt, który chcesz śledzić (nazwę, opcjonalnie EAN i opis), albo wgraj cyfrowe paragony z Biedronki w JSON. Zadanie wyszukujące sprawdzi go w sklepach i porówna z gazetkami, a wynik pojawi się tutaj.' })));
+        el('p', { text: 'Dodaj produkt, który chcesz śledzić (nazwę, opcjonalnie EAN i opis), albo wgraj cyfrowe paragony: z Biedronki (JSON) lub z Lidla (zdjęcia). Zadanie wyszukujące sprawdzi go w sklepach i porówna z gazetkami, a wynik pojawi się tutaj.' })));
       return;
     }
     const q = P.q.trim().toLowerCase();

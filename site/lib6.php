@@ -2,13 +2,28 @@
 declare(strict_types=1);
 if (!defined('OKZ')) { http_response_code(403); exit; }
 
-// Import cyfrowych paragonów (JSON z aplikacji Biedronki) do "Moich produktów".
-// Z pliku bierzemy tylko pozycje sprzedaży, datę i numer paragonu; karta, płatność i reszta nie są zapisywane.
+// Import cyfrowych paragonów do "Moich produktów": JSON z aplikacji Biedronki oraz tekst odczytany
+// w przeglądarce ze zdjęcia paragonu Lidla. Bierzemy tylko pozycje sprzedaży, datę i numer paragonu;
+// karta, płatność i reszta nie są zapisywane.
 // Zakłada załadowane lib.php i lib3.php.
 
 const RECEIPT_FILES_MAX = 30;
 const RECEIPT_LINES_MAX = 400;
 const RECEIPT_IGNORED_MAX = 1000;
+const RECEIPT_TEXT_MAX = 30000;
+
+/**
+ * Zakupy jednorazowe (narzędzia, elektronarzędzia, akumulatory, sprzęt ogrodowy) i torby:
+ * nie są dodawane do produktów. Wzorzec dla nazwy po fold_text(), dopasowanie od początku słowa.
+ */
+const RECEIPT_ONEOFF = '/ (?:narzedzi|elektronarz|akumulator|ladowark|prostownik|wiert|wkretark|wkretak|srubokr|srubokret|szlifierk|wyrzynark|pilark|pilarsk'
+    . '|pila |mlot |mlotek|mlotow|klucz|kombinerk|szczypce|obcegi|imadlo|suwmiar|poziomic|miarka |miernik|lutownic|opalark|sprezark|kompresor|odkurzacz warszt'
+    . '|nozyc|sekator|grabi|lopat|szpadel|motyk|siekier|kosiar|podkaszar|wykaszark|dmuchaw|konewk|zraszacz|waz ogrod|opryskiw|taczk|doniczk|nasion|cebulk|sadzonk'
+    . '|rekawice rob|latark|przedluzacz|drabin)/';
+
+function receipt_oneoff(string $name): bool {
+    return (bool)preg_match(RECEIPT_ONEOFF, fold_text($name));
+}
 
 /** Nazwy z paragonu to skróty bez spacji ("JogPSkyrWanil330g"): rozdziela słowa i liczby. */
 function receipt_split(string $raw): string {
@@ -43,7 +58,9 @@ function receipt_brand(string $name): string {
         'Mlekpol', 'Danone', 'Activia', 'Bakoma', 'Zott', 'Hortex', 'Tymbark', 'Pepsi', 'Nivea', 'Colgate', 'Persil', 'Ariel', 'Lenor', 'Domestos',
         'Winiary', 'Knorr', 'Pudliszki', 'Lays', 'Milka', 'Wedel', 'Wawel', 'Haribo', 'Kinder', 'Lindt', 'Snickers', 'Mars', 'Twix',
         'Tarczyński', 'Sokołów', 'Krakus', 'Jacobs', 'Lipton', 'Nescafe', 'Muszynianka', 'Cisowianka', 'Żywiec', 'Tyskie', 'Lech',
-        'Pampers', 'Always', 'Gillette', 'Rexona', 'Velvet', 'Regina', 'Foxy', 'Delma', 'Rama'];
+        'Pampers', 'Always', 'Gillette', 'Rexona', 'Velvet', 'Regina', 'Foxy', 'Delma', 'Rama',
+        'Pilos', 'Koło', 'Jogobella', 'Łaciaty', 'YoPro', 'Monte', 'Fantasia', 'Pawełek', 'Kit Kat', 'Roshen', 'Toffifee', 'Delicje',
+        'Juicy Splash', 'Mentos', 'Inka', 'Dilmah', 'Lech', 'Piratki', 'Zott'];
     $text = fold_text($name);
     if (str_contains($text, ' schoko bons ')) return 'Kinder';
     foreach ($known as $b) { if (str_contains($text, fold_text($b))) return $b; }
@@ -60,6 +77,14 @@ function receipt_keywords(string $name, string $brand): string {
         ' sok pomaranczow' => 'sok pomarańczowy', ' erytr[yo]l' => 'erytrytol, erytrol', ' gouda ' => 'ser gouda',
         '^ szynka ' => 'szynka', ' filet pieczony ' => 'filet pieczony', ' awokado ' => 'awokado', ' schoko bons ' => 'schoko bons',
         ' lunchbox ' => 'lunchbox, sałatka cezar', '^ baton ' => 'baton',
+        ' sok tloczony jablk' => 'sok tłoczony, sok jabłkowy', ' sok klementynk' => 'sok klementynkowy, sok z klementynek', '^ mleko ' => 'mleko',
+        ' losos ' => 'łosoś', ' maliny ' => 'maliny', ' papryka czerwona ' => 'papryka czerwona', ' kalafior ' => 'kalafior', ' brokul' => 'brokuły',
+        ' ogorki ' => 'ogórki', ' kiwi ' => 'kiwi', ' szpinak ' => 'szpinak', ' marchew| minimarchew' => 'marchewki',
+        ' papier toaletowy ' => 'papier toaletowy', ' recznik papierowy ' => 'ręcznik papierowy', ' chusteczki ' => 'chusteczki',
+        ' pielusz| pieluch' => 'pieluchy, pieluszki', ' jogurt pitny ' => 'jogurt pitny', ' jogurt naturalny ' => 'jogurt naturalny',
+        ' filet z indyka ' => 'filet z indyka', ' filet z kurczaka | kurczak\S* .*filet ' => 'filet z kurczaka', ' oliwa ' => 'oliwa',
+        ' musztarda ' => 'musztarda', ' herbata ' => 'herbata', ' kawa zbozowa ' => 'kawa zbożowa', ' woda niegazowana ' => 'woda niegazowana',
+        '^ lody ' => 'lody', ' piwo ' => 'piwo', '^ czekolada ' => 'czekolada', ' delicje ' => 'delicje', ' tulipany ' => 'tulipany',
     ];
     foreach ($rules as $re => $kw) { if (preg_match('/' . $re . '/', $text)) return $kw; }
     // nieznany produkt: dwa pierwsze słowa nazwy spoza marki
@@ -79,7 +104,7 @@ function receipt_keywords(string $name, string $brand): string {
  */
 function receipt_parse(mixed $r): ?array {
     if (!is_array($r) || !is_array($r['body'] ?? null)) return null;
-    $items = []; $date = null; $num = '';
+    $items = []; $date = null; $num = ''; $oneoff = [];
     foreach (array_slice($r['body'], 0, RECEIPT_LINES_MAX) as $row) {
         if (!is_array($row)) continue;
         if (is_array($f = $row['fiscalFooter'] ?? null)) {
@@ -95,6 +120,7 @@ function receipt_parse(mixed $r): ?array {
         if ($vat !== '') $name = trim((string)preg_replace('/\s+' . preg_quote($vat, '/') . '$/u', '', $name));
         $key = trim(fold_text($name));
         if ($key === '' || preg_match('/^(torba|reklamowka|kaucja|but .*kaucja|opakowanie zwrotne)|kaucja$/', $key)) continue;
+        if (receipt_oneoff(receipt_name($name))) { $oneoff[$key] = receipt_name($name); continue; }
         $qty = v3_str($s['quantity'] ?? null, 20) ?? '1'; // sztuki: "2", waga: "0,382"
         $price = is_numeric($s['price'] ?? null) ? max(0, min(100000000, (int)$s['price'])) : 0;
         if (v3_bool($s['isStorno'] ?? null, false)) { // storno cofa wcześniejszą pozycję
@@ -104,8 +130,107 @@ function receipt_parse(mixed $r): ?array {
         $n = ($items[$key]['n'] ?? 0) + 1;
         $items[$key] = ['raw' => $name, 'price' => $price, 'unit' => preg_match('/[.,]/', $qty) ? 'kg' : 'szt', 'n' => $n];
     }
-    if (!$items) return null;
-    return ['id' => substr(sha1($num . '|' . implode('|', array_keys($items))), 0, 12), 'date' => $date ?? '', 'items' => $items];
+    if (!$items && !$oneoff) return null;
+    return ['id' => substr(sha1($num . '|' . implode('|', array_keys($items))), 0, 12), 'date' => $date ?? '', 'shop' => 'biedronka',
+            'items' => $items, 'oneoff' => $oneoff];
+}
+
+/* ---------- Lidl: tekst odczytany ze zdjęcia ---------- */
+
+/** Liczba z paragonu ("69.9", "1,248") jako float. */
+function receipt_num(string $s): float { return (float)str_replace(',', '.', $s); }
+
+/** Wiersz z ilością i ceną ("2 * 1.19 2.38 C", "1,248kg x 69.9 87.24 C"): prawie same cyfry. */
+function lidl_is_qty(string $l): bool {
+    $rest = (string)preg_replace('/\s+[A-G€©]$|kg/iu', '', $l);
+    return preg_match_all('/\d/', $rest) >= 3 && preg_match_all('/\p{L}/u', $rest) <= 1 && preg_match('/^[\d\s]/', $l);
+}
+
+/** Wiersz rabatu ("Lidl Plus voucher -4,90", "Taniej za 2 -0,24"), także z literówkami z odczytu. */
+function lidl_is_discount(string $l): bool {
+    return (bool)preg_match('/-\s?\d+[.,]\d\d$|^\W*(?:\S{0,5}\s?plus\s+(?:kupon|voucher)|t[ao]niej|rabat)\b/iu', $l);
+}
+
+/** Czytelna nazwa z paragonu Lidla; rozwija tylko jednoznaczne skróty. */
+function lidl_name(string $raw): string {
+    $s = (string)preg_replace('/(?<=\p{L}{3})(?=\d)/u', ' ', $raw);
+    $s = (string)preg_replace('/(?<=\.)(?=\p{L})/u', ' ', $s);
+    $s = ' ' . trim((string)preg_replace('/\s+/u', ' ', $s)) . ' ';
+    $rules = [
+        'amery?k?\.' => 'amerykańska', 'wędz\.' => 'wędzony', 'tłocz\.' => 'tłoczony', 'ciast\.' => 'ciasteczka',
+        'natur\.' => 'naturalny', 'niegaz\.' => 'niegazowana', 'toal\.' => 'toaletowy', 'papier\.' => 'papierowy', 'kurcz\.' => 'kurczaka',
+        'ziel\. dł\.' => 'zielone długie', 'Banany' => 'Banan', 'JuicySplash' => 'Juicy Splash', 'LechFree' => 'Lech Free', 'PilosPure' => 'Pilos Pure',
+    ];
+    foreach ($rules as $re => $to) $s = (string)preg_replace('/(?<= )' . $re . '(?=[ \d])/u', $to . ' ', $s);
+    $s = (string)preg_replace('/ (?:luz|szt\.?)(?= )/u', '', $s);
+    // typowe błędy odczytu: litera "l" jako "1" ("60l" → "601") i nieczytelna gramatura ("500g" → "5089")
+    $s = (string)preg_replace(['/ ([1-9]0{1,2}|[1-9],\d)1(?= |$)/u', '/(?<=\p{L}) \d{4,5}(?= *$)/u'], [' $1l', ''], rtrim($s));
+    return mb_substr(trim((string)preg_replace('/\s+/u', ' ', $s)), 0, 160);
+}
+
+/** Dla słabej jakości zdjęć: ten sam produkt, gdy różnią się tylko liczby (zwykle źle odczytane). */
+function receipt_skeleton_key(string $key, array $byKey): ?int {
+    $bare = fn(string $k) => trim((string)preg_replace(['/\d+\S*/', '/\s+/'], ['', ' '], $k));
+    $want = $bare($key); $best = null; $dist = PHP_INT_MAX;
+    if (strlen($want) < 9) return null;
+    foreach ($byKey as $k => $i) {
+        $k = (string)$k;
+        if ($bare($k) === $want && ($d = levenshtein($k, $key)) < $dist) { $best = $i; $dist = $d; }
+    }
+    return $best;
+}
+
+/** @return ?array to samo co receipt_parse(); null = to nie paragon Lidla albo nic nie odczytano */
+function receipt_parse_lidl(string $text): ?array {
+    $lines = array_values(array_filter(array_map(fn($l) => trim((string)preg_replace('/\s+/u', ' ', $l)),
+        preg_split('/\R/u', mb_substr($text, 0, RECEIPT_TEXT_MAX)) ?: []), fn($l) => $l !== ''));
+    if (!preg_match('/l[il1s]d[lł1i]/iu', implode(' ', array_slice($lines, 0, 15)))) return null;
+    $start = null; $date = '';
+    foreach ($lines as $i => $l) {
+        if (preg_match('/^(20\d\d-\d\d-\d\d)\b/', $l, $m) && ($d = norm_date($m[1])) !== null) { $start = $i + 1; $date = $d; break; }
+    }
+    if ($start === null) return null;
+    $items = []; $oneoff = []; $end = $start;
+    for ($i = $start; $i < count($lines); $i++) {
+        $l = $lines[$i]; $end = $i;
+        if (preg_match('/^(?:p\s?t\s?u|suma|razem)\b/iu', $l)) break;
+        if (lidl_is_qty($l) || lidl_is_discount($l) || !isset($lines[$i + 1]) || !lidl_is_qty($lines[$i + 1])) continue;
+        if (preg_match_all('/\p{L}/u', $l) < 3) continue;
+        $raw = mb_substr($l, 0, 120);
+        $q = $lines[$i + 1];
+        $price = 0; $unit = 'szt';
+        if (preg_match('/^(\d+[.,]\d{3})\s?k\S?\s*\S\s*(\d+[.,]\d+)/u', $q, $m)) {
+            $unit = 'kg'; $price = (int)round(receipt_num($m[2]) * 100);
+        } elseif (preg_match('/^(\d+)\s*(?:[^\d\s]\s?){1,3}\s*(\d+[.,]\d+)\s+(\d+[.,]\d+)/u', $q, $m)) {
+            $n = (int)$m[1]; $price = (int)round(receipt_num($m[2]) * 100); $total = (int)round(receipt_num($m[3]) * 100);
+            // odczyt myli czasem cyfry: gdy cena nie zgadza się z sumą, bierzemy sumę podzieloną przez ilość
+            if ($n > 0 && $n * $price !== $total && $total % $n === 0) $price = intdiv($total, $n);
+        }
+        $key = trim(fold_text($raw));
+        if ($key === '' || preg_match('/^(torba|reklam|rekla\S*wka|kaucja|zwrot kaucji|opakowani)/', $key)) continue;
+        // artykuły przemysłowe Lidla mają w nazwie długi numer artykułu (np. "Wiertła0540674")
+        $article = '/\s*\d[\dSOBQ]{5,}\s*$/'; // odczyt myli czasem cyfry numeru z literami
+        if (preg_match($article, $raw) || receipt_oneoff($raw)) {
+            $oneoff[$key] = trim((string)preg_replace($article, '', $raw)) ?: $raw;
+            continue;
+        }
+        $items[$key] = ['raw' => $raw, 'price' => max(0, min(100000000, $price)), 'unit' => $unit];
+    }
+    if (!$items && !$oneoff) return null;
+    // numer paragonu i godzina odróżniają dwa zakupy z tego samego dnia
+    $num = preg_match('/nr\s?:?\s*(\d{4,})\s+(\d\d:\d\d)/iu', implode("\n", array_slice($lines, $end)), $m) ? $m[1] . '|' . $m[2] : implode('|', array_keys($items));
+    return ['id' => substr(sha1('lidl|' . $date . '|' . $num), 0, 12), 'date' => $date, 'shop' => 'lidl', 'items' => $items, 'oneoff' => $oneoff];
+}
+
+/** Ten sam produkt Lidla odczytany z jedną literówką (przy tych samych liczbach w nazwie). */
+function receipt_near_key(string $key, array $byKey): ?int {
+    if (strlen($key) < 9) return null;
+    $digits = preg_replace('/\D+/', '', $key);
+    foreach ($byKey as $k => $i) {
+        $k = (string)$k;
+        if (abs(strlen($k) - strlen($key)) <= 1 && preg_replace('/\D+/', '', $k) === $digits && levenshtein($k, $key) <= 1) return $i;
+    }
+    return null;
 }
 
 function receipt_ignored(): array {
@@ -116,21 +241,24 @@ function receipt_ignored(): array {
 /**
  * Dodaje produkty z paragonów. Ten sam produkt nie powstaje dwa razy, a usunięte wcześniej
  * są pomijane, chyba że $restore.
- * @return array{ok?:true,err?:string,code?:int,receipts?:int,added?:int,updated?:int,ignored?:int,over_limit?:int,bad?:int}
+ * @return array{ok?:true,err?:string,code?:int,receipts?:int,added?:int,updated?:int,ignored?:int,over_limit?:int,bad?:int,oneoff?:list<string>}
  */
 function receipt_import(mixed $files, bool $restore = false): array {
     if (!is_array($files) || !$files) return ['err' => 'Nie wybrano plików.', 'code' => 400];
     if (count($files) > RECEIPT_FILES_MAX) return ['err' => 'Maksymalnie ' . RECEIPT_FILES_MAX . ' plików naraz.', 'code' => 400];
     $receipts = []; $bad = 0;
+    $oneoff = [];
     foreach ($files as $f) {
-        $r = receipt_parse($f);
+        $r = is_array($f) && is_string($f['text'] ?? null) ? receipt_parse_lidl($f['text']) : receipt_parse($f);
         if ($r === null) { $bad++; continue; }
+        $r['low'] = is_array($f) && !empty($f['low']);
         $receipts[$r['id']] = $r;
+        foreach ($r['oneoff'] as $name) $oneoff[$name] = true;
     }
-    if (!$receipts) return ['err' => 'To nie wygląda na paragon z Biedronki: brak pozycji sprzedaży.', 'code' => 400];
+    if (!$receipts) return ['err' => 'Nie rozpoznano paragonu (obsługiwane: JSON z Biedronki i zdjęcie paragonu z aplikacji Lidla).', 'code' => 400];
     uasort($receipts, fn($a, $b) => strcmp($a['date'], $b['date']));
 
-    return locked(function () use ($receipts, $restore, $bad) {
+    return locked(function () use ($receipts, $restore, $bad, $oneoff) {
         $list = products();
         $byKey = []; $byName = [];
         foreach ($list as $i => $p) {
@@ -147,15 +275,17 @@ function receipt_import(mixed $files, bool $restore = false): array {
                     if (!$restore) { $skipped[$key] = true; continue; }
                     unset($ignored[$key]);
                 }
-                $name = receipt_name($it['raw']);
-                $i = $byKey[$key] ?? $byName[trim(fold_text($name))] ?? null;
+                $lidl = $r['shop'] === 'lidl';
+                $name = $lidl ? lidl_name($it['raw']) : receipt_name($it['raw']);
+                $i = $byKey[$key] ?? $byName[trim(fold_text($name))] ?? ($lidl ? receipt_near_key($key, $byKey) : null)
+                    ?? ($lidl && $r['low'] ? receipt_skeleton_key($key, $byKey) : null);
                 if ($i === null) {
                     if (count($list) >= PRODUCT_LIMIT) { $over[$key] = true; continue; }
                     $brand = receipt_brand($name);
                     $id = v3_new_id('p', array_column($list, 'id'));
                     $list[] = [
                         'id' => $id, 'name' => $name, 'ean' => '',
-                        'desc' => 'Kupowane w Biedronce. Nazwa na paragonie (skrót): ' . $it['raw'],
+                        'desc' => 'Kupowane w ' . ($lidl ? 'Lidlu' : 'Biedronce') . '. Nazwa na paragonie (skrót): ' . $it['raw'],
                         'category' => '', 'brand' => $brand, 'keywords' => receipt_keywords($name, $brand), 'sites' => [],
                         'active' => true, 'added' => $now, 'updated' => $now, 'last_searched' => null,
                         'source' => 'receipt', 'receipt' => ['keys' => [], 'raw' => $it['raw'], 'bought' => [], 'last' => '', 'price' => 0, 'unit' => 'szt'],
@@ -180,7 +310,8 @@ function receipt_import(mixed $files, bool $restore = false): array {
         if ($new || $upd) jwrite('products', $list);
         if ($restore) jwrite('receipt_ignored', array_keys($ignored));
         return ['ok' => true, 'receipts' => count($receipts), 'added' => count($new), 'updated' => count($upd),
-                'ignored' => count($skipped), 'over_limit' => count($over), 'bad' => $bad];
+                'ignored' => count($skipped), 'over_limit' => count($over), 'bad' => $bad,
+                'oneoff' => array_slice(array_map('strval', array_keys($oneoff)), 0, 40)];
     });
 }
 

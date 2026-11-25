@@ -31,7 +31,7 @@ echo "<?php\nreturn ", var_export([
 ' "$DATA" > "$SITE/config.php"
 
 rc=0
-for f in lib lib3 lib4 lib5 lib6 api api3 ingest feed index snapshot users deploy; do
+for f in lib lib3 lib4 lib5 lib6 api api3 ocr ingest feed index snapshot users deploy; do
     out="$(php -l "$SITE/$f.php" 2>&1)" || { echo "BŁĄD składni $f.php: $out"; rc=1; }
 done
 [ "$rc" -eq 0 ] || exit 1

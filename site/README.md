@@ -53,9 +53,13 @@ Pełny opis pól i reguły importu są w `docs/v3-spec.md`. Przykład z danymi z
 - „To inny produkt” zapisuje rozłączoną parę w `data/arch_split.json` (API `hist_split`).
 - Pozycje gazetek w partii mogą mieć opcjonalne pola `brand`, `size`, `unit_price`.
 
-## Import paragonów (lib6.php)
+## Import paragonów (lib6.php, ocr.php)
 
 - „Wgraj paragony” w Moich produktach przyjmuje pliki JSON z aplikacji Biedronki (do 30 naraz). Przeglądarka wysyła tylko pozycje sprzedaży i stopkę fiskalną. Plik paragonu nie jest zapisywany.
+- Przyjmuje też zdjęcia paragonów z aplikacji Lidla (PNG, JPG, WebP). Tekst odczytuje w przeglądarce Tesseract (OCR); na serwer trafia tylko tekst od początku paragonu do jego numeru, obrazek nie jest wysyłany.
+- Pliki OCR podaje `ocr.php` (tylko po zalogowaniu): przy pierwszym użyciu hosting pobiera je z cdn.jsdelivr.net (zapas: unpkg.com) w wersjach 7.0.0 i 1.0.0, sprawdza sha256 i trzyma w `data/ocr/`. Zmiana wersji wymaga nowych sum w `ocr.php`.
+- Zakupy jednorazowe (narzędzia, elektronarzędzia, akumulatory, sprzęt ogrodowy) są pomijane w obu sklepach i wypisane w wyniku importu. Lista słów: `RECEIPT_ONEOFF` w `lib6.php`; w Lidlu także pozycje z numerem artykułu w nazwie (6 cyfr i więcej).
+- Odczyt ze zdjęcia może mylić znaki, zwłaszcza przy małych obrazkach. Różnica jednej litery nie tworzy duplikatu; przy zdjęciu węższym niż 600 px łączone są też nazwy różniące się tylko liczbami.
 - Produkt ma `source: receipt` i pole `receipt` (klucze nazw z paragonu, liczba zakupów, ostatnia data i cena). Ten sam paragon wgrany drugi raz niczego nie zmienia. Torby, kaucje i storna są pomijane.
 - Usunięty produkt trafia na listę `data/receipt_ignored.json` i nie wraca przy kolejnym imporcie, chyba że użytkownik kliknie „Przywróć usunięte”.
 - Dopasowanie do gazetek: pusta marka oznacza „bez marki”, a fraza ze słów kluczowych porównywana jest z nazwą pozycji (jedno słowo musi ją zaczynać).
