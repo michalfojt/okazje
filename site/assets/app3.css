@@ -55,6 +55,7 @@
 .pr-hit-main { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
 .pr-hit-shop { flex: none; font-size: 12px; font-weight: 650; padding: 1px 8px; border-radius: 6px; background: var(--ok); color: #fff; }
 html:not([data-theme="light"]) .pr-hit-shop { color: #08140e; }
+.pr-hit-logo { flex: none; align-self: flex-start; box-sizing: content-box; height: 40px; width: auto; padding: 3px; border-radius: 7px; background: #fff; }
 .pr-hit-name { font-weight: 600; font-size: 14px; overflow-wrap: anywhere; }
 .pr-hit-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px 12px; font-size: 13px; }
 .pr-hit-meta .price { font-size: 16px; }
@@ -177,6 +178,10 @@ html[data-theme="light"] .pr-oimg img { mix-blend-mode: multiply; }
   .pr-top { flex-direction: column; gap: 10px; }
   .pr-offers { grid-template-columns: 1fr 1fr; gap: 8px; }
   .pr-hit-meta .open-link { margin-left: 0; flex-basis: 100%; }
+  .pr-hit-main { flex-wrap: wrap; align-items: center; }
+  .pr-hit-main .pr-hit-logo { align-self: center; }
+  .pr-hit-main .pr-tag { margin-left: auto; }
+  .pr-hit-name { order: 5; flex-basis: 100%; }
   .page-head .btn.primary { width: 100%; }
   .lf-grid { grid-template-columns: 1fr; }
   .lf-head { grid-template-columns: 64px 1fr auto; gap: 12px; padding: 12px; }
