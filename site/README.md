@@ -10,6 +10,7 @@ Kod w tym katalogu:
 
 - `lib.php` - wspólne funkcje: odczyt i zapis JSON (`jread()`, `jwrite()`), blokada zapisu (`locked()`), normalizacja adresów, import partii v2, konfiguracja (`cfg()`).
 - `lib5.php` - archiwum pozycji gazetek i ocena atrakcyjności.
+- `lib6.php` - import cyfrowych paragonów do Moich produktów.
 - `lib3.php` - funkcje v3: produkty, sklepy z gazetkami, gazetki, oferty produktów, trafienia, import dodatkowych pól partii. Plik w trakcie wdrażania, jeszcze go nie ma w repo.
 - `api.php` - API dla zakładek (`api.php?a=...`). Akcje v3 są w `api3.php`, dołączanym z gałęzi `default:`.
 - `api3.php` - akcje v3 (`products`, `prod_save`, `shops`, `leaflet`, `leaflet_search` i pozostałe z tabeli w specyfikacji). Plik w trakcie wdrażania.
@@ -51,6 +52,15 @@ Pełny opis pól i reguły importu są w `docs/v3-spec.md`. Przykład z danymi z
 - Brak rabatu i historii: 3 z oznaczeniem niepewności.
 - „To inny produkt” zapisuje rozłączoną parę w `data/arch_split.json` (API `hist_split`).
 - Pozycje gazetek w partii mogą mieć opcjonalne pola `brand`, `size`, `unit_price`.
+
+## Import paragonów (lib6.php)
+
+- „Wgraj paragony” w Moich produktach przyjmuje pliki JSON z aplikacji Biedronki (do 30 naraz). Przeglądarka wysyła tylko pozycje sprzedaży i stopkę fiskalną. Plik paragonu nie jest zapisywany.
+- Produkt ma `source: receipt` i pole `receipt` (klucze nazw z paragonu, liczba zakupów, ostatnia data i cena). Ten sam paragon wgrany drugi raz niczego nie zmienia. Torby, kaucje i storna są pomijane.
+- Usunięty produkt trafia na listę `data/receipt_ignored.json` i nie wraca przy kolejnym imporcie, chyba że użytkownik kliknie „Przywróć usunięte”.
+- Dopasowanie do gazetek: pusta marka oznacza „bez marki”, a fraza ze słów kluczowych porównywana jest z nazwą pozycji (jedno słowo musi ją zaczynać).
+- Rozwijanie skrótów, rozpoznawanie marek i słowa kluczowe to listy w `lib6.php`.
+- Nie wrzucaj prawdziwych paragonów do repo (test `receipt_test.php` ma dane zmyślone).
 
 ## Cron
 

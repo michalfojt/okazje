@@ -16,6 +16,7 @@ const EXTRAS_FILES_KEEP = 300;
 const LEAFLET_PROMOS_MAX = 6000;
 
 require_once __DIR__ . '/lib5.php';
+require_once __DIR__ . '/lib6.php';
 
 /* ---------- pomocnicze ---------- */
 
@@ -138,7 +139,7 @@ function norm_product(array $in, ?array $old = null, ?array $catKeys = null): ar
         'added'         => (string)($old['added'] ?? $now),
         'updated'       => $now,
         'last_searched' => $old['last_searched'] ?? null,
-    ], null];
+    ] + array_intersect_key($old ?? [], ['source' => 1, 'receipt' => 1]), null];
 }
 
 /** @return array{ok?:true,product?:array,err?:string,code?:int} */
@@ -189,6 +190,12 @@ function product_delete(string $id): bool {
         $left = array_values(array_filter($list, fn($p) => ($p['id'] ?? '') !== $id));
         $existed = count($left) !== count($list);
         if ($existed) jwrite('products', $left);
+        // usunięty produkt z paragonu nie wraca przy kolejnym imporcie
+        foreach ($list as $p) {
+            if (($p['id'] ?? '') !== $id || empty($p['receipt']['keys'])) continue;
+            $ign = array_values(array_unique([...receipt_ignored(), ...$p['receipt']['keys']]));
+            jwrite('receipt_ignored', array_slice($ign, -RECEIPT_IGNORED_MAX));
+        }
 
         $po = prodoffers_db();
         $gone = [];
@@ -925,6 +932,8 @@ function fold_text(string $s): string {
 function product_brand(array $p): string {
     $b = trim((string)($p['brand'] ?? ''));
     if ($b !== '') return $b;
+    // z paragonu: pusta marka znaczy "bez marki", pierwsze słowo to zwykle rodzaj produktu
+    if (($p['source'] ?? '') === 'receipt') return '';
     $first = preg_split('/\s+/u', trim((string)($p['name'] ?? '')), 2)[0] ?? '';
     return mb_strlen($first) >= 3 ? $first : '';
 }
@@ -997,6 +1006,18 @@ function match_item_to_product(array $p, array $it): ?string {
         }
     }
     $wide = ($it['scope'] ?? 'item') !== 'item' || trim((string)($it['applies_to'] ?? '')) !== '';
+    if (($p['source'] ?? '') === 'receipt') {
+        if ($wide && $hasBrand) return 'brand';
+        foreach (product_keywords($p) as $k) {
+            $k = fold_text($k);
+            // ta sama marka i rodzaj produktu, choć inny opis wariantu
+            if ($hasBrand && phrase_in($text, $k)) return 'keyword';
+            // produkt bez marki: rodzaj produktu w nazwie pozycji albo w zakresie promocji
+            if ($brand !== '' && !$wide) continue;
+            if (phrase_strict(fold_text((string)($it['name'] ?? '')), $k) || phrase_strict(fold_text((string)($it['applies_to'] ?? '')), $k)) return 'keyword';
+        }
+        return null;
+    }
     if (!$wide) return null;
     if ($hasBrand) return 'brand';
     foreach (product_keywords($p) as $k) {

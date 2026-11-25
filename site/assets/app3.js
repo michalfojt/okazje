@@ -234,6 +234,7 @@ function productItem(p, reload) {
       el('span', { text: p.last_searched ? 'wyszukiwano ' + fmtIso(p.last_searched) : 'jeszcze nie wyszukiwano' }));
 
     const parts = [top, stats];
+    if (p.receipt) parts.splice(1, 0, el('div', { class: 'pr-receipt', text: receiptInfo(p.receipt) }));
 
     if (p.hits && p.hits.length) {
       parts.push(el('div', { class: 'pr-hits' },
@@ -279,6 +280,70 @@ function productItem(p, reload) {
   return row;
 }
 
+function receiptInfo(r) {
+  const n = (r.bought || []).length;
+  const price = r.price ? (r.price / 100).toFixed(2).replace('.', ',') + ' zł' + (r.unit === 'kg' ? '/kg' : '') : '';
+  const d = /^(\d{4})-(\d\d)-(\d\d)$/.exec(r.last || '');
+  return ['Z paragonu: ' + r.raw, n + ' ' + plural(n, 'zakup', 'zakupy', 'zakupów'),
+    d ? 'ostatnio ' + d[3] + '.' + d[2] + '.' + d[1] : '', price ? 'cena ' + price : ''].filter(Boolean).join(' · ');
+}
+
+/* import paragonów: z pliku wysyłamy tylko pozycje i stopkę fiskalną (bez karty i płatności) */
+async function readReceipts(files) {
+  const out = [], bad = [];
+  for (const f of files) {
+    try {
+      if (f.size > 2 * 1024 * 1024) throw new Error('za duży');
+      const j = JSON.parse(await f.text());
+      if (!j || !Array.isArray(j.body)) throw new Error('brak pozycji');
+      const body = j.body.filter(r => r && (r.sellLine || r.fiscalFooter)).map(r => (r.sellLine ? { sellLine: r.sellLine }
+        : { fiscalFooter: { uniqueNumber: r.fiscalFooter.uniqueNumber, billNumber: r.fiscalFooter.billNumber, date: r.fiscalFooter.date } }));
+      out.push({ body });
+    } catch (e) { bad.push(f.name); }
+  }
+  return { out, bad };
+}
+
+function receiptImport(box, reload) {
+  const input = el('input', { type: 'file', accept: '.json,application/json', multiple: true, hidden: true, 'aria-label': 'Pliki paragonów' });
+  const btn = el('button', { class: 'btn', type: 'button', onclick: () => input.click() }, icon('plus'), 'Wgraj paragony');
+  const send = async (receipts, bad, restore) => {
+    const d = await api('receipt_import', { method: 'POST', body: { receipts, restore } });
+    const r = d.result;
+    const unread = bad.length + r.bad;
+    const lines = ['Paragony: ' + r.receipts + '. Dodane produkty: ' + r.added + ', zaktualizowane: ' + r.updated + '.' +
+      (!r.added && !r.updated && !r.ignored ? ' Nic nowego.' : '')];
+    if (r.over_limit) lines.push('Pominięte z powodu limitu produktów: ' + r.over_limit + '.');
+    if (unread) lines.push('Nieodczytane pliki: ' + unread + (bad.length ? ' (' + bad.join(', ') + ')' : '') + '.');
+    const info = el('div', { class: 'pr-import', role: 'status' }, ...lines.map(t => el('p', { text: t })));
+    if (r.ignored) {
+      const again = el('button', { class: 'btn sm', type: 'button' }, 'Przywróć usunięte');
+      again.addEventListener('click', async () => {
+        again.disabled = true;
+        try { await send(receipts, bad, true); } catch (e) { again.disabled = false; toast(e.message, true); }
+      });
+      info.append(el('p', { text: 'Pominięte, bo były wcześniej usunięte: ' + r.ignored + '.' }), again);
+    }
+    info.append(el('button', { class: 'btn sm ghost', type: 'button', onclick: () => box.replaceChildren() }, 'Zamknij'));
+    box.replaceChildren(info);
+    await reload();
+  };
+  input.addEventListener('change', async () => {
+    const files = Array.from(input.files || []);
+    input.value = '';
+    if (!files.length) return;
+    btn.disabled = true;
+    try {
+      if (files.length > 30) throw new Error('Maksymalnie 30 plików naraz.');
+      const { out, bad } = await readReceipts(files);
+      if (!out.length) throw new Error('Nie udało się odczytać paragonu: ' + bad.join(', '));
+      await send(out, bad, false);
+    } catch (e) { toast(e.message, true); }
+    btn.disabled = false;
+  });
+  return [btn, input];
+}
+
 /* formularz dodawania / edycji produktu */
 function productForm(p, onSaved, onCancel) {
   const isNew = !p;
@@ -287,7 +352,7 @@ function productForm(p, onSaved, onCancel) {
   const cat = el('select', { 'aria-label': 'Kategoria' }, el('option', { value: '', text: 'Bez kategorii' }),
     ...S.cats.filter(c => !c.virtual).map(c => el('option', { value: c.key, text: c.name })));
   cat.value = p ? p.category || '' : '';
-  const brand = el('input', { type: 'text', maxlength: '60', placeholder: 'puste = pierwsze słowo nazwy', 'aria-label': 'Marka', value: p ? p.brand || '' : '' });
+  const brand = el('input', { type: 'text', maxlength: '60', placeholder: p && p.receipt ? 'puste = bez marki' : 'puste = pierwsze słowo nazwy', 'aria-label': 'Marka', value: p ? p.brand || '' : '' });
   const keywords = el('input', { type: 'text', maxlength: '200', placeholder: 'np. żel pod prysznic, kosmetyki do mycia', 'aria-label': 'Słowa kluczowe', value: p ? p.keywords || '' : '' });
   const desc = el('textarea', { maxlength: '1500', placeholder: 'Wersja, model, czego nie mylić, ważne cechy', 'aria-label': 'Opis dla wyszukiwarki' });
   desc.value = p ? p.desc || '' : '';
@@ -340,7 +405,9 @@ async function viewProducts() {
     addWrap.replaceChildren(el('div', { class: 'panel pr-item editing' },
       productForm(null, async () => { toast('Dodano produkt'); closeAdd(); await reload(); }, closeAdd)));
   });
-  const head = el('div', { class: 'page-head' }, el('div', { class: 'pr-title' }, el('h1', { text: 'Moje produkty' }), sub), addBtn);
+  const importBox = el('div', { class: 'pr-addwrap' });
+  const head = el('div', { class: 'page-head' }, el('div', { class: 'pr-title' }, el('h1', { text: 'Moje produkty' }), sub),
+    el('div', { class: 'pr-tools' }, ...receiptImport(importBox, () => reload()), addBtn));
 
   const bar = el('div');
   const holder = el('div', { class: 'pr-list' });
@@ -355,12 +422,14 @@ async function viewProducts() {
     if (!P.list.length) { bar.replaceChildren(); return; }
     const counts = {};
     P.list.forEach(p => { counts[p.category || ''] = (counts[p.category || ''] || 0) + 1; });
-    if (P.cat && !counts[P.cat]) P.cat = '';
+    const fromReceipts = P.list.filter(p => p.receipt).length;
+    if (P.cat && (P.cat === '__receipt' ? !fromReceipts : !counts[P.cat === '__none' ? '' : P.cat])) P.cat = '';
     const catRow = el('div', { class: 'cats' });
     const mk = (key, label, c) => el('button', { class: 'chip' + (P.cat === key ? ' on' : ''), type: 'button', onclick: () => { P.cat = key; drawBar(); drawList(); } }, label, el('small', { text: String(c) }));
     const keys = Object.keys(counts).filter(k => k !== '').sort((a, b) => catName(a).localeCompare(catName(b), 'pl'));
     catRow.append(mk('', 'Wszystkie', P.list.length), ...keys.map(k => mk(k, catName(k), counts[k])));
     if (counts['']) catRow.append(mk('__none', 'Bez kategorii', counts['']));
+    if (fromReceipts) catRow.append(mk('__receipt', 'Z paragonów', fromReceipts));
     const input = el('input', { type: 'text', placeholder: 'Szukaj w produktach', 'aria-label': 'Szukaj w produktach', value: P.q });
     input.addEventListener('input', e => { P.q = e.target.value; drawList(); });
     bar.replaceChildren(el('div', { class: 'filters' }, el('div', { class: 'search' }, icon('search'), input), catRow));
@@ -369,12 +438,12 @@ async function viewProducts() {
     if (!P.list.length) {
       holder.replaceChildren(el('div', { class: 'empty' },
         el('h2', { text: 'Nie masz jeszcze produktów' }),
-        el('p', { text: 'Dodaj produkt, który chcesz śledzić: nazwę, opcjonalnie EAN i opis. Zadanie wyszukujące sprawdzi go w sklepach i porówna z gazetkami, a wynik pojawi się tutaj.' })));
+        el('p', { text: 'Dodaj produkt, który chcesz śledzić (nazwę, opcjonalnie EAN i opis), albo wgraj cyfrowe paragony z Biedronki w JSON. Zadanie wyszukujące sprawdzi go w sklepach i porówna z gazetkami, a wynik pojawi się tutaj.' })));
       return;
     }
     const q = P.q.trim().toLowerCase();
-    const rows = P.list.filter(p => (!P.cat || (P.cat === '__none' ? !p.category : p.category === P.cat)) &&
-      (!q || (p.name + ' ' + (p.ean || '') + ' ' + (p.desc || '')).toLowerCase().includes(q)));
+    const inCat = p => !P.cat || (P.cat === '__receipt' ? !!p.receipt : P.cat === '__none' ? !p.category : p.category === P.cat);
+    const rows = P.list.filter(p => inCat(p) && (!q || (p.name + ' ' + (p.ean || '') + ' ' + (p.desc || '')).toLowerCase().includes(q)));
     if (!rows.length) {
       holder.replaceChildren(el('div', { class: 'empty' }, el('h2', { text: 'Nic nie pasuje do filtrów' }), el('p', { text: 'Zmień kategorię albo wyczyść wyszukiwanie.' })));
       return;
@@ -387,7 +456,7 @@ async function viewProducts() {
     paint();
   }
 
-  view.replaceChildren(head, addWrap, bar, holder);
+  view.replaceChildren(head, importBox, addWrap, bar, holder);
   paint();
 }
 

@@ -28,6 +28,13 @@ function api3(string $a, string $method, array $body): void {
             $res($r, ['product' => $r['product'] ?? null]);
         }
 
+        case 'receipt_import': {
+            $post();
+            $r = receipt_import($body['receipts'] ?? null, (bool)($body['restore'] ?? false));
+            if (!empty($r['ok']) && $r['added'] > 0) rematch_hits();
+            $res($r, ['result' => array_diff_key($r, ['ok' => 1])]);
+        }
+
         case 'prod_toggle': {
             $post();
             if (!product_set_active(text($body['id'] ?? '', 20), (bool)($body['active'] ?? false))) fail('Nie ma takiego produktu.', 404);

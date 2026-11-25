@@ -16,6 +16,12 @@
 .pr-form textarea { min-height: 74px; }
 .pr-form textarea[aria-label="Strony priorytetowe"] { font: 13px/1.5 var(--mono); }
 
+/* ---------- import paragonów ---------- */
+.pr-tools { flex-wrap: wrap; }
+.pr-import { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 12px 16px; border: 1px solid var(--ac); border-radius: 10px; }
+.pr-import p { margin: 0; flex-basis: 100%; font-size: 13.5px; }
+.pr-receipt { font-size: 12.5px; color: var(--mut); overflow-wrap: anywhere; }
+
 /* ---------- panel produktu ---------- */
 .pr-item { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .pr-item.editing { padding: 0; }
