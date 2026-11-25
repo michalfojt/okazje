@@ -171,18 +171,6 @@
   },
   {
    "category": "dzialka",
-   "title": "Meec Tools Multiseries, wkrętarka 18 V, 35 Nm, 2,0 Ah",
-   "url": "https://www.pepper.pl/promocje/wkretarka-akumulatorowa-35-nm-20-ah-18-v-1397530",
-   "price": "179 zł",
-   "original_price": null,
-   "shop": "Jula",
-   "promo_end": null,
-   "image_url": "https://static.pepper.pl/threads/raw/PDPOC/1397530_1/re/768x768/qt/60/1397530_1.jpg",
-   "notes": "Prosta wkrętarka na działkę. Cena z tytułu na Pepperze, liczba akumulatorów w zestawie i dostępność niepotwierdzone.",
-   "confidence": "medium"
-  },
-  {
-   "category": "dzialka",
    "title": "Zestaw narzędziowy Magnusson, 120 elementów",
    "url": "https://www.castorama.pl/black-weeks/black-weeks-narzedzia-i-warsztat.cat",
    "price": "298 zł",
@@ -214,7 +202,7 @@
    "shop": "Amazon.pl",
    "promo_end": null,
    "image_url": "https://static.pepper.pl/threads/raw/6AItU/1394020_1/re/768x768/qt/60/1394020_1.jpg",
-   "notes": "Gniazdko z pomiarem zużycia prądu. Cena z tytułu na Pepperze; źródło nie opisuje zgodności z ZHA / Zigbee2MQTT.",
+   "notes": "Gniazdko z pomiarem zużycia prądu. Cena z tytułu na Pepperze; źródło nie opisuje zgodności z ZHA / Zigbee2MQTT. Oferta powtórzona z 24.11, cena bez zmian.",
    "confidence": "medium"
   },
   {
@@ -226,7 +214,7 @@
    "shop": "Allegro",
    "promo_end": null,
    "image_url": "https://static.pepper.pl/threads/raw/RlUzj/1388720_1/re/768x768/qt/60/1388720_1.jpg",
-   "notes": "Radarowy czujnik obecności. Starszy wpis, cena z tytułu; zgodność z ZHA / Zigbee2MQTT niepodana w źródle.",
+   "notes": "Radarowy czujnik obecności. Starszy wpis, cena z tytułu; zgodność z ZHA / Zigbee2MQTT niepodana w źródle. Oferta powtórzona z 24.11, cena bez zmian.",
    "confidence": "medium"
   },
   {
@@ -238,7 +226,7 @@
    "shop": "x-kom",
    "promo_end": null,
    "image_url": null,
-   "notes": "Cena katalogowa, dostępny. Według sklepu działa z Home Assistant przez ZHA lub Zigbee2MQTT.",
+   "notes": "Cena katalogowa, dostępny. Według sklepu działa z Home Assistant przez ZHA lub Zigbee2MQTT. Oferta powtórzona z 24.11, cena bez zmian.",
    "confidence": "high"
   },
   {
