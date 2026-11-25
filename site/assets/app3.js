@@ -107,7 +107,11 @@ function sortPromos(rows, mode) {
   return cmp ? rows.slice().sort(cmp) : rows;
 }
 
-const P = { list: [], q: '', cat: '', open: new Set() };
+const P = { list: [], q: '', cat: '', min: Number(load('pmin', 0)) || 0, open: new Set() };
+const SCORE_MINS = [5, 6, 7, 8];
+if (!SCORE_MINS.includes(P.min)) P.min = 0;
+/* najwyższa ocena wśród aktualnych trafień produktu w gazetkach; 0 = brak ocenionego trafienia */
+const bestScore = p => Math.max(0, ...(p.hits || []).map(h => (h.score ? h.score.v : 0)));
 
 function offerCard(o) {
   const media = el('div', { class: 'pr-oimg' });
@@ -498,6 +502,7 @@ async function viewProducts() {
     el('div', { class: 'pr-tools' }, ...receiptImport(importBox, () => reload()), addBtn));
 
   const bar = el('div');
+  const scoreBar = el('div', { class: 'cats pr-scores', role: 'group', 'aria-label': 'Filtr po ocenie atrakcyjności' });
   const holder = el('div', { class: 'pr-list' });
 
   const paint = () => {
@@ -520,7 +525,7 @@ async function viewProducts() {
     if (fromReceipts) catRow.append(mk('__receipt', 'Z paragonów', fromReceipts));
     const input = el('input', { type: 'text', placeholder: 'Szukaj w produktach', 'aria-label': 'Szukaj w produktach', value: P.q });
     input.addEventListener('input', e => { P.q = e.target.value; drawList(); });
-    bar.replaceChildren(el('div', { class: 'filters' }, el('div', { class: 'search' }, icon('search'), input), catRow));
+    bar.replaceChildren(el('div', { class: 'filters' }, el('div', { class: 'search' }, icon('search'), input), catRow, scoreBar));
   };
   const drawList = () => {
     if (!P.list.length) {
@@ -531,13 +536,23 @@ async function viewProducts() {
     }
     const q = P.q.trim().toLowerCase();
     const inCat = p => !P.cat || (P.cat === '__receipt' ? !!p.receipt : P.cat === '__none' ? !p.category : p.category === P.cat);
-    const rows = P.list.filter(p => inCat(p) && (!q || (p.name + ' ' + (p.ean || '') + ' ' + (p.desc || '')).toLowerCase().includes(q)));
+    const found = P.list.filter(p => inCat(p) && (!q || (p.name + ' ' + (p.ean || '') + ' ' + (p.desc || '')).toLowerCase().includes(q)));
+    drawScores(found);
+    const rows = P.min ? found.filter(p => bestScore(p) >= P.min) : found;
     if (!rows.length) {
-      holder.replaceChildren(el('div', { class: 'empty' }, el('h2', { text: 'Nic nie pasuje do filtrów' }), el('p', { text: 'Zmień kategorię albo wyczyść wyszukiwanie.' })));
+      holder.replaceChildren(el('div', { class: 'empty' }, el('h2', { text: 'Nic nie pasuje do filtrów' }),
+        el('p', { text: P.min ? 'Żaden produkt nie ma teraz w gazetkach oceny ' + P.min + ' lub wyższej. Wybierz niższy próg albo „Każda”.' : 'Zmień kategorię albo wyczyść wyszukiwanie.' })));
       return;
     }
     holder.replaceChildren(...rows.map(p => productItem(p, reload)));
   };
+  /* liczby przy progach uwzględniają wybraną kategorię i wyszukiwanie */
+  function drawScores(found) {
+    const mk = (min, label) => el('button', { class: 'chip' + (P.min === min ? ' on' : ''), type: 'button', 'data-min': String(min), 'aria-pressed': String(P.min === min),
+      onclick: () => { P.min = min; save('pmin', min); drawList(); scoreBar.querySelector('[data-min="' + min + '"]').focus(); } },
+    label, el('small', { text: String(min ? found.filter(p => bestScore(p) >= min).length : found.length) }));
+    scoreBar.replaceChildren(el('span', { class: 'pr-scores-h', text: 'Ocena:' }), mk(0, 'Każda'), ...SCORE_MINS.map(n => mk(n, n + ' i więcej')));
+  }
   async function reload() {
     const d = await api('products');
     P.list = d.products || [];

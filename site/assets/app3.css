@@ -254,3 +254,7 @@ html[data-theme="light"] .pr-oimg img { mix-blend-mode: multiply; }
 .lf-table td.n > .sc-box[hidden] { display: none; }
 .pr-hit-main .sc { margin-right: 4px; }
 .pl-tools select { max-width: 100%; }
+
+/* filtr po ocenie w Moich produktach */
+.pr-scores { flex-basis: 100%; align-items: center; }
+.pr-scores-h { color: var(--mut); font-size: 13.5px; }
