@@ -1,0 +1,610 @@
+{
+ "run": "2026-11-25T06:05:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "Powerbank CANYON PB-301 30 000 mAh, PD 20 W, wyświetlacz",
+   "url": "https://www.pepper.pl/promocje/powerbank-canyon-pb-301-30-000-mah-pd-20-w-quick-charge-30-usb-c-usb-a-micro-usb-wyswietlacz-led-do-45-a-za-9499-zl-1398981",
+   "price": "94,99 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/EaXgf/1398981_1/re/768x768/qt/60/1398981_1.jpg",
+   "notes": "Duży powerbank z USB-C, USB-A i micro USB. Przy 20 W naładuje telefon, laptopa raczej nie. Cena z wpisu Pepper, bez potwierdzenia dostępności i ceny sprzed promocji.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Hub USB-C UGREEN Revodok Pro 106 6w1 (10 Gb/s, HDMI 4K 60 Hz, PD 85 W)",
+   "url": "https://www.pepper.pl/promocje/hub-usb-c-ugreen-revodok-pro-106-6w1-10-gbs-hdmi-4k-60-hz-pd-85-w-amazon-1391684",
+   "price": "69,99 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/L7Ui3/1391684_1/re/768x768/qt/60/1391684_1.jpg",
+   "notes": "Hub 6w1 z szybkim USB 10 Gb/s i ładowaniem laptopa do 85 W, przyda się do ThinkPada i MacBooka. Cena tylko z tytułu starszego wpisu Pepper, więc sprawdź, czy nadal obowiązuje.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Mini PC GMKtec M6 Ultra, AMD Ryzen 5 7640HS, 2x LAN 2.5G",
+   "url": "https://www.pepper.pl/promocje/gmktec-m6-ultra-mini-pc-z-amd-ryzen-5-7640hs-wifi-6e-bluetooth-52-i-podwojnym-portem-lan-25g-23104-1387373",
+   "price": "859,96 zł",
+   "original_price": null,
+   "shop": "AliExpress",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/nolzG/1387373_1/re/768x768/qt/60/1387373_1.jpg",
+   "notes": "Mini PC z dwoma portami 2.5G, nadaje się na domowy serwer lub router. Źródło nie podaje RAM ani dysku (przy tej cenie może to być barebone). Cena z tytułu starszego wpisu Pepper.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple MacBook Neo 13, 256 GB, niebieski (indygo)",
+   "url": "https://clk.tradedoubler.com/click?p=288386&a=3021109&url=https%3A%2F%2Fallegro.pl%2Fprodukt%2Flaptop-apple-macbook-neo-13-a18-pro-8-gb-256-gb-niebieski-98db8d6f-6e5d-428b-b87f-8031c496bec5%3FofferId%3D18386548422",
+   "price": "2714 zł",
+   "original_price": "3699 zł",
+   "shop": "Lantre (Allegro)",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/619PNoEsnSL._AC_SL1500_-5.jpg",
+   "notes": "Nowy MacBook Neo z A18 Pro i 8 GB RAM, taniej niż wczorajsze 2765 zł. ThinkApple podaje w jednym miejscu 2714 zł, w drugim 2717 zł.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple MacBook Air 15 M5, 16 GB RAM, 512 GB SSD, błękitny",
+   "url": "https://link.amazon/B02wTo8qK",
+   "price": "6499 zł",
+   "original_price": "7799 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "15-calowy Air z M5, 1300 zł poniżej ceny wyjściowej. Cena z zestawienia ThinkApple z 24.11, bez sprawdzenia na stronie sklepu.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Mac mini M5 Pro (15 CPU, 16 GPU), 24 GB RAM, 512 GB SSD",
+   "url": "https://link.amazon/B08HCPNlX",
+   "price": "7299 zł",
+   "original_price": "8499 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/10/tempImageY8rH34.jpg",
+   "notes": "Mac mini w wersji Pro, 1200 zł taniej. Cena według ThinkApple z 24.11, sklep trzeba sprawdzić przed zakupem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple iPhone 17 Pro 512 GB, kosmiczny pomarańcz",
+   "url": "https://thinkapple.pl/2026/11/24/black-friday-2026-10-najlepszych-promocji-na-apple/",
+   "price": "5799 zł",
+   "original_price": "6799 zł",
+   "shop": "Cortland",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/iphone-17-pro-512-gb-black-friday-2026-cortland.jpg",
+   "notes": "Rabat 1000 zł na wersję 512 GB. Link prowadzi do zestawienia ThinkApple, bo odnośnik do sklepu był w nim uszkodzony.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple AirPods Pro 3 z pomiarem tętna",
+   "url": "https://thinkapple.pl/2026/11/25/black-friday-2026-week-amazon-polska-promocje-apple-elektronika/",
+   "price": "929 zł",
+   "original_price": "1099 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/06/61NLDbfFY1L._AC_SL1500_-3.jpg",
+   "notes": "Wraca z lepszą ceną: 929 zł zamiast wcześniejszych 959 zł. Cena z dzisiejszego zestawienia ThinkApple.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Watch Ultra 3, tytan naturalny, pasek Trail niebieski",
+   "url": "https://link.amazon/B0dwFwWuA",
+   "price": "2599 zł",
+   "original_price": "3199 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/81FtXl2U9L._AC_SL1500_-3.jpg",
+   "notes": "Poprzednia generacja Ultry, 600 zł taniej i poniżej wcześniej widzianych 2799 zł. Cena według ThinkApple, ten sam model widnieje też w Media Expert.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "SONOFF MINIR4M Extreme, przełącznik Matter, 4 szt.",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/przelacznik-sonoff-minir4m-extreme-matter-4pak-62219",
+   "price": "148,40 zł",
+   "original_price": "189,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": "2026-11-29",
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/0e43b9ce21fd5669864663bd31c15c01/pol_pl_Przelacznik-SONOFF-MINIR4M-Extreme-Matter-4Pak-62219_1.jpg",
+   "notes": "Moduły do puszki, Wi-Fi z Matterem, ok. 37 zł za sztukę. Najniższa cena z 30 dni to 169,99 zł, a sklep zapowiada od 30.11 powrót do 189 zł.",
+   "confidence": "high"
+  },
+  {
+   "category": "smarthome",
+   "title": "SONOFF S61STPF-PM-O, gniazdko zewnętrzne Matter",
+   "url": "https://sklep.sonoff.com.pl/pl/products/bezpieczenstwo-w-domu/gniazdko-zewnetrzne-sonoff-s61stpf-pm-o-matter-eu-62525",
+   "price": "74,40 zł",
+   "original_price": "89,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Zewnętrzne gniazdko z Matterem, może się przydać na działce. Cena z listy promocji sklepu, cena wyjściowa to najniższa z 30 dni.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "SONOFF MINI-2GS, dwukanałowy mini przełącznik Matter",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/dwukanalowy-mini-przelacznik-sonoff-mini-2gs-matter-56974",
+   "price": "64,20 zł",
+   "original_price": "79,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Dwa obwody w jednym module do puszki, obsługa Matter. Cena z listy promocji sklepu, 79 zł to najniższa cena z 30 dni.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside Performance wiertarko-wkrętarka 12 V, 2 akumulatory 2 Ah, ładowarka, torba",
+   "url": "https://ding.pl/blog/artykuly/parkside-lidl-black-friday,9517",
+   "price": "149 zł",
+   "original_price": "299 zł",
+   "shop": "Lidl (od 27.11)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Komplet za połowę najniższej ceny z 30 dni (299 zł), od piątku 27.11. Dane tylko z artykułu Ding, nie sprawdzono ich na stronie Lidla. W tej samej ofercie szlifierka kątowa 20 V z akumulatorem 4 Ah za 179 zł (z 249 zł).",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Bosch EasyImpact 18V-38, wiertarko-wkrętarka z akumulatorem 2 Ah",
+   "url": "https://taniomam.interia.pl/hitowe-promocje/news-top-3-promocje-na-narzedzia-w-leroy-merlin-black-weeks-z-bos,nId,23574875",
+   "price": "269 zł",
+   "original_price": null,
+   "shop": "Leroy Merlin",
+   "promo_end": "2026-12-01",
+   "image_url": "https://i.iplsc.com/000NJFD53DLVOPJJ-C323-F4.webp",
+   "notes": "Wkrętarka Bosch 38 Nm w Black Weeks. Dla członków Klubu DOM i PRO jest przy niej zestaw bitów za 1 zł. Artykuł nie podaje ceny sprzed promocji.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside wiertarko-wkrętarka udarowa 45 Nm z akumulatorem, ładowarką i walizką",
+   "url": "https://taniomam.interia.pl/hitowe-promocje/news-kaufland-zaskakuje-oferta-parkside-performance-narzedzia-od,nId,23574684",
+   "price": "159 zł",
+   "original_price": null,
+   "shop": "Kaufland",
+   "promo_end": "2026-12-02",
+   "image_url": "https://i.iplsc.com/000NJEMGF5FN2ACU-C323-F4.webp",
+   "notes": "Tani komplet z udarem, ważny od 19.11 do wyczerpania zapasów. Ceny wyjściowej nie podano.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Dwa akumulatory Parkside 20 V 4 Ah",
+   "url": "https://ding.pl/blog/artykuly/parkside-kaufland-2-plus-1,9524",
+   "price": "158 zł",
+   "original_price": "238 zł",
+   "shop": "Kaufland / Lidl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "79 zł za sztukę: w Kauflandzie z kartą XTRA, w Lidlu od 27.11 bez warunku karty. Kaufland ma też 26-28.11 akcję 2+1 na Parkside, ale nie wiadomo, czy obejmuje osobno wyceniane narzędzia.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Statyw SmallRig 71 cali (180 cm) z głowicą kulową, udźwig 15 kg, funkcja monopodu",
+   "url": "https://www.pepper.pl/promocje/statyw-fotograficzny-z-glowica-kulowa-smallrig-71-180-cm-15-kg-obciazenia-aluminium-funkcja-monopodu-1399653",
+   "price": "222,15 zł",
+   "original_price": null,
+   "shop": "Amazon.de",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/65Rd7/1399653_1/re/768x768/qt/60/1399653_1.jpg",
+   "notes": "Aluminiowy statyw 2 w 1, świeży wpis. Cena z tytułu Pepper, sprawdź koszt dostawy z Niemiec.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Karta microSD SanDisk Extreme PRO 128 GB",
+   "url": "https://www.pepper.pl/promocje/karta-pamieci-sandisk-extreme-pro-128gb-1390968",
+   "price": "144,80 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/VkmND/1390968_1/re/768x768/qt/60/1390968_1.jpg",
+   "notes": "Szybka karta do aparatów i kamer sportowych. Cena z tytułu starszego wpisu, bez ceny wyjściowej, więc warto ją porównać przed zakupem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF MINI-ZB2GS, dwukanałowy mini przełącznik Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/dwukanalowy-mini-przelacznik-sonoff-mini-zb2gs-zigbee-56973",
+   "price": "60,10 zł",
+   "original_price": "79,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/fb70b7b1c4b8b997608b54cb8676329d/pol_pl_Dwukanalowy-mini-przelacznik-Sonoff-MINI-ZB2GS-ZigBee-56973_5.webp",
+   "notes": "Działa przez ZHA i Zigbee2MQTT, pełni też rolę routera sieci. 79 zł to najniższa cena z 30 dni.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF ZBMINIL2, mini przełącznik Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/inteligentny-mini-przelacznik-zigbee-sonoff-zbminil2-55364",
+   "price": "48,10 zł",
+   "original_price": "57,90 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": "2026-11-29",
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/b98888bda2d9689ee1094216d357e8d2/pol_pl_Inteligentny-mini-przelacznik-ZigBee-Sonoff-ZBMINIL2-55364_5.jpg",
+   "notes": "Moduł Zigbee do puszki, od 30.11 wraca cena 57,90 zł. Karta produktu nie wymienia ZHA ani Zigbee2MQTT.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-06P24, czujnik obecności mmWave Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/bezpieczenstwo-w-domu/czujnik-obecnosci-sonoff-snzb-06p24-zigbee-62531",
+   "price": "97,30 zł",
+   "original_price": "109,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": "2026-11-29",
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/c00d8e9e371c83d072d98933e5e1d922/pol_pl_Czujnik-obecnosci-SONOFF-SNZB-06P24-ZigBee-62531_1_1.webp",
+   "notes": "Radar 24 GHz obsługiwany przez Zigbee2MQTT; do ZHA według sklepu potrzebny jest dodatkowy skrypt. Obniżka ok. 11%.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF TRVZB, głowice termostatyczne Zigbee, 2 szt.",
+   "url": "https://sklep.sonoff.com.pl/pl/products/bezpieczenstwo-w-domu/glowica-termostatyczna-sonoff-zigbee-trvzb-2pak-62224",
+   "price": "248,99 zł",
+   "original_price": "278,30 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": "2026-11-29",
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/7fcbb6128e51c35439b716fdd9675733/pol_pl_Glowica-termostatyczna-SONOFF-ZigBee-TRVZB-2Pak-62224_5.jpg",
+   "notes": "Dwie głowice, ok. 124 zł za sztukę, obsługa Zigbee2MQTT. Najniższa cena z 30 dni to 279,41 zł.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SMLIGHT SLZB-MR3U, koordynator Zigbee i Thread (Ethernet, PoE, USB)",
+   "url": "https://botland.com.pl/centralki-i-bramki-sieciowe/29836-smlight-slzb-mr3u-bramka-zigbee-thread-multiradio-cc2674p10-i-efr32mg24-do-home-assistant-ethernet-poe-usb-5906124219920.html",
+   "price": "299 zł",
+   "original_price": null,
+   "shop": "Botland",
+   "promo_end": null,
+   "image_url": "https://cdn1.botland.com.pl/149444-large_default/smlight-slzb-mr3u-bramka-zigbee-thread-multiradio-cc2674p10-i-efr32mg24-do-home-assistant-ethernet-poe-usb.jpg",
+   "notes": "Cena katalogowa, bez promocji. Nowość z dwoma układami radiowymi, obsługuje ZHA i Zigbee2MQTT.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-02WD, czujnik temperatury i wilgotności IP65 z LCD",
+   "url": "https://botland.com.pl/sonoff-inteligentne-sterowniki-wifi/29659-sonoff-snzb-02wd-czujnik-temperatury-i-wilgotnosci-z-wyswietlaczem-lcd-ip65-zigbee-6920075743128.html",
+   "price": "84,90 zł",
+   "original_price": null,
+   "shop": "Botland",
+   "promo_end": null,
+   "image_url": "https://cdn1.botland.com.pl/148862-large_default/sonoff-snzb-02wd-czujnik-temperatury-i-wilgotnosci-z-wyswietlaczem-lcd-ip65-zigbee.jpg",
+   "notes": "Cena katalogowa. Odporny na wilgoć, działa z Home Assistant.",
+   "confidence": "high"
+  }
+ ],
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ],
+ "leaflets": [
+  {
+   "shop_id": "sdca9a40d",
+   "shop": "Lidl",
+   "title": "Lidl oferta od czwartku 26.11.2026",
+   "url": "https://www.iulotka.pl/lidl/lidl-oferta-od-czwartku-26-11-2026",
+   "valid_from": "2026-11-26",
+   "valid_to": null,
+   "cover_url": "https://iulotka.pl/GSS/giulotka/rekl1126/131126/lidl-261126.jpg",
+   "items": [
+    {
+     "name": "Golarka Philips OneBlade",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Elektryczna szczoteczka do zębów Oral-B",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Maszynka do strzyżenia i trymer Remington",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Suszarka i suszarko-lokówka Remington",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Golarka Braun",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Oczyszczacz powietrza Tronic",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Obrotowa kamera Wi-Fi TP-Link",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Wózek kuchenny",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Koc i ręczniki Tom Tailor",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    }
+   ]
+  },
+  {
+   "shop_id": "sdca9a40d",
+   "shop": "Lidl",
+   "title": "Lidl gazetka spożywcza od czwartku 26.11.2026",
+   "url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-11-28",
+   "cover_url": "https://iulotka.pl/GSS/giulotka/rekl1126/231126/lidl-gazetka-spozywcza-261126.jpg",
+   "items": []
+  },
+  {
+   "shop_id": "sdca9a40d",
+   "shop": "Lidl",
+   "title": "Lidl oferta od piątku 27.11.2026 (Black Week, Parkside)",
+   "url": "https://www.iulotka.pl/lidl/lidl-oferta-od-piatku-27-11-2026",
+   "valid_from": "2026-11-27",
+   "valid_to": null,
+   "cover_url": null,
+   "items": [
+    {
+     "name": "Parkside Performance wiertarko-wkrętarka 12 V, 2 akumulatory 2 Ah",
+     "price": "149 zł",
+     "old_price": "299 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; poprzednia cena to najniższa z 30 dni (źródło: Ding)"
+    },
+    {
+     "name": "Parkside wiertarko-wkrętarka 20 V z walizką akcesoriów",
+     "price": "229 zł",
+     "old_price": "299 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; poprzednia cena to najniższa z 30 dni (źródło: Ding)"
+    },
+    {
+     "name": "Parkside Performance wiertarko-wkrętarka 12 V, akumulator 5 Ah, bezszczotkowa",
+     "price": "299 zł",
+     "old_price": "399 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; poprzednia cena to najniższa z 30 dni (źródło: Ding)"
+    },
+    {
+     "name": "Parkside zestaw 20 V: 3 urządzenia, lampa, 2 akumulatory 4 Ah",
+     "price": "599 zł",
+     "old_price": "999 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; poprzednia cena to najniższa z 30 dni (źródło: Ding)"
+    },
+    {
+     "name": "Parkside dwa akumulatory 20 V 4 Ah",
+     "price": "158 zł",
+     "old_price": "238 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; według Ding tylko w sklepach"
+    },
+    {
+     "name": "Parkside szlifierka kątowa 20 V z akumulatorem 4 Ah",
+     "price": "179 zł",
+     "old_price": "249 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": null,
+     "page": null,
+     "notes": "od 27.11; poprzednia cena to najniższa z 30 dni (źródło: Ding)"
+    }
+   ]
+  },
+  {
+   "shop_id": "sdca9a40d",
+   "shop": "Lidl",
+   "title": "Lidl gazetka od poniedziałku 30.11.2026",
+   "url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-poniedzialku-30-11-2026",
+   "valid_from": "2026-11-30",
+   "valid_to": "2026-12-06",
+   "cover_url": "https://iulotka.pl/GSS/giulotka/rekl1126/191126/lidl-gazetka-301126.jpg",
+   "items": [
+    {
+     "name": "Akcesoria Wittchen",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Odzież sportowa Adidas i Nike",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    }
+   ]
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka oferta od czwartku 26.11.2026",
+   "url": "https://www.iulotka.pl/biedronka/biedronka-oferta-od-czwartku-26-11-2026",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-12-09",
+   "cover_url": null,
+   "items": [
+    {
+     "name": "Akcesoria do włosów, paznokci i odzieży (Czas na prezent)",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Piżamy i kapcie",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    },
+    {
+     "name": "Organizer i zestaw malarski",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "bez ceny w źródle"
+    }
+   ]
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka Black Week od czwartku 26.11.2026",
+   "url": "https://www.iulotka.pl/biedronka/biedronka-black-week-od-czwartku-26-11-2026",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-12-09",
+   "cover_url": "https://www.iulotka.pl/GSS/giulotka/rekl1126/191126/biedronka-black-week2.jpg",
+   "items": [
+    {
+     "name": "Małe AGD",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "wybrane sklepy, do wyczerpania asortymentu; bez ceny w źródle"
+    },
+    {
+     "name": "Przybory i akcesoria kuchenne",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "wybrane sklepy, do wyczerpania asortymentu; bez ceny w źródle"
+    },
+    {
+     "name": "Walizki",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "wybrane sklepy, do wyczerpania asortymentu; bez ceny w źródle"
+    },
+    {
+     "name": "Torebki i obuwie Cholewiński",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "wybrane sklepy, do wyczerpania asortymentu; bez ceny w źródle"
+    },
+    {
+     "name": "Akcesoria zimowe",
+     "price": null,
+     "old_price": null,
+     "valid_from": null,
+     "valid_to": null,
+     "page": null,
+     "notes": "wybrane sklepy, do wyczerpania asortymentu; bez ceny w źródle"
+    }
+   ]
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka Black week 25.11-26.11.2026",
+   "url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-25-11-26-26-11-26-yhqoy/1",
+   "valid_from": "2026-11-25",
+   "valid_to": "2026-11-26",
+   "cover_url": "https://app.moja-e-gazetka.pl/261126_261125_biedronka_yhqoy/image00.webp",
+   "items": []
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka Hity i inspiracje 23.11-05.12.2026",
+   "url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-23-11-26-05-12-26-ovknd/1",
+   "valid_from": "2026-11-23",
+   "valid_to": "2026-12-05",
+   "cover_url": "https://app.moja-e-gazetka.pl/261205_261123_biedronka_ovknd/image00.webp",
+   "items": []
+  }
+ ]
+}
