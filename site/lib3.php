@@ -16,6 +16,7 @@ const EXTRAS_FILES_KEEP = 300;
 const LEAFLET_PROMOS_MAX = 6000;
 
 require_once __DIR__ . '/lib5.php';
+require_once __DIR__ . '/lib6.php';
 
 /* ---------- pomocnicze ---------- */
 
@@ -831,6 +832,8 @@ function leaflet_view(string $id): ?array {
     $items = array_values($l['items'] ?? []);
     $from = $l['valid_from'] ?? substr((string)($l['first_seen'] ?? ''), 0, 10);
     foreach (score_items(array_map(fn($it) => ['valid_from' => $it['valid_from'] ?? $from] + $it, $items)) as $i => $s) { $items[$i]['score'] = $s; }
+    $over = groups_db()['over'];
+    foreach ($items as $i => $it) { $items[$i]['group'] = group_of($it, $over); }
     $l['items'] = $items;
     return ['leaflet' => $l, 'hits' => $hits];
 }
@@ -1080,6 +1083,7 @@ function leaflet_promos(int $limit = LEAFLET_PROMOS_MAX): array {
         $my[$k][] = ['product_id' => (string)$h['product_id'], 'name' => $names[(string)$h['product_id']] ?? null, 'match' => $h['match'] ?? 'item'];
     }
     $out = []; $raw = [];
+    $over = groups_db()['over'];
     foreach (leaflets_db()['leaflets'] as $l) {
         if (!v3_current($l['valid_to'] ?? null, $today)) continue;
         foreach ($l['items'] ?? [] as $it) {
@@ -1095,6 +1099,7 @@ function leaflet_promos(int $limit = LEAFLET_PROMOS_MAX): array {
                 'valid_from' => $from, 'valid_to' => $it['valid_to'] ?? ($l['valid_to'] ?? null),
                 'discount' => deal_score($it['deal'] ?? null, $it['price'] ?? null, $it['old_price'] ?? null),
                 'mine' => $my[$k] ?? [],
+                'group' => group_of($it, $over),
             ];
         }
     }

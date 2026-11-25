@@ -71,12 +71,24 @@ function api3(string $a, string $method, array $body): void {
         }
 
         case 'promos': {
-            out(['promos' => leaflet_promos()]);
+            out(['promos' => leaflet_promos(), 'groups' => groups_view()]);
         }
 
         case 'hist_split': {
             $post();
             if (!arch_split_set(text($body['pair'] ?? '', 40), (bool)($body['split'] ?? true))) fail('Nieprawidłowe porównanie.');
+            out(['ok' => true]);
+        }
+
+        case 'group_hide': {
+            $post();
+            if (!group_hide(text($body['key'] ?? '', 20), (bool)($body['hidden'] ?? true))) fail('Nie ma takiej kategorii.', 404);
+            out(['ok' => true, 'groups' => groups_view()]);
+        }
+
+        case 'group_set': {
+            $post();
+            if (!group_set(text($body['name'] ?? '', 200), text($body['key'] ?? '', 20))) fail('Nie można przenieść pozycji.');
             out(['ok' => true]);
         }
 

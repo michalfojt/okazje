@@ -243,3 +243,14 @@ html[data-theme="light"] .pr-oimg img { mix-blend-mode: multiply; }
 .lf-table td.n > .sc-box[hidden] { display: none; }
 .pr-hit-main .sc { margin-right: 4px; }
 .pl-tools select { max-width: 100%; }
+
+/* kategorie pozycji gazetek */
+.gr-panel { margin-bottom: 12px; padding: 12px; }
+.gr-panel[hidden], .gr-box[hidden] { display: none; }
+.gr-panel .hint { margin: 0 0 10px; }
+.gr-panel .cats { display: flex; flex-wrap: wrap; gap: 8px; overflow: visible; }
+.chip.gr-off { text-decoration: line-through; opacity: .55; }
+.gr-tag { margin-top: 4px; padding: 2px 8px; border: 1px solid var(--line2); border-radius: 6px; background: none; color: var(--mut); font: inherit; font-size: 12px; cursor: pointer; }
+.gr-tag:hover, .gr-tag[aria-expanded="true"] { color: var(--tx); border-color: var(--ac); }
+.gr-box { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.gr-box select { max-width: 100%; }

@@ -394,7 +394,42 @@ async function viewProducts() {
 /* =====================================================================
    Gazetki
    ===================================================================== */
-const G = { shops: [], leaflets: [], promos: [], hitCount: {}, pname: {}, endedOpen: false, q: '', pshop: load('pshop', ''), psort: load('psort', 'best'), pmine: false, pturbo: false, pmore: 1, open: new Set() };
+const G = { groups: [], groupsOpen: false, shops: [], leaflets: [], promos: [], hitCount: {}, pname: {}, endedOpen: false, q: '', pshop: load('pshop', ''), psort: load('psort', 'best'), pmine: false, pturbo: false, pmore: 1, open: new Set() };
+
+/* ---------- kategorie pozycji i ich ukrywanie ---------- */
+const hiddenGroups = () => new Set(G.groups.filter(g => g.hidden).map(g => g.key));
+const groupName = k => (G.groups.find(g => g.key === k) || {}).name || 'Inne';
+async function setGroupHidden(key, hidden) {
+  const d = await api('group_hide', { method: 'POST', body: { key, hidden } });
+  G.groups = d.groups || [];
+}
+
+/** Etykieta kategorii przy pozycji; po dotknięciu: ukrycie kategorii albo przeniesienie pozycji. */
+function groupControl(r, onHide, onMove) {
+  const btn = el('button', { class: 'gr-tag', type: 'button', 'aria-expanded': 'false', text: groupName(r.group), title: 'Kategoria: ukryj lub popraw' });
+  const box = el('div', { class: 'gr-box', hidden: true });
+  btn.addEventListener('click', () => {
+    box.hidden = !box.hidden;
+    btn.setAttribute('aria-expanded', String(!box.hidden));
+    if (box.hidden) return;
+    const hide = el('button', { class: 'btn sm', type: 'button', text: 'Ukryj kategorię „' + groupName(r.group) + '”' });
+    hide.addEventListener('click', async () => {
+      hide.disabled = true;
+      try { await setGroupHidden(r.group, true); toast('Ukryto: ' + groupName(r.group)); onHide(); }
+      catch (e) { hide.disabled = false; toast(e.message, true); }
+    });
+    const sel = el('select', { 'aria-label': 'Przenieś pozycję do kategorii' }, el('option', { value: '', text: 'Przenieś do innej kategorii...' }),
+      ...G.groups.filter(g => g.key !== r.group).map(g => el('option', { value: g.key, text: g.name })));
+    sel.addEventListener('change', async () => {
+      if (!sel.value) return;
+      sel.disabled = true;
+      try { await api('group_set', { method: 'POST', body: { name: r.name, key: sel.value } }); toast('Przeniesiono do: ' + groupName(sel.value)); await onMove(sel.value); }
+      catch (e) { sel.disabled = false; toast(e.message, true); }
+    });
+    box.replaceChildren(...(G.groups.some(g => g.key === r.group && g.hidden) ? [sel] : [hide, sel]));
+  });
+  return { btn, box };
+}
 
 function leafletCard(l, ctx) {
   const st = leafStatus(l);
@@ -434,7 +469,15 @@ function leafletCard(l, ctx) {
       try {
         const d = await api('leaflet', { params: { id: l.id } });
         loaded = true;
-        body.replaceChildren(leafletDetail(d));
+        let all = false;
+        const draw = showAll => { all = showAll; body.replaceChildren(leafletDetail(d, showAll, draw, ctx.refreshPromos)); };
+        /* po zmianach z listy promocji: odśwież kategorie pozycji w otwartej gazetce */
+        ctx.redraw[l.id] = () => {
+          const g = new Map(G.promos.filter(r => r.leaflet_id === l.id).map(r => [r.name, r.group]));
+          (d.leaflet.items || []).forEach(i => { if (g.has(i.name)) i.group = g.get(i.name); });
+          draw(all);
+        };
+        draw(false);
       } catch (e) {
         body.replaceChildren(el('p', { class: 'form-err', text: e.message }));
       }
@@ -445,7 +488,7 @@ function leafletCard(l, ctx) {
   return art;
 }
 
-function leafletDetail(d) {
+function leafletDetail(d, showAll, redraw, refreshPromos) {
   const l = d.leaflet;
   const hits = d.hits || [];
   const hitMap = new Map();
@@ -455,7 +498,17 @@ function leafletDetail(d) {
     l.url ? extLink(l.url, 'Otwórz gazetkę', 'btn sm') : null,
     el('span', { class: 'sub', text: (l.items || []).length + ' ' + plural((l.items || []).length, 'pozycja', 'pozycje', 'pozycji') }));
 
-  const items = l.items || [];
+  const all = l.items || [];
+  const hidden = hiddenGroups();
+  const isHidden = it => hidden.has(it.group) && !hitMap.has((it.name || '').trim().toLowerCase());
+  const nHidden = all.filter(isHidden).length;
+  const items = showAll ? all : all.filter(it => !isHidden(it));
+  if (nHidden) {
+    const b = el('button', { class: 'btn sm ghost', type: 'button', text: showAll ? 'Ukryj ponownie (' + nHidden + ')' : 'Pokaż ukryte (' + nHidden + ')' });
+    b.addEventListener('click', () => redraw(!showAll));
+    top.append(b);
+  }
+  if (all.length && !items.length) return el('div', { class: 'lf-dwrap' }, top, el('p', { class: 'hint', text: 'Wszystkie pozycje należą do ukrytych kategorii.' }));
   if (!items.length) return el('div', { class: 'lf-dwrap' }, top, el('p', { class: 'hint', text: 'Nie odczytano jeszcze produktów z tej gazetki.' }));
 
   const rows = items.map(it => {
@@ -468,6 +521,8 @@ function leafletDetail(d) {
     if (it.applies_to) name.append(el('span', { class: 'lf-scope', text: (it.scope === 'category' ? 'kategoria: ' : 'marka: ') + it.applies_to }));
     if (it.deal && it.price) name.append(el('span', { class: 'lf-scope', text: it.deal }));
     if (it.notes) name.append(el('span', { class: 'lf-note', text: it.notes }));
+    const gc = groupControl(it, () => { redraw(showAll); refreshPromos(); }, async key => { it.group = key; redraw(showAll); await refreshPromos(); });
+    name.append(el('div', {}, gc.btn), gc.box);
     if (sc.box) name.append(sc.box);
     return el('tr', { class: h ? 'hit' : '' },
       el('td', { class: 's' }, sc.badge),
@@ -544,6 +599,7 @@ function shopForm(s, onSaved, onCancel) {
 async function fetchGazetki() {
   const [sh, pr, pm] = await Promise.all([api('shops'), api('products').catch(() => ({ products: [] })), api('promos').catch(() => ({ promos: [] }))]);
   G.promos = pm.promos || [];
+  G.groups = pm.groups || [];
   G.shops = sh.shops || [];
   G.leaflets = sh.leaflets || [];
   G.hitCount = {}; G.pname = {};
@@ -558,7 +614,7 @@ async function viewLeaflets() {
   await fetchGazetki();
   if (gone('gazetki')) return;
 
-  const ctx = { cards: {} };
+  const ctx = { cards: {}, redraw: {} };
 
   /* --- sklepy --- */
   const shopsSub = el('span', { class: 'sub' });
@@ -585,6 +641,7 @@ async function viewLeaflets() {
   const endedWrap = el('div', { class: 'lf-endedwrap' });
   const drawLeaflets = () => {
     ctx.cards = {};
+    ctx.redraw = {};
     const cur = G.leaflets.filter(l => l.current);
     const old = G.leaflets.filter(l => !l.current);
     leafSub.textContent = cur.length ? cur.length + ' ' + plural(cur.length, 'gazetka', 'gazetki', 'gazetek') : 'brak';
@@ -611,7 +668,36 @@ async function viewLeaflets() {
   const refreshPromos = async () => {
     const pm = await api('promos');
     G.promos = pm.promos || [];
+    G.groups = pm.groups || [];
     drawPromos();
+  };
+  ctx.refreshPromos = refreshPromos;
+  /* po zmianie ukrytych kategorii: lista promocji i otwarte gazetki */
+  const redrawOpen = () => Object.values(ctx.redraw).forEach(f => f());
+  const groupsChanged = () => { G.pmore = 1; drawPromos(); redrawOpen(); };
+  const groupsBtn = el('button', { class: 'btn sm', type: 'button', 'aria-expanded': String(G.groupsOpen) });
+  const groupsPanel = el('div', { class: 'panel gr-panel', hidden: !G.groupsOpen });
+  groupsBtn.addEventListener('click', () => {
+    G.groupsOpen = groupsPanel.hidden; groupsPanel.hidden = !G.groupsOpen;
+    groupsBtn.setAttribute('aria-expanded', String(G.groupsOpen));
+  });
+  const drawGroups = () => {
+    const counts = {};
+    G.promos.forEach(r => { counts[r.group] = (counts[r.group] || 0) + 1; });
+    const nOff = G.groups.filter(g => g.hidden).length;
+    groupsBtn.textContent = nOff ? 'Kategorie (ukryte: ' + nOff + ')' : 'Ukryj kategorie';
+    const chips = G.groups.filter(g => counts[g.key] || g.hidden).map(g => {
+      const c = el('button', { class: 'chip' + (g.hidden ? ' gr-off' : ' on'), type: 'button', 'aria-pressed': String(!g.hidden) }, g.name, el('small', { text: String(counts[g.key] || 0) }));
+      c.addEventListener('click', async () => {
+        c.disabled = true;
+        try { await setGroupHidden(g.key, !g.hidden); groupsChanged(); }
+        catch (e) { c.disabled = false; toast(e.message, true); }
+      });
+      return c;
+    });
+    groupsPanel.replaceChildren(
+      el('p', { class: 'hint', text: 'Dotknij kategorii, żeby ją ukryć lub przywrócić. Przekreślone są ukryte. Pozycje pasujące do Twoich produktów widać zawsze.' }),
+      el('div', { class: 'cats' }, ...chips));
   };
   const promoRow = r => {
     const key = r.leaflet_id + '|' + r.name;
@@ -623,6 +709,8 @@ async function viewLeaflets() {
     (r.mine || []).forEach(m => main.append(el('span', { class: 'lf-hit-tag', text: 'Twój produkt: ' + (m.name || '') })));
     const per = period(r.valid_from, r.valid_to);
     main.append(el('small', { text: (r.shop || 'sklep') + (per ? ' · ' + per : '') + (r.notes ? ' · ' + r.notes : '') }));
+    const gc = groupControl(r, groupsChanged, async () => { await refreshPromos(); redrawOpen(); });
+    main.append(el('div', {}, gc.btn), gc.box);
     const price = el('div', { class: 'pl-price' });
     if (r.deal) price.append(el('b', { text: r.deal }));
     if (r.price) price.append(el('span', { text: r.price }));
@@ -631,9 +719,13 @@ async function viewLeaflets() {
   };
   const drawPromos = () => {
     const q = fold(input.value).trim();
-    const rows = sortPromos(G.promos.filter(r => (!G.pshop || r.shop === G.pshop) && (!G.pmine || (r.mine || []).length) && (!G.pturbo || r.score.turbo)
+    drawGroups();
+    const hidden = hiddenGroups();
+    const shown = G.promos.filter(r => !hidden.has(r.group) || (r.mine || []).length);
+    const off = G.promos.length - shown.length;
+    const rows = sortPromos(shown.filter(r => (!G.pshop || r.shop === G.pshop) && (!G.pmine || (r.mine || []).length) && (!G.pturbo || r.score.turbo)
       && (q.length < 2 || fold((r.name || '') + ' ' + (r.applies_to || '') + ' ' + (r.deal || '') + ' ' + (r.shop || '')).includes(q))), G.psort);
-    promoSub.textContent = G.promos.length ? rows.length + ' z ' + G.promos.length : 'brak';
+    promoSub.textContent = G.promos.length ? rows.length + ' z ' + shown.length + (off ? ' · ukryte: ' + off : '') : 'brak';
     if (!rows.length) {
       promoList.replaceChildren(el('div', { class: 'empty lf-empty' }, el('h2', { text: G.promos.length ? 'Nic nie pasuje' : 'Brak zapisanych promocji' }),
         el('p', { text: !G.promos.length ? 'Promocje pojawią się po przebiegu zadania, które odczyta aktualne gazetki.'
@@ -667,7 +759,8 @@ async function viewLeaflets() {
   mineSw.cb.addEventListener('change', () => { G.pmine = mineSw.cb.checked; G.pmore = 1; drawPromos(); });
   const promoTools = el('div', { class: 'pl-tools' }, el('div', { class: 'search lf-search' }, icon('search'), input), shopSel, sortSel,
     el('label', { class: 'pl-mine' }, mineSw.node, el('span', { text: 'Tylko moje produkty' })),
-    el('label', { class: 'pl-mine' }, turboSw.node, el('span', { text: 'Tylko turbo okazje' })));
+    el('label', { class: 'pl-mine' }, turboSw.node, el('span', { text: 'Tylko turbo okazje' })),
+    groupsBtn);
 
   async function reload() {
     await fetchGazetki();
@@ -678,7 +771,7 @@ async function viewLeaflets() {
   view.replaceChildren(head,
     el('div', { class: 'section-title' }, el('h2', { text: 'Promocje w gazetkach' }), promoSub),
     el('p', { class: 'hint', text: 'Atrakcyjność 1-10 liczona z realnego rabatu po spełnieniu warunku i z porównania z wcześniejszymi promocjami w archiwum. „3?” oznacza brak podstaw do oceny. Dotknij oceny, żeby zobaczyć uzasadnienie.' }),
-    promoTools, promoList, promoMore,
+    promoTools, groupsPanel, promoList, promoMore,
     el('div', { class: 'section-title' }, el('h2', { text: 'Aktualne gazetki' }), leafSub),
     grid, endedWrap,
     el('div', { class: 'section-title' }, el('h2', { text: 'Sklepy' }), el('div', { class: 'pr-tools' }, shopsSub, addShopBtn)),
