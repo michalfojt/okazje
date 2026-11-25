@@ -1,0 +1,861 @@
+{
+ "run": "2026-11-25T20:05:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "Anker, powerbank do laptopa 25000 mAh, 160 W",
+   "url": "https://www.amazon.pl/gp/product/B0DCBB2YTR",
+   "price": "269 zł",
+   "original_price": "359 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2025/07/61hMSRRZG3L._AC_SL1500_.jpg",
+   "notes": "Duży powerbank, który mocą 160 W obsłuży też laptopa, tańszy o 90 zł. Cena z przeglądu ThinkApple z 25.11, nie sprawdziłem jej na Amazonie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "UGREEN Nexode Pro 45 W, ładowarka (burgund)",
+   "url": "https://link.amazon/B0bnabFLB",
+   "price": "109 zł",
+   "original_price": "149 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/ugreen-Nexode-Pro-45-w.jpg",
+   "notes": "Mała ładowarka 45 W do telefonu i lekkiego laptopa, 40 zł taniej. Cena z ThinkApple, na Amazonie niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Logitech Signature Slim K950, klawiatura bezprzewodowa",
+   "url": "https://allegro.pl/oferta/klawiatura-bezprzewodowa-logitech-signature-slim-k950-bluetooth-usb-bolt-18580592644",
+   "price": "129,99 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://cdn-sw.spidersweb.pl/2026/11/Klawiatura-LOGITECH-Signature-Slim-K950-black-friday.webp",
+   "notes": "Płaska klawiatura na Bluetooth i odbiornik Bolt. Spider's Web podaje, że jest o 40 zł tańsza; ceny nie sprawdziłem na Allegro.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Dysk KIOXIA Exceria Plus G3 2 TB M.2 NVMe (TLC, 1200 TBW)",
+   "url": "https://www.pepper.pl/promocje/dysk-kioxia-exceria-plus-g3-2tb-tlc-1396354",
+   "price": "1109,99 zł",
+   "original_price": null,
+   "shop": "Media Expert",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ufxYC/1396354_1/re/768x768/qt/60/1396354_1.jpg",
+   "notes": "Dysk 2 TB z pamięcią TLC; według wpisu zwykle kosztuje ok. 1400 zł. Cena pochodzi z tytułu na Pepperze, a aktualność oferty nie jest potwierdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Anker Nano II 65 W, ładowarka z 3 portami",
+   "url": "https://www.amazon.pl/%C5%81adowarka-Anker-3-portowa-ladowarka-kompaktowy/dp/B09LLRNGSD",
+   "price": "74 zł",
+   "original_price": "147 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2025/03/61hKiYcEwWL._AC_SL1500_-4.jpg",
+   "notes": "Jedna ładowarka 65 W do laptopa i dwóch drobiazgów, prawie za pół ceny. Cena z ThinkApple, na Amazonie niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Mac Studio M4 Max (16 CPU, 40 GPU), 48 GB RAM, 512 GB SSD",
+   "url": "https://lantre.pl/apple-mac-studio-m4-max-16-core-cpu-40-core-gpu-48gb-ram-512gb-ssd-srebrny-silver-mu963ze-a-p1-r1.html",
+   "price": "12999 zł",
+   "original_price": "15499 zł",
+   "shop": "Lantre",
+   "promo_end": null,
+   "image_url": "https://lantre.pl/media/catalog/product/cache/bccb84885a16095fdc935fd2bc4f8599/a/p/apple-mac-studio-m4-max-16-core-cpu-40-core-gpu-48gb-ram-512gb-ssd-srebrny-silver-mu963ze-a-p1-r1-1.jpg",
+   "notes": "W magazynie, wysyłka tak, by dotarł 27.11. 15499 zł to cena producenta podana przez sklep. To starsza generacja: na liście Lantre jest też M5 Max 36 GB za 12499 zł, więc warto porównać.",
+   "confidence": "high"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 14\" M5 (10 CPU, 10 GPU), odnowiony przez Apple, gwiezdna czerń",
+   "url": "https://www.apple.com/pl/shop/product/fde04ze/a/Odnowiony-14%E2%80%91calowy-MacBook-Pro-z-czipem-Apple-M5-10%E2%80%91rdzeniowym-CPU-10%E2%80%91rdzeniowym-GPU-gwiezdna-czer%C5%84",
+   "price": "7199 zł",
+   "original_price": "7999 zł",
+   "shop": "Apple Refurbished",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Sprzęt odnowiony z certyfikatem Apple, 800 zł taniej od ceny wyjściowej; za tyle samo jest wersja srebrna. Lista nie podaje RAM i dysku, sprawdź je przed zakupem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 14\" M5 Pro, 24 GB RAM, 1 TB, gwiezdna czerń",
+   "url": "https://allegro.pl/produkt/laptop-apple-macbook-pro-14-oled-m5-pro-24gb-1tb-space-black-0072456b-e928-4709-ab2d-1331b17ddfd2?offerId=19088614798",
+   "price": "14311 zł",
+   "original_price": "14999 zł",
+   "shop": "Lantre (Allegro)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Rabat niewielki, 688 zł. Cena z listy ThinkApple z 24.11, na Allegro niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 16\" M5 Pro, 24 GB RAM, 1 TB, srebrny",
+   "url": "https://allegro.pl/produkt/macbook-pro-16-proled-xdr-m5-pro-18-20-24-1tb-srebrny-892a8a98-2707-43bc-b778-0b20b8d34b21?offerId=19088381844",
+   "price": "16829 zł",
+   "original_price": "17999 zł",
+   "shop": "Lantre (Allegro)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Większy model z M5 Pro, 1170 zł taniej. Cena z listy ThinkApple, na Allegro niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple AirPods 5 z ANC",
+   "url": "https://link.amazon/B0a4DFjNF",
+   "price": "544 zł",
+   "original_price": "599 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Nowa generacja AirPods z redukcją hałasu, 55 zł taniej. Cena z ThinkApple, na Amazonie niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple AirPods 5 z ANC i etui ładującym",
+   "url": "https://link.amazon/B0eg8XoUg",
+   "price": "625 zł",
+   "original_price": "699 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Wariant z etui ładującym, 74 zł taniej. Cena z ThinkApple, na Amazonie niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Reolink E540, kamera",
+   "url": "https://www.telepolis.pl/go/96316f",
+   "price": "399 zł",
+   "original_price": "549 zł",
+   "shop": null,
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Kamera Reolink 150 zł taniej według przeglądu Telepolisu. Link prowadzi przez przekierowanie serwisu, a sklep i termin nie są podane.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Amazon Echo Dot Max",
+   "url": "https://www.amazon.pl/echo-dot-max-international/dp/B0DKLGMX7R",
+   "price": "356 zł",
+   "original_price": "489 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/06/71l7KqWa2hL._AC_SL1500_.jpg",
+   "notes": "Głośnik z Alexą i wbudowaną centralą smart home. Alexa nie obsługuje języka polskiego; cena z ThinkApple, niesprawdzona na Amazonie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside, laser krzyżowy",
+   "url": "https://www.pepper.pl/promocje/laser-krzyzowy-parkside-w-kaufland-1398718",
+   "price": "49,99 zł",
+   "original_price": null,
+   "shop": "Kaufland",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/P8kLT/1398718_1/re/768x768/qt/60/1398718_1.jpg",
+   "notes": "Tani laser do poziomowania. Cena z tytułu wpisu, bez parametrów i terminu, więc sprawdź dostępność w sklepie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Meec Tools Multiseries, wkrętarka 18 V, 35 Nm, 2,0 Ah",
+   "url": "https://www.pepper.pl/promocje/wkretarka-akumulatorowa-35-nm-20-ah-18-v-1397530",
+   "price": "179 zł",
+   "original_price": null,
+   "shop": "Jula",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/PDPOC/1397530_1/re/768x768/qt/60/1397530_1.jpg",
+   "notes": "Prosta wkrętarka na działkę. Cena z tytułu na Pepperze, liczba akumulatorów w zestawie i dostępność niepotwierdzone.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Zestaw narzędziowy Magnusson, 120 elementów",
+   "url": "https://www.castorama.pl/black-weeks/black-weeks-narzedzia-i-warsztat.cat",
+   "price": "298 zł",
+   "original_price": "458 zł",
+   "shop": "Castorama",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "160 zł taniej na stronie Black Weeks. Link prowadzi do listy promocji, a przy cenie 298 zł sklep pisze „najniższa cena”, więc potwierdź ją na karcie produktu.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Razer Seiren V3 Mini, mikrofon USB (czarny)",
+   "url": "https://www.pepper.pl/promocje/mikrofon-razer-seiren-v3-mini-czarny-1391629",
+   "price": "129 zł",
+   "original_price": null,
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/7KUqt/1391629_1/re/768x768/qt/60/1391629_1.jpg",
+   "notes": "Mały mikrofon USB do nagrywania przy biurku. Cena z tytułu, a wpis ma już trochę czasu i może być nieaktualny.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF S60ZBTPF, gniazdko Zigbee z pomiarem energii",
+   "url": "https://www.pepper.pl/promocje/sonoff-s60zbtpf-wtyczka-zigbee-1394020",
+   "price": "49,50 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/6AItU/1394020_1/re/768x768/qt/60/1394020_1.jpg",
+   "notes": "Gniazdko z pomiarem zużycia prądu. Cena z tytułu na Pepperze; źródło nie opisuje zgodności z ZHA / Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-06P, czujnik obecności Zigbee 3.0",
+   "url": "https://www.pepper.pl/promocje/inteligentny-czujnik-obecnosci-sonoff-snzb-06p-radar-mikrofalowy-zigbee-30-1388720",
+   "price": "49,90 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/RlUzj/1388720_1/re/768x768/qt/60/1388720_1.jpg",
+   "notes": "Radarowy czujnik obecności. Starszy wpis, cena z tytułu; zgodność z ZHA / Zigbee2MQTT niepodana w źródle.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-04P, czujnik otwarcia drzwi i okien",
+   "url": "https://www.x-kom.pl/p/1347524-czujnik-sonoff-czujnik-drzwi-i-okien-zigbee-snzb-04p.html",
+   "price": "49,90 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena katalogowa, dostępny. Według sklepu działa z Home Assistant przez ZHA lub Zigbee2MQTT.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-05P z przewodem WLDC200, czujnik zalania",
+   "url": "https://www.morele.net/sonoff-zestaw-czujnik-zalania-wycieku-wody-zigbee-sonoff-snzb-05p-kabel-wldc200-14800396/",
+   "price": "67,50 zł",
+   "original_price": null,
+   "shop": "Morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/14800396_0_i1064.jpg",
+   "notes": "Cena katalogowa, o 12,40 zł niższa niż w x-kom (79,90 zł). Czujnik IP67; x-kom podaje dla tego modelu ZHA i Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-02D, czujnik temperatury i wilgotności z LCD",
+   "url": "https://www.x-kom.pl/p/1347530-czujnik-sonoff-czujnik-th-zigbee-lcd-snzb-02d.html",
+   "price": "62,90 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena katalogowa, dostępny. Wymaga bramki Zigbee 3.0; sklep nie wymienia ZHA ani Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dziecko",
+   "title": "Pampers Pants, rozmiar 4",
+   "url": "https://www.pepper.pl/promocje/pampers-pants-4-77-gr-za-sztuke-mozliwe-69-gr-1398874",
+   "price": "143,99 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/NfTN2/1398874_1/re/768x768/qt/60/1398874_1.jpg",
+   "notes": "Wychodzi 77 gr za sztukę, według wpisu możliwe 69 gr (warunek nieznany). Cena z tytułu, liczba sztuk w paczce niepodana.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dziecko",
+   "title": "Fotelik Kinderkraft Junior Fix2 Plus 15-36 kg, ISOFIX",
+   "url": "https://www.pepper.pl/promocje/fotelik-samochodowy-15-36-isofix-dla-dziecka-kinderkraft-junior-fix2-plus-1392229",
+   "price": "239 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/oqyl9/1392229_1/re/768x768/qt/60/1392229_1.jpg",
+   "notes": "Fotelik dla starszego dziecka z mocowaniem ISOFIX. Cena z tytułu, bez ceny wyjściowej i potwierdzenia dostępności.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dziecko",
+   "title": "VTech, zabawka interaktywna Mój Przyjaciel Pies",
+   "url": "https://www.pepper.pl/promocje/zabawka-interaktywna-vtech-moj-przyjaciel-pies-za-10999zl-at-smyk-1389120",
+   "price": "109,99 zł",
+   "original_price": null,
+   "shop": "Smyk",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/gbdYV/1389120_1/re/768x768/qt/60/1389120_1.jpg",
+   "notes": "Interaktywny pies dla malucha. Starszy wpis, cena z tytułu, więc sprawdź, czy nadal obowiązuje.",
+   "confidence": "medium"
+  }
+ ],
+ "searched_products": [
+  "p8040af45",
+  "p56a218bb",
+  "p4f991e40",
+  "p3225a299",
+  "pb76f729c",
+  "p1d42c0ae",
+  "p69990b0b",
+  "p70458bd7",
+  "pc8901b65",
+  "pe2150c38"
+ ],
+ "product_offers": [
+  {
+   "product_id": "p8040af45",
+   "title": "WaterWipes BIO, chusteczki nawilżane wodą, 60 szt.",
+   "url": "https://www.morele.net/waterwipes-bio-chusteczki-nawilzane-woda-60-szt-9674175/",
+   "price": "22,13 zł",
+   "original_price": null,
+   "shop": "Morele.net",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/9674175_0_i1064.jpg",
+   "notes": "Pojedyncze opakowanie 60 szt. (0,37 zł za sztukę), sprzedawca z marketplace; koszt dostawy niepodany.",
+   "confidence": "high"
+  }
+ ],
+ "leaflets": [
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "url": "https://iulotka.pl/biedronka",
+   "valid_from": "2026-11-23",
+   "valid_to": "2026-11-28",
+   "items": [
+    {
+     "name": "Ziemniaki, opakowanie 5 kg",
+     "size": "5 kg",
+     "unit_price": "0,60 zł/kg",
+     "price": "2,99 zł",
+     "valid_from": "2026-11-23",
+     "notes": "Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11."
+    },
+    {
+     "name": "Soki 100% Vital Fresh (pomarańcza, mandarynka, jabłko)",
+     "brand": "Vital Fresh",
+     "scope": "category",
+     "applies_to": "soki 100% Vital Fresh: sok jabłkowy, sok pomarańczowy",
+     "deal": "2+1 gratis",
+     "valid_from": "2026-11-23",
+     "notes": "Pojemność i cena butelki niepodane. Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11."
+    },
+    {
+     "name": "Borówka amerykańska 300 g",
+     "size": "300 g",
+     "price": "10,99 zł",
+     "valid_from": "2026-11-23",
+     "notes": "Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11."
+    },
+    {
+     "name": "Ser gouda w kawałku 400 g",
+     "size": "400 g",
+     "price": "5,49 zł",
+     "valid_from": "2026-11-23",
+     "notes": "Cena przy zakupie 2 opakowań z kartą Moja Biedronka, marka niepodana. Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11."
+    }
+   ]
+  }
+ ],
+ "leaflet_hits": [
+  {
+   "product_id": "p3225a299",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Produkty Kinder (wszystkie)",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "pa20f4481",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Produkty Kinder (wszystkie)",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "p11ef4c93",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Smoothie Vital Fresh (wszystkie)",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "pd94823cd",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Smoothie Vital Fresh (wszystkie)",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "p23ca471d",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie produkty Dove",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "p8d116323",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Awokado Hass, opak. 500 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Borówka amerykańska Super Size, opak. 150 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p69990b0b",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Szynka Alpen Delikatessen 100 g (szwarcwaldzka, delikatna)",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe2150c38",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Szynka Alpen Delikatessen 100 g (szwarcwaldzka, delikatna)",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pb76f729c",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie jogurty pitne typu skyr",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p1d42c0ae",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie jogurty pitne typu skyr",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pfaee46ba",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie jogurty pitne typu skyr",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p9fee425c",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie jogurty pitne typu skyr",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p70458bd7",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Ser żółty w plastrach Włoszczowa 400 g (Gouda, Włoszczowski typu szwajcarskiego)",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "p9ef5d82c",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Batony Mars, Snickers, Milky Way, Twix i M&M's",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p11ef4c93",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Sok jabłkowy bezpośrednio tłoczony Vital Fresh, 1 l",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "pd94823cd",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Sok bezpośrednio wyciskany pomarańczowy Vital Fresh, 1 l",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "p23ca471d",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie żele pod prysznic Linda",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pd4e8b2fc",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Papier toaletowy Queen Premium Super Soft, 10 rolek",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "pd4e8b2fc",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Papier nawilżany Queen, 60 szt.",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "pd4e8b2fc",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Papier toaletowy Queen Komfort 10 rolek",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "p3225a299",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie produkty Kinder",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "pa20f4481",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "item_name": "Wszystkie produkty Kinder",
+   "match": "brand",
+   "alerted": true
+  },
+  {
+   "product_id": "pd4e8b2fc",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Wszystkie papiery toaletowe Floralys",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Borówki amerykańskie 400 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p56a218bb",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Banany, luzem",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p56a218bb",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Banany, luzem (str. 38)",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p3225a299",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Kinder Schoko-Bons 200 g",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "pa20f4481",
+   "shop": "Lidl",
+   "leaflet_url": "https://www.iulotka.pl/lidl/lidl-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Kinder Schoko-Bons 200 g",
+   "match": "item",
+   "alerted": true
+  },
+  {
+   "product_id": "p23ca471d",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "WSZYSTKIE ŻELE POD PRYSZNIC 500 ml",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pee578859",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Ziemniaki jadalne, różne rodzaje 2,5 kg opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p69990b0b",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Szynka wieprzowa bez kości, kulka, idealna do pieczenia 1 kg",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe2150c38",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Szynka wieprzowa bez kości, kulka, idealna do pieczenia 1 kg",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pb76f729c",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego waniliowy, z jagodami, z mango marakują lub z truskawkami 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p1d42c0ae",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego waniliowy, z jagodami, z mango marakują lub z truskawkami 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pfaee46ba",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego waniliowy, z jagodami, z mango marakują lub z truskawkami 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p9fee425c",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego waniliowy, z jagodami, z mango marakują lub z truskawkami 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pb76f729c",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego bez laktozy, różne rodzaje 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p1d42c0ae",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego bez laktozy, różne rodzaje 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pfaee46ba",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego bez laktozy, różne rodzaje 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p9fee425c",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "PIĄTNICA Jogurt Skyr typu islandzkiego bez laktozy, różne rodzaje 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p1f719931",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "ALMETTE Serek wiejski różne rodzaje 150 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Borówka lub Żurawina do mięs i innych potraw 320 g słoik",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pd4e8b2fc",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "WSZYSTKIE PAPIERY TOALETOWE NAWILŻANE",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Carrefour",
+   "leaflet_url": "https://www.iulotka.pl/carrefour/carrefour-gazetka-weekend-od-czwartku-19-11-2026",
+   "item_name": "Borówki amerykańskie Carrefour, 250 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pb76f729c",
+   "shop": "Carrefour",
+   "leaflet_url": "https://www.iulotka.pl/carrefour/carrefour-gazetka-weekend-od-czwartku-19-11-2026",
+   "item_name": "Jogurt Skyr Piątnica, 150 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p1d42c0ae",
+   "shop": "Carrefour",
+   "leaflet_url": "https://www.iulotka.pl/carrefour/carrefour-gazetka-weekend-od-czwartku-19-11-2026",
+   "item_name": "Jogurt Skyr Piątnica, 150 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pfaee46ba",
+   "shop": "Carrefour",
+   "leaflet_url": "https://www.iulotka.pl/carrefour/carrefour-gazetka-weekend-od-czwartku-19-11-2026",
+   "item_name": "Jogurt Skyr Piątnica, 150 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "p9fee425c",
+   "shop": "Carrefour",
+   "leaflet_url": "https://www.iulotka.pl/carrefour/carrefour-gazetka-weekend-od-czwartku-19-11-2026",
+   "item_name": "Jogurt Skyr Piątnica, 150 g",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Kaufland",
+   "leaflet_url": "https://www.iulotka.pl/kaufland/kaufland-gazetka-od-czwartku-26-11-2026",
+   "item_name": "Borówki amerykańskie 300 g opakowanie",
+   "match": "keyword",
+   "alerted": true
+  },
+  {
+   "product_id": "pee578859",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Ziemniaki, opakowanie 5 kg",
+   "price": "2,99 zł",
+   "old_price": null,
+   "deal": null,
+   "applies_to": null,
+   "match": "keyword",
+   "valid_from": "2026-11-23",
+   "valid_to": null,
+   "page": null,
+   "notes": "Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11.",
+   "alerted": true
+  },
+  {
+   "product_id": "p11ef4c93",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Soki 100% Vital Fresh (pomarańcza, mandarynka, jabłko)",
+   "price": null,
+   "old_price": null,
+   "deal": "2+1 gratis",
+   "applies_to": "soki 100% Vital Fresh: sok jabłkowy, sok pomarańczowy",
+   "match": "keyword",
+   "valid_from": "2026-11-23",
+   "valid_to": null,
+   "page": null,
+   "notes": "Pojemność i cena butelki niepodane. Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11.",
+   "alerted": true
+  },
+  {
+   "product_id": "pd94823cd",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Soki 100% Vital Fresh (pomarańcza, mandarynka, jabłko)",
+   "price": null,
+   "old_price": null,
+   "deal": "2+1 gratis",
+   "applies_to": "soki 100% Vital Fresh: sok jabłkowy, sok pomarańczowy",
+   "match": "keyword",
+   "valid_from": "2026-11-23",
+   "valid_to": null,
+   "page": null,
+   "notes": "Pojemność i cena butelki niepodane. Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11.",
+   "alerted": true
+  },
+  {
+   "product_id": "pe3e12692",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Borówka amerykańska 300 g",
+   "price": "10,99 zł",
+   "old_price": null,
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-23",
+   "valid_to": null,
+   "page": null,
+   "notes": "Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11.",
+   "alerted": true
+  },
+  {
+   "product_id": "p70458bd7",
+   "shop": "Biedronka",
+   "leaflet_url": "https://iulotka.pl/biedronka",
+   "leaflet_title": "Gazetka Biedronka 23.11-28.11.2026 (iulotka.pl, PDF)",
+   "item_name": "Ser gouda w kawałku 400 g",
+   "price": "5,49 zł",
+   "old_price": null,
+   "deal": null,
+   "applies_to": null,
+   "match": "keyword",
+   "valid_from": "2026-11-23",
+   "valid_to": null,
+   "page": null,
+   "notes": "Cena przy zakupie 2 opakowań z kartą Moja Biedronka, marka niepodana. Od 23.11; źródło (se.pl) nie podaje końca promocji, gazetka trwa do 28.11.",
+   "alerted": true
+  }
+ ]
+}
