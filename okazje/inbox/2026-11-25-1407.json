@@ -1,0 +1,310 @@
+{
+ "run": "2026-11-25T14:07:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "NAS UGREEN DXP4800 GT (4 zatoki, 2x 10GbE, 8 GB RAM, 64 GB eMMC)",
+   "url": "https://www.pepper.pl/promocje/ugreen-nasync-dxp4800-wowa-podwojne-lan-10gbe-8-gb-ram-64-gb-emmc-1391796",
+   "price": "2164,96 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/5KrQZ/1391796_1/re/768x768/qt/60/1391796_1.jpg",
+   "notes": "Czterozatokowy NAS z dwoma portami 10GbE w cenie zbliżonej do DXP4800 Plus z wcześniejszych tur. Cena z wpisu Pepper bez ceny wyjściowej, na Amazon nie sprawdzona; dyski trzeba dokupić.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "NAS ORICO MetaBox Pro HS500 (5 zatok, Intel N5105, 8 GB + 32 GB, 2x 2,5GbE)",
+   "url": "https://www.pepper.pl/promocje/orico-metabox-pro-hs500-5-zatokowy-nas-n5105-8gb-2x-25gbps-323-1385860",
+   "price": "1261,41 zł",
+   "original_price": null,
+   "shop": null,
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/eIGnB/1385860_1/re/768x768/qt/60/1385860_1.jpg",
+   "notes": "Pięć zatok za niecałe 1300 zł, procesor starszej generacji. Wpis nie podaje sklepu, a cena wygląda na przeliczoną z dolarów (323 USD), więc sprawdź koszt dostawy, podatki i aktualność.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Mini PC ACEMAGIC K1 (Ryzen 7 7730U, 16 GB RAM, 1 TB SSD)",
+   "url": "https://www.pepper.pl/promocje/acemagic-k1-ryzen-7-7730u-16gb-lp-1t-ssd-mini-pc-eur36900-163139zl-1394574",
+   "price": "1631,39 zł",
+   "original_price": null,
+   "shop": null,
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/PZqjB/1394574_1/re/768x768/qt/60/1394574_1.jpg",
+   "notes": "Mini PC z 8-rdzeniowym Ryzenem, dobry na domowy serwer. Cena przeliczona z 369 euro, sklep i termin nieznane.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Klawiatura Logitech MX Keys Mini, grafitowa",
+   "url": "https://www.pepper.pl/promocje/logitech-mx-keys-mini-bezprzewodowa-podswietlana-klawiatura-grafitowa-1388347",
+   "price": "293,90 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/Mts1K/1388347_1/re/768x768/qt/60/1388347_1.jpg",
+   "notes": "Mała podświetlana klawiatura bezprzewodowa. We wpisie jest też 50 zł na kolejne zakupy; ceny wyjściowej brak, wpis może być już nieświeży.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Ładowarka Baseus GaN5 Pro 67 W (2x USB-C, USB, HDMI)",
+   "url": "https://www.pepper.pl/promocje/zbiorcza-ladowarki-i-powerbanki-w-x-kom-np-baseus-gan5-pro-2xusb-c-usb-hdmi-67w-za-7450-zl-w-opisie-duzo-wiecej-1386637",
+   "price": "74,50 zł",
+   "original_price": null,
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/fq5Ro/1386637_1/re/768x768/qt/60/1386637_1.jpg",
+   "notes": "Ładowarka 67 W z wyjściem HDMI, wystarczy do większości ThinkPadów ładowanych przez USB-C. To starszy wpis zbiorczy, ceny w x-kom nie potwierdziłem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Watch Ultra 4, czarny tytan, pasek Ocean",
+   "url": "https://link.amazon/B0aqOOevP",
+   "price": "3499 zł",
+   "original_price": "3799 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/719rCczB1yL._AC_SL1500_.jpg",
+   "notes": "Najnowszy Ultra o 300 zł taniej. Cena z przeglądu ThinkApple z 25.11, na Amazon nie sprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple iMac M4 (10 CPU, 10 GPU), 24 GB RAM, 512 GB SSD, niebieski",
+   "url": "https://link.amazon/B04MTq2tx",
+   "price": "7499 zł",
+   "original_price": "8499 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/719hFapNlYL._AC_SL1500_-2.jpg",
+   "notes": "1000 zł taniej za konfigurację z 24 GB RAM. Cena z przeglądu ThinkApple z 25.11, na Amazon nie sprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple Watch Series 12 GPS 42 mm, aluminium ciemny brąz",
+   "url": "https://link.amazon/B03atD3iX",
+   "price": "1749 zł",
+   "original_price": "1899 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/71736dCbu8L._AC_SL1500_-2.jpg",
+   "notes": "Nowy model z niewielką obniżką (150 zł). Cena z przeglądu ThinkApple, na Amazon nie sprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Przewód Apple USB-C 240 W, 2 m",
+   "url": "https://www.amazon.pl/gp/product/B0DCNZGSHV",
+   "price": "79 zł",
+   "original_price": "149 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2025/11/615OpRJXjxL._SL1500_-1.jpg",
+   "notes": "Oryginalny przewód do ładowania MacBooka prawie o połowę taniej. Cenę i link odczytałem z automatycznego streszczenia przeglądu ThinkApple z 25.11, na Amazon nie sprawdzone.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Przełączniki SwitchBot z Matterem, zestaw 2 szt. 1PM",
+   "url": "https://www.pepper.pl/promocje/przelaczniki-switchbot-matter-zbiorcza-cena-za-2-szt-1pm-1394477",
+   "price": "73,64 zł",
+   "original_price": null,
+   "shop": "Amazon.de",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/xQF3P/1394477_1/re/768x768/qt/60/1394477_1.jpg",
+   "notes": "Około 37 zł za przekaźnik z Matterem, działa z Home Assistant. Wpis zbiorczy, sklep niemiecki, koszt dostawy i dostępność niepotwierdzone.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Kamery wewnętrzne eufy E220 2K, 2 szt.",
+   "url": "https://www.pepper.pl/promocje/kamery-wewnetrzne-2-szt-eufy-e220-2k-obrot-360-wykrywanie-ludzi-i-zwierzat-1390026",
+   "price": "259 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/aNuL7/1390026_1/re/768x768/qt/60/1390026_1.jpg",
+   "notes": "Dwie obrotowe kamery 2K z wykrywaniem ludzi i zwierząt, ok. 130 zł za sztukę. Brak ceny wyjściowej i daty końca; zgodności z Home Assistant wpis nie podaje.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside Performance 20 V: zestaw 3 elektronarzędzi, 2 akumulatory i ładowarka",
+   "url": "https://taniomam.interia.pl/hitowe-promocje/lidl/news-narzedzia-parkside-600-zl-taniej-lidl-szykuje-mocne-promocje,nId,23576537",
+   "price": "799 zł",
+   "original_price": "1199 zł",
+   "shop": "Lidl online",
+   "promo_end": "30.11.2026",
+   "image_url": "https://i.iplsc.com/000NJVON51PHB3LO-C323-F4.webp",
+   "notes": "Oferta tylko na lidl.pl. Z tego samego artykułu: 4 akumulatory 20 V 4 Ah za 316 zł (z 452 zł) i dmuchawa 40 V za 249 zł (z 349 zł). Artykuł raz podaje koniec 28.11, raz 30.11.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Zestaw bitów Brüder Mannesmann z rękojeścią i grzechotką, 42 elementy",
+   "url": "https://www.pepper.pl/promocje/zestaw-bitow-crv-bruder-mannesmann-z-rekojescia-i-grzechotka-42-elementy-1392860",
+   "price": "19,98 zł",
+   "original_price": null,
+   "shop": "Action",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ANLe6/1392860_1/re/768x768/qt/60/1392860_1.jpg",
+   "notes": "Tani zestaw CrV do trzymania na działce. Cena z wpisu Pepper, dostępność w sklepie niepotwierdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Bity udarowe Milwaukee, 56 szt. (TX, PH, PZ, HEX, 25 i 50 mm)",
+   "url": "https://www.pepper.pl/promocje/bity-udarowe-zestaw-56-szt-milwaukee-torx-ph-pz-hex-25mm-50mm-1388032",
+   "price": "91,17 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/i6VdW/1388032_1/re/768x768/qt/60/1388032_1.jpg",
+   "notes": "Ok. 1,60 zł za bit udarowy. Starszy wpis bez ceny wyjściowej, sprawdź sprzedawcę i aktualną cenę.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "Mikrofon USB Trust GXT 252+ Emita Plus",
+   "url": "https://mediamarkt.pl/pl/product/_mikrofon-komputerowy-trust-gxt-252-emita-plus-1364564.html",
+   "price": "199 zł",
+   "original_price": "329,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Mikrofon USB do nagrań i streamingu, 130 zł taniej. Cena z listy Black Friday MediaMarkt, karty produktu nie otworzyłem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-01M, przycisk Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-scienne/inteligentny-bezprzewodowy-przycisk-zigbee-sonoff-snzb-01m-56972",
+   "price": "74,20 zł",
+   "original_price": "92,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/a8b30be579c5d803600ccc1a8cc111e2/pol_pl_Inteligentny-bezprzewodowy-przycisk-ZigBee-Sonoff-SNZB-01M-56972_6.webp",
+   "notes": "Sklep deklaruje zgodność z ZHA i Zigbee2MQTT. 92 zł to cena detaliczna, najniższa z 30 dni to 76,50 zł.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF Dongle Plus MG24, koordynator Zigbee USB",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-bramki-i-przekazniki/bramka-zigbee-sonoff-dongle-plus-mg24-home-assistant-openhab-zigbee2mqtt-55074",
+   "price": "108,80 zł",
+   "original_price": "137,50 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Do Home Assistant i Zigbee2MQTT. Cena z listy promocji; 137,50 zł to cena detaliczna, najniższa z 30 dni 128,35 zł.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF MINI-ZBRBS, mini sterownik rolet Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/inteligentny-mini-przelacznik-zigbee-sonoff-mini-zbrbs-54833",
+   "price": "64,99 zł",
+   "original_price": "75,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena z listy promocji. Zgodności z ZHA / Zigbee2MQTT nie sprawdziłem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF MINI ONE PM Zigbee, przełącznik z pomiarem energii",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/przelacznik-sonoff-mini-one-pm-zigbee-65047",
+   "price": "84,49 zł",
+   "original_price": "89,00 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Mała obniżka, 89 zł to najniższa cena z 30 dni. Cena z listy promocji, zgodność z ZHA / Zigbee2MQTT niesprawdzona.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-02LD, czujnik temperatury Zigbee z sondą i LCD",
+   "url": "https://sklep.sonoff.com.pl/pl/products/akcesoria/czujnik-temperatury-zigbee-lcd-sonoff-snzb-02ld-z-sonda-53973",
+   "price": "61,10 zł",
+   "original_price": "79,90 zł",
+   "shop": "sklep.sonoff.com.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Sonda przydaje się do zbiornika albo na zewnątrz. 79,90 zł to cena detaliczna, najniższa z 30 dni 65,95 zł; cena z listy promocji.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Sonoff TRV-ZBT, głowica termostatyczna Zigbee",
+   "url": "https://www.pepper.pl/promocje/glowica-thermostat-sonoff-trv-gen2-smart-zigbee-trv-zbt-1393949",
+   "price": "122,09 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/o5rSA/1393949_1/re/768x768/qt/60/1393949_1.jpg",
+   "notes": "Cena z wpisu Pepper bez ceny wyjściowej. Zgodności z ZHA / Zigbee2MQTT wpis nie podaje.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-02UL, czujnik temperatury i wilgotności z e-ink 2,9 cala",
+   "url": "https://www.pepper.pl/promocje/sonoff-termometr-higrometr-zigbee-snzb-02ul-zigbee-z-wyswietlaczem-e-ink-29-1394091",
+   "price": "87,80 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ok1vD/1394091_1/re/768x768/qt/60/1394091_1.jpg",
+   "notes": "Duży ekran e-ink. Cena z wpisu Pepper, bez ceny wyjściowej i informacji o ZHA / Zigbee2MQTT.",
+   "confidence": "medium"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://www.pepper.pl/promocje/zestaw-bitow-bruder-mannesmann-113-elementow-stal-s2-1392855",
+   "image_url": "https://static.pepper.pl/threads/raw/rxdRs/1392855_1/re/768x768/qt/60/1392855_1.jpg"
+  },
+  {
+   "url": "https://link.amazon/B0fr1DBSv",
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2024/09/airpods-4-hero-select-202409.jpeg"
+  }
+ ],
+ "searched_products": [
+  "p34d596c4",
+  "pebdfd81a",
+  "pbd1696a5"
+ ],
+ "product_offers": [
+  {
+   "product_id": "pebdfd81a",
+   "title": "Pampers Night Pants 6, 15+ kg, 19 szt.",
+   "url": "https://allegro.pl/produkt/pieluchomajtki-na-noc-pampers-night-pants-maxi-rozmiar-6-15-kg-19-sztuk-efb808b4-2b64-4106-acc0-1006818c17e8?offerId=19141182815",
+   "price": "28,40 zł",
+   "original_price": "39,90 zł",
+   "shop": "Allegro (e-msgroup)",
+   "promo_end": "30.11.2026",
+   "image_url": null,
+   "notes": "EAN potwierdzony. Dostawa 10,49 zł albo 0 zł z Allegro Smart!, promocja do wyczerpania zapasu.",
+   "confidence": "high"
+  },
+  {
+   "product_id": "pbd1696a5",
+   "title": "Dove Hydrate żel pod prysznic 450 ml",
+   "url": "https://allegro.pl/produkt/dove-hydrate-zel-pod-prysznic-450-ml-50521991-aba0-49aa-9bd1-31ab5b37e47d?offerId=18181339907",
+   "price": "13,99 zł",
+   "original_price": null,
+   "shop": "Allegro (brandmall_pl)",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "EAN potwierdzony. Dostawa 10,49 zł albo 0 zł z Allegro Smart!.",
+   "confidence": "high"
+  }
+ ]
+}
