@@ -74,7 +74,41 @@ function boot_session(): void {
 
 function auth_user(): ?string {
     boot_session();
-    return isset($_SESSION['u']) && is_string($_SESSION['u']) ? $_SESSION['u'] : null;
+    $u = $_SESSION['u'] ?? null;
+    if (!is_string($u)) return null;
+    // usunięte konto traci dostęp od razu, także z otwartą sesją
+    return $u === (string)cfg('user') || isset(extra_users()[$u]) ? $u : null;
+}
+
+/* Konta dodatkowe (data/users.json): bez zakładek Oferty i Wybrane oraz bez stron administracyjnych.
+   Właściciel to konto z config.php. */
+function extra_users(): array {
+    $u = jread('users', []);
+    return is_array($u) ? $u : [];
+}
+
+function is_owner(): bool { return auth_user() === (string)cfg('user'); }
+
+/** @return ?string komunikat błędu */
+function user_save(string $name, string $pass): ?string {
+    if (!preg_match('/^[\p{L}][\p{L}0-9._-]{1,29}$/u', $name)) return 'Login: 2-30 znaków (litery, cyfry, kropka, myślnik), na początku litera.';
+    if (mb_strtolower($name) === mb_strtolower((string)cfg('user'))) return 'Ten login należy do właściciela.';
+    if (mb_strlen($pass) < 10 || strlen($pass) > 72) return 'Hasło musi mieć od 10 do 72 znaków.';
+    locked(function () use ($name, $pass) {
+        $all = extra_users();
+        foreach (array_keys($all) as $k) if (mb_strtolower((string)$k) === mb_strtolower($name)) unset($all[$k]);
+        $all[$name] = ['hash' => password_hash($pass, PASSWORD_DEFAULT), 'added' => date('c')];
+        jwrite('users', $all);
+    });
+    return null;
+}
+
+function user_delete(string $name): void {
+    locked(function () use ($name) {
+        $all = extra_users();
+        unset($all[$name]);
+        jwrite('users', $all);
+    });
 }
 
 function csrf(): string {
@@ -102,7 +136,16 @@ function login_try(string $user, string $pass): array {
         return [false, "Za dużo prób. Spróbuj za $min min."];
     }
     $okUser = hash_equals((string)cfg('user'), $user);
-    $okPass = password_verify($pass, (string)cfg('pass_hash'));
+    $hash = (string)cfg('pass_hash');
+    if (!$okUser) {
+        // konta dodatkowe: wielkość liter w loginie bez znaczenia
+        foreach (extra_users() as $name => $rec2) {
+            if (mb_strtolower((string)$name) !== mb_strtolower($user)) continue;
+            $user = (string)$name; $okUser = true; $hash = (string)($rec2['hash'] ?? '');
+            break;
+        }
+    }
+    $okPass = password_verify($pass, $hash);
     if ($okUser && $okPass) {
         unset($th[$ip]);
         locked(fn() => jwrite('throttle', $th));

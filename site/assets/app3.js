@@ -759,5 +759,5 @@ async function viewLeaflets() {
 /* ---------- rejestracja tras ---------- */
 O.routes.produkty = viewProducts;
 O.routes.gazetki = viewLeaflets;
-if (/^#\/?(produkty|gazetki)/.test(location.hash)) O.route();
+if (O.LIMITED || /^#\/?(produkty|gazetki)/.test(location.hash)) O.route();
 })();

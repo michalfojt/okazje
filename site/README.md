@@ -90,6 +90,10 @@ Adres: `feed.php?token=...`. Token jest w `config.php` jako `feed_token`. Bez po
 
 Przed nadpisaniem każdy zmieniony plik trafia do `data/backup/<RRRRmmdd-HHMMSS>/`. Deploy nie rusza `config.php`, katalogów `data/`, `img/`, `inbox/` ani plików spoza manifestu.
 
+## Konta dodatkowe
+
+`users.php` (tylko właściciel, czyli konto z `config.php`): dodanie, zmiana hasła i usunięcie konta. Hashe są w `data/users.json`. Konto dodatkowe nie ma zakładek Oferty i Wybrane (także w API) ani dostępu do `users.php`, `deploy.php` i `snapshot.php`. Moje produkty, Gazetki i Kategorie są wspólne.
+
 ## Zmiana hasła
 
 Na hostingu, w katalogu `okazje`:

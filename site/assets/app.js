@@ -4,6 +4,8 @@
 const CSRF = document.querySelector('meta[name=csrf]').content;
 const $ = (s, r = document) => r.querySelector(s);
 const view = $('#view');
+const LIMITED = document.body.hasAttribute('data-limited');
+const HOME = LIMITED ? 'produkty' : 'oferty';
 
 /* ---------- ikony (statyczne ścieżki, lucide) ---------- */
 const ICON = {
@@ -75,6 +77,7 @@ async function loadState() {
 }
 function updateFavCount() {
   const n = $('#nFav');
+  if (!n) return;
   n.textContent = S.fav.size;
   n.hidden = S.fav.size === 0;
 }
@@ -346,7 +349,7 @@ async function viewCats() {
       row.replaceChildren(
         el('div', { class: 'cat-h' },
           el('h3', { text: c.name }), el('code', { text: c.key }),
-          el('div', { class: 'stats' },
+          LIMITED ? null : el('div', { class: 'stats' },
             el('span', {}, el('b', { text: String(c.count) }), ' ' + plural(c.count, 'oferta', 'oferty', 'ofert') + ' z ' + S.retention + ' dni'),
             el('span', {}, el('b', { text: String(c.fav) }), ' ' + plural(c.fav, 'wybrana', 'wybrane', 'wybranych')))),
         el('div', { class: 'cat-b' },
@@ -468,12 +471,16 @@ async function viewCats() {
 }
 
 /* ---------- router i start ---------- */
-const routes = { oferty: viewOffers, wybrane: viewFav, kategorie: viewCats };
+const routes = LIMITED ? { kategorie: viewCats } : { oferty: viewOffers, wybrane: viewFav, kategorie: viewCats };
 let navId = 0;
 async function route() {
-  const name = (location.hash.replace(/^#\/?/, '') || 'oferty').split('?')[0];
-  const fn = routes[name] || viewOffers;
-  document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.tab === (routes[name] ? name : 'oferty')));
+  const asked = (location.hash.replace(/^#\/?/, '') || HOME).split('?')[0];
+  const name = routes[asked] ? asked : HOME;
+  // widoki z app3.js sprawdzają adres, więc dla konta ograniczonego musi on wskazywać otwartą zakładkę
+  if (LIMITED && location.hash !== '#/' + name) history.replaceState(null, '', '#/' + name);
+  const fn = routes[name];
+  if (!fn) return; // trasa z app3.js jeszcze niezarejestrowana
+  document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.dataset.tab === name));
   const my = ++navId;
   try {
     if (name !== 'kategorie') await loadState();
@@ -495,7 +502,7 @@ function setTheme(t) {
 $('#theme').addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
 setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
 
-window.OKZ = { api, el, icon, ICON, toast, S, loadState, catName, card, fmtIso, fmtShort, safeHref, plural, discount, routes, route, view };
+window.OKZ = { LIMITED, api, el, icon, ICON, toast, S, loadState, catName, card, fmtIso, fmtShort, safeHref, plural, discount, routes, route, view };
 window.addEventListener('hashchange', route);
 route();
 })();

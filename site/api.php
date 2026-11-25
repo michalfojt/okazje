@@ -28,6 +28,10 @@ if ($method === 'POST') {
     if (!is_array($body)) fail('Nieprawidłowe dane.');
 }
 
+// konto dodatkowe nie ma zakładek Oferty i Wybrane
+$limited = !is_owner();
+if ($limited && in_array($a, ['offers', 'favorites', 'fav', 'img_find'], true)) fail('Brak dostępu.', 403);
+
 try {
     if ($a === 'state') purge_search_images();
     switch ($a) {
@@ -55,9 +59,16 @@ try {
             if (!empty($counts['inne']) || !empty($favCounts['inne'])) {
                 $cats[] = ['key' => 'inne', 'name' => 'Inne', 'custom' => false, 'what' => '', 'how' => '', 'count' => $counts['inne'] ?? 0, 'fav' => $favCounts['inne'] ?? 0, 'virtual' => true];
             }
+            $runs = runs_list($db);
+            $favIds = array_keys($fav);
+            if ($limited) {
+                $runs = []; $favIds = [];
+                $cats = array_values(array_filter(array_map(fn($c) => ['count' => 0, 'fav' => 0] + $c, $cats), fn($c) => empty($c['virtual'])));
+            }
             out([
+                'limited' => $limited,
                 'user' => auth_user(), 'today' => date('Y-m-d'), 'retention' => retention_days(),
-                'runs' => runs_list($db), 'categories' => $cats, 'fav_ids' => array_keys($fav),
+                'runs' => $runs, 'categories' => $cats, 'fav_ids' => $favIds,
             ]);
         }
 
