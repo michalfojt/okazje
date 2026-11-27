@@ -1,0 +1,497 @@
+{
+ "run": "2026-11-27T06:06:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "UGREEN PB726, powerbank 20000 mAh, 165 W, z wbudowanym kablem",
+   "url": "https://www.x-kom.pl/p/1513445-powerbank-ugreen-powerbank-20000mah-pb726-usb-usb-c-165w-wbudowany-kabel.html?sm=spidersweb&utm_tag=sw5099255",
+   "price": "199 zł",
+   "original_price": "349 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Powerbank 20000 mAh o mocy 165 W z kablem na stałe, więc zasili też laptopa przez USB-C. Cena z przeglądu Spider's Web z 26.11, strony sklepu nie dało się sprawdzić.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Logitech G Pro 2 Lightspeed, mysz bezprzewodowa, czarna",
+   "url": "https://mediamarkt.pl/pl/product/_mysz-bezprzewodowa-logitech-pro-2-lightspeed-czarny-1484572.html",
+   "price": "349 zł",
+   "original_price": "449,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Lekka mysz Logitecha dla graczy z odbiornikiem Lightspeed. Obniżka o ok. 100 zł według Spider's Web, ceny w sklepie nie potwierdziłem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Razer Basilisk V3 35K, mysz przewodowa, czarna",
+   "url": "https://mediamarkt.pl/pl/product/_mysz-razer-basilisk-v3-35k-czarny-1486906.html",
+   "price": "219 zł",
+   "original_price": "299 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Przewodowa mysz z sensorem 35K i dużą liczbą przycisków. Cena pochodzi z artykułu Spider's Web, nie ze strony sklepu.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "SteelSeries Apex Pro Gen 3, klawiatura przewodowa",
+   "url": "https://www.x-kom.pl/p/1278928-klawiatura-przewodowa-steelseries-apex-pro-gen-3.html?sm=spidersweb&utm_tag=sw5988201",
+   "price": "698 zł",
+   "original_price": "1299 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Pełnowymiarowa klawiatura z regulowanym punktem aktywacji. 698 zł dopiero po wpisaniu kodu steelseries-bf1, termin kodu nieznany. Cena z relacji Spider's Web, bez sprawdzenia w sklepie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "Apple iPhone 17 256 GB, czarny",
+   "url": "https://clk.tradedoubler.com/click?p=118512&a=3021109&url=https%3A%2F%2Fwww.euro.com.pl%2Ftelefony-komorkowe%2Fapple-iphone-17-256gb-czarny.bhtml",
+   "price": "4099 zł",
+   "original_price": "4449 zł",
+   "shop": "RTV Euro AGD",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/61dZuAfusL._AC_SL1500_-12.jpg",
+   "notes": "Taniej niż w iSpot z 24.11 (4249 zł). Według ThinkApple pula to 245 sztuk. Ceny nie sprawdzałem na stronie sklepu.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 14 z M6, 16 GB RAM, 1 TB SSD, gwiezdna czerń",
+   "url": "https://www.mediaexpert.pl/komputery-i-tablety/laptopy-i-ultrabooki/laptopy/notebook-apple-macbook-pro-2026-m6-16gb-1tb-int-14-black",
+   "price": "9499 zł",
+   "original_price": "10499 zł",
+   "shop": "Media Expert",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Bazowa konfiguracja pamięci z dyskiem 1 TB, 1000 zł poniżej ceny wyjściowej. Cena z zestawienia ThinkApple z 27.11.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Air 13 M5, 16 GB RAM, 512 GB SSD, błękitny",
+   "url": "https://link.amazon/B05nTnIqU",
+   "price": "5644 zł",
+   "original_price": "6799 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/71GTOBzI-mL._AC_SL1500_-5.jpg",
+   "notes": "Rabat ponad 1100 zł na aktualnego Air'a z 512 GB. Cena z ThinkApple, strony Amazon nie otwierałem, więc sprawdź sprzedawcę.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 16 PROLED XDR, M5 Pro, 24 GB RAM, 1 TB, gwiezdna czerń",
+   "url": "https://lantre.pl/apple-macbook-pro-16-proled-xdr-m5-pro-24gb-1tb-18-core-cpu-20-core-gpu-gwiezdna-czern-space-black-mj304ze-a.html?utm_source=thinkapple&utm_medium=banner&utm_campaign=ID0321202611",
+   "price": "16499 zł",
+   "original_price": "17999 zł",
+   "shop": "Lantre",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/IMG_5064.jpg",
+   "notes": "18 rdzeni CPU i 20 GPU, 1500 zł taniej. Cena zgadza się na stronie akcji Lantre. Dodatkowy rabat przy PKO Leasing nie jest w niej uwzględniony.",
+   "confidence": "high"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Pro 14 PROLED XDR, M5 Pro, 24 GB RAM, 1 TB, klawiatura US",
+   "url": "https://lantre.pl/apple-macbook-pro-14-proled-xdr-m5-pro-24gb-1tb-15-core-cpu-16-core-gpu-klawiatura-us-gwiezdna-czern-space-black-mj2k4-us.html?utm_source=thinkapple&utm_medium=banner&utm_campaign=ID0321202611",
+   "price": "13999 zł",
+   "original_price": "14999 zł",
+   "shop": "Lantre",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/10/apple-macbook-pro-14-16-cali-2026-proled-xdr-e1795480680205.jpg",
+   "notes": "1000 zł taniej, wersja z amerykańskim układem klawiatury. Lantre oznacza ją jako zamówienie indywidualne, więc dostawa może potrwać.",
+   "confidence": "high"
+  },
+  {
+   "category": "smarthome",
+   "title": "Philips Hue Go V2, przenośna lampka",
+   "url": "https://www.pepper.pl/promocje/philips-hue-go-v2-lampka-przenosna-915005821901-1397659",
+   "price": "279,99 zł",
+   "original_price": null,
+   "shop": "nieustalony (wpis Pepper)",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/ORHqh/1397659_1/re/768x768/qt/60/1397659_1.jpg",
+   "notes": "Przenośna lampa Hue na akumulator. Cena z tytułu wpisu Pepper, bez nazwy sklepu i ceny wyjściowej; przed zakupem sprawdź, czy oferta jeszcze działa.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "TP-Link Tapo L530E, zestaw 4 żarówek Wi-Fi E27",
+   "url": "https://www.pepper.pl/promocje/zestaw-czterech-zarowek-tp-link-tapo-l530e-za-9295zl-wifi-led-e27-806-lm-regulacja-jasnosci-i-kolorow-at-amazonpl-1391069",
+   "price": "92,95 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/cea3n/1391069_1/re/768x768/qt/60/1391069_1.jpg",
+   "notes": "Cztery kolorowe żarówki 806 lm, ok. 23 zł za sztukę. Działają po Wi-Fi, bez informacji o Matter. Cena z wpisu Pepper, nie z Amazon.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside Performance 20 V, zestaw narzędzi z 2 akumulatorami i ładowarką",
+   "url": "https://www.lidl.pl/p/parkside-performance-zestaw-3-narzedzi-akumulatorowych-20-v-z-2-akumulatorami-i-z-ladowarka-7-elementowy/p100412972",
+   "price": "599 zł",
+   "original_price": "999 zł",
+   "shop": "Lidl",
+   "promo_end": null,
+   "image_url": "https://www.agdmaniak.pl/wp-content/uploads/agdmaniak/2026/11/4-22.png",
+   "notes": "Zestaw na jednej baterii: elektronarzędzia, lampa i dwa akumulatory 4 Ah, online i w sklepach od 27.11. AgdManiaK pisze o 4 narzędziach, a adres Lidla o 3, więc sprawdź zawartość.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside Performance 20 V, zestaw 3 narzędzi (6 elementów)",
+   "url": "https://www.lidl.pl/p/parkside-performance-zestaw-akumulatorowych-elektronarzedzi-20-v-6-elementow/p100413047",
+   "price": "799 zł",
+   "original_price": "1199 zł",
+   "shop": "Lidl",
+   "promo_end": "30.11.2026",
+   "image_url": "https://www.agdmaniak.pl/wp-content/uploads/agdmaniak/2026/11/2-36.png",
+   "notes": "Większy zestaw sprzedawany tylko online. Cena z artykułu AgdManiaK, karty Lidla nie otwierałem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "SanDisk Ultra Plus microSDXC 256 GB z adapterem",
+   "url": "https://www.pepper.pl/promocje/karta-pamieci-sandisk-ultra-plus-microsdxc-256gb-adapter-w-opisie-ultra-128gb-ultra-plus-microsdxc-512gb-64gb-1401877",
+   "price": "129,99 zł",
+   "original_price": null,
+   "shop": "Media Expert",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/MnGmZ/1401877_1/re/768x768/qt/60/1401877_1.jpg",
+   "notes": "Tania karta 256 GB do telefonu czy kamerki. Cena z tytułu wpisu Pepper; w opisie są też inne pojemności, których cen nie odczytałem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "PNY EliteX-PRO60 SDXC 128 GB, UHS-II V60",
+   "url": "https://www.pepper.pl/promocje/karta-pamieci-sd-pny-128gb-elitex-pro60-class-10-u3-v60-uhs-ii-sdxc-1401072",
+   "price": "214,49 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/vVBg1/1401072_1/re/768x768/qt/60/1401072_1.jpg",
+   "notes": "Szybka karta UHS-II klasy V60 do filmowania aparatem. Cena tylko z tytułu wpisu Pepper, dostępności nie potwierdziłem.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF S60ZBTPF, 2 gniazdka Zigbee",
+   "url": "https://www.pepper.pl/promocje/2x-inteligentne-gniazdko-sonoff-zigbee-s60zbtpf-mozliwe-50zl-mwz-250zl-oraz-50zl-na-przyszle-zakupy-mwz-250zl-1394220",
+   "price": "99,90 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/bt9oP/1394220_1/re/768x768/qt/60/1394220_1.jpg",
+   "notes": "Tytuł wpisu sugeruje 99,90 zł za dwie sztuki i możliwy rabat 50 zł od 250 zł, co trzeba sprawdzić w koszyku. Zgodności z ZHA / Zigbee2MQTT wpis nie podaje.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Phoscon ConBee III, koordynator Zigbee USB",
+   "url": "https://www.pepper.pl/promocje/phoscon-conbee-iii-uniwersalna-bramka-usb-zigbee-1393934",
+   "price": "111,23 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/qjWeA/1393934_1/re/768x768/qt/60/1393934_1.jpg",
+   "notes": "Bramka USB od twórców deCONZ. Cena z tytułu wpisu Pepper; o ZHA i Zigbee2MQTT wpis nic nie mówi.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-06P24, czujnik obecności 24 GHz",
+   "url": "https://sklep.sonoff.com.pl/pl/products/bezpieczenstwo-w-domu/czujnik-obecnosci-sonoff-snzb-06p24-zigbee-62531",
+   "price": "97,30 zł",
+   "original_price": "109 zł",
+   "shop": "Sonoff Polska",
+   "promo_end": null,
+   "image_url": "https://sklep.sonoff.com.pl/hpeciai/34d81bf69cd9196421a62487d3e7df4f/pol_il_Czujnik-obecnosci-SONOFF-SNZB-06P24-ZigBee-62531.webp",
+   "notes": "Radarowy czujnik obecności w promocji oficjalnego sklepu. Zgodności z ZHA / Zigbee2MQTT lista nie podaje.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF ZBMINIL2, mini przełącznik Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-diy/inteligentny-mini-przelacznik-zigbee-sonoff-zbminil2-55364",
+   "price": "48,10 zł",
+   "original_price": "57,90 zł",
+   "shop": "Sonoff Polska",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Moduł dopuszkowy, który dodaje sterowanie Zigbee do istniejącego włącznika. Zgodności z ZHA / Zigbee2MQTT lista nie podaje.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-02LD, czujnik temperatury z LCD i sondą",
+   "url": "https://sklep.sonoff.com.pl/pl/products/akcesoria/czujnik-temperatury-zigbee-lcd-sonoff-snzb-02ld-z-sonda-53973",
+   "price": "61,10 zł",
+   "original_price": "79,90 zł",
+   "shop": "Sonoff Polska",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Mierzy także zewnętrzną sondą na przewodzie. 79,90 zł to cena detaliczna, najniższa z 30 dni to 65,95 zł.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF SNZB-01M, bezprzewodowy przycisk Zigbee",
+   "url": "https://sklep.sonoff.com.pl/pl/products/inteligentne-przelaczniki-scienne/inteligentny-bezprzewodowy-przycisk-zigbee-sonoff-snzb-01m-56972",
+   "price": "71,90 zł",
+   "original_price": "92 zł",
+   "shop": "Sonoff Polska",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Przycisk do wywoływania scen. 92 zł to cena detaliczna, najniższa z 30 dni to 74,20 zł. Zgodności z ZHA / Zigbee2MQTT lista nie podaje.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF TRVZB, 2 głowice termostatyczne",
+   "url": "https://sklep.sonoff.com.pl/pl/products/bezpieczenstwo-w-domu/glowica-termostatyczna-sonoff-zigbee-trvzb-2pak-62224",
+   "price": "248,99 zł",
+   "original_price": "277,75 zł",
+   "shop": "Sonoff Polska",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Dwupak wychodzi po ok. 124,50 zł za głowicę. 277,75 zł to cena detaliczna, najniższa z 30 dni to 279,41 zł.",
+   "confidence": "high"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://clk.tradedoubler.com/click?p=288386&a=3021109&url=https%3A%2F%2Fallegro.pl%2Fprodukt%2Fsmartfon-apple-iphone-17-pro-12-gb-256-gb-5g-srebrny-c4920379-0f9c-4cfb-b58b-172354f83bce%3FofferId%3D18034699161",
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/ip17prosilver.jpg"
+  },
+  {
+   "url": "https://clk.tradedoubler.com/click?p=288386&a=3021109&url=https%3A%2F%2Fallegro.pl%2Fprodukt%2Fsluchawki-bezprzewodowe-dokanalowe-apple-airpods-pro-3-generacji-8e8e1c29-9442-4be5-8ed3-9e0663e8a322%3FofferId%3D18014303411",
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2025/11/71jlZMp1NuL._AC_SL1500_.jpg"
+  },
+  {
+   "url": "https://allegro.pl/produkt/macbook-pro-16-proled-xdr-m5-pro-18-20-24-1tb-srebrny-892a8a98-2707-43bc-b778-0b20b8d34b21?offerId=19088381844",
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/10/apple-macbook-pro-14-16-cali-2026-proled-xdr-e1795480680205.jpg"
+  },
+  {
+   "url": "https://ispot.pl/black-friday-ispot",
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/61dZuAfusL._AC_SL1500_-12.jpg"
+  }
+ ],
+ "searched_products": [
+  "p721100e7",
+  "pc0da4be5",
+  "p43491b0f",
+  "p533c970e",
+  "p8f54cb88",
+  "pda4c83ac",
+  "p90a146d3",
+  "p59265bdf",
+  "p584ddb21",
+  "pafc81027"
+ ],
+ "leaflets": [
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka - WIELKIE promocje od 30.11",
+   "url": "https://superbiz.se.pl/galeria/biedronka-wielkie-promocje-od-30-11/gg-5TtQ-mBYh-wMpA/gp-3JXs-2T6m-QU5H",
+   "valid_from": "2026-11-30",
+   "valid_to": null,
+   "cover_url": "https://cdn.galleries.smcloud.net/t/galleries/gf-4ZZ5-q3Ym-4AoC_biedronka-wielkie-promocje-od-30-11-664x442-nocrop.JPG",
+   "items": [
+    {
+     "name": "Herbata czarna Lipton, 92 torebki",
+     "price": "9,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "",
+     "brand": "Lipton",
+     "size": "92 torebki"
+    },
+    {
+     "name": "Kawa rozpuszczalna Jacobs Kronung, 200 g",
+     "price": "18,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "",
+     "brand": "Jacobs",
+     "size": "200 g"
+    },
+    {
+     "name": "Kawa mielona MK Cafe, 500 g",
+     "price": "13,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "",
+     "brand": "MK Cafe",
+     "size": "500 g"
+    },
+    {
+     "name": "Ćwiartka z kurczaka, świeża",
+     "price": "1,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "z kartą Moja Biedronka"
+    },
+    {
+     "name": "Olej rzepakowy Wyborny, 1 l",
+     "price": "2,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "przy zakupie 3 butelek z kartą Moja Biedronka, limit dzienny 3 butelki",
+     "brand": "Wyborny",
+     "size": "1 l"
+    },
+    {
+     "name": "Coca-Cola i Coca-Cola Zero, 1,75 l",
+     "price": "3,19 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "przy zakupie 4 butelek z kartą Moja Biedronka",
+     "brand": "Coca-Cola",
+     "size": "1,75 l"
+    },
+    {
+     "name": "Mirinda, 7up, Mountain Dew, 1,75 l",
+     "price": "2,49 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "przy zakupie 4 butelek",
+     "size": "1,75 l"
+    },
+    {
+     "name": "Czekolada Magnetic",
+     "price": "1,49 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "przy zakupie 3 opakowań",
+     "brand": "Magnetic"
+    },
+    {
+     "name": "Jajko Kinder Niespodzianka",
+     "price": "1,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "taniej przy zakupie 3 sztuk z kartą Moja Biedronka, ceny po rabacie źródło nie podaje",
+     "brand": "Kinder"
+    },
+    {
+     "name": "Ptasie Mleczko, Toffifee, Raffaello",
+     "price": null,
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "przy zakupie 2 opakowań, źródło nie podaje ceny"
+    },
+    {
+     "name": "Kiełbasa podwawelska, 100 g",
+     "price": "0,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "z kartą Moja Biedronka",
+     "size": "100 g"
+    },
+    {
+     "name": "Boczek wędzony w kawałku",
+     "price": "13,90 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "cena za kg, z kartą Moja Biedronka",
+     "unit_price": "13,90 zł/kg"
+    },
+    {
+     "name": "Banany",
+     "price": "2,39 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "cena za kg, z kartą Moja Biedronka",
+     "unit_price": "2,39 zł/kg"
+    },
+    {
+     "name": "Kaki",
+     "price": "5,99 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "cena za kg, bez karty",
+     "unit_price": "5,99 zł/kg"
+    },
+    {
+     "name": "Pomarańcze, opakowanie 2 kg",
+     "price": "5,98 zł",
+     "valid_from": "2026-11-30",
+     "valid_to": null,
+     "page": null,
+     "notes": "",
+     "size": "2 kg"
+    },
+    {
+     "name": "Zabawki, puzzle, gry planszowe i książki - voucher 50%",
+     "price": null,
+     "valid_from": "2026-12-01",
+     "valid_to": "2026-12-03",
+     "page": null,
+     "notes": "min. 3 produkty z kartą Moja Biedronka, voucher na kolejne zakupy",
+     "scope": "category",
+     "applies_to": "zabawki, puzzle, gry planszowe, książki",
+     "deal": "voucher o wartości 50% przy zakupie min. 3 produktów"
+    }
+   ]
+  }
+ ],
+ "leaflet_hits": [
+  {
+   "product_id": "pb2c47f5f",
+   "shop": "Biedronka",
+   "leaflet_url": "https://superbiz.se.pl/galeria/biedronka-wielkie-promocje-od-30-11/gg-5TtQ-mBYh-wMpA/gp-3JXs-2T6m-QU5H",
+   "leaflet_title": "Biedronka - WIELKIE promocje od 30.11",
+   "item_name": "Ptasie Mleczko, Toffifee, Raffaello",
+   "price": null,
+   "old_price": null,
+   "deal": "taniej przy zakupie 2 opakowań",
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-30",
+   "valid_to": null,
+   "page": null,
+   "notes": "przy zakupie 2 opakowań, źródło nie podaje ceny",
+   "alerted": true
+  },
+  {
+   "product_id": "p56a218bb",
+   "shop": "Biedronka",
+   "leaflet_url": "https://superbiz.se.pl/galeria/biedronka-wielkie-promocje-od-30-11/gg-5TtQ-mBYh-wMpA/gp-3JXs-2T6m-QU5H",
+   "leaflet_title": "Biedronka - WIELKIE promocje od 30.11",
+   "item_name": "Banany",
+   "price": "2,39 zł",
+   "old_price": null,
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-30",
+   "valid_to": null,
+   "page": null,
+   "notes": "cena za kg, z kartą Moja Biedronka",
+   "alerted": true
+  }
+ ]
+}
