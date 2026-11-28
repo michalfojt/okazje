@@ -1,0 +1,56 @@
+{
+ "run": "2026-11-28T06:06:00+01:00",
+ "leaflet_hits": [
+  {
+   "product_id": "p56a218bb",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Banany na wagę",
+   "price": "2,99 zł",
+   "old_price": "6,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-27",
+   "valid_to": "2026-11-28",
+   "page": 8,
+   "notes": "Cena za wagę, warunki (karta, limit) nie są podane w źródle.",
+   "alerted": true
+  },
+  {
+   "product_id": "p143b7b6e",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Ogórek szklarniowy",
+   "price": "6,99 zł",
+   "old_price": "12,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-11-28",
+   "page": 20,
+   "notes": "Źródło nie podaje, czy to cena za kg czy sztukę, ani warunków.",
+   "alerted": true
+  },
+  {
+   "product_id": "p32c0ecd9",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Brokuł",
+   "price": "3,89 zł",
+   "old_price": "5,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": null,
+   "valid_to": null,
+   "page": 20,
+   "notes": "Gramatura i dokładne dni promocji niepodane (gazetka 26.11-02.12); na liście masz brokuły 500 g z Lidla.",
+   "alerted": true
+  }
+ ]
+}
