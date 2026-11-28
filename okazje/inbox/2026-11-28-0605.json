@@ -1,0 +1,663 @@
+{
+ "run": "2026-11-28T06:05:00+01:00",
+ "offers": [
+  {
+   "category": "komputery",
+   "title": "Anker PowerCore 737, powerbank 24000 mAh, 140 W",
+   "url": "https://link.amazon/B04e2pKKD",
+   "price": "284 zł",
+   "original_price": "669 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/08/61EUVVvuk1L._AC_SL1500_.jpg",
+   "notes": "Powerbank 24000 mAh o mocy 140 W, który naładuje też laptopa. Obniżka przekracza 50%, a cenę znamy tylko z zestawienia ThinkApple z 27.11, bez sprawdzenia na Amazonie. Przed zakupem porównaj cenę w sklepie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "UGREEN Nexode Pro 160 W, ładowarka GaN, 5 portów",
+   "url": "https://link.amazon/B07BUTkxH",
+   "price": "259 zł",
+   "original_price": "399 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Pięcioportowa ładowarka biurkowa, wystarczy na laptopa i kilka drobnych urządzeń naraz. Cena pochodzi z zestawienia ThinkApple z 27.11, dostępności na Amazonie nie sprawdzaliśmy.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Anker 140 W GaN, ładowarka 4-portowa z kablem USB-C 240 W",
+   "url": "https://www.amazon.pl/gp/product/B0DK5FTVPK",
+   "price": "236 zł",
+   "original_price": "349 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2025/11/710xzeW9bkL._AC_SL1500_-2.jpg",
+   "notes": "Ładowarka GaN z czterema portami i kablem 1,5 m w zestawie. Pasuje do mocniejszych laptopów, w tym ThinkPadów ładowanych przez USB-C. Cena z zestawienia ThinkApple, niesprawdzona w sklepie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "SanDisk Optimus GX PRO 850X 1 TB, dysk SSD",
+   "url": "https://link.amazon/B04DNr7nI",
+   "price": "970 zł",
+   "original_price": "1219 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Wydajny dysk SSD 1 TB ze średniej i wyższej półki. Cena pochodzi z automatycznego skrótu długiej listy ThinkApple, więc sprawdź na stronie wariant (z radiatorem lub bez) i kwotę.",
+   "confidence": "medium"
+  },
+  {
+   "category": "komputery",
+   "title": "Corsair Vengeance RGB DDR5 64 GB (2x32 GB)",
+   "url": "https://link.amazon/B0f6SQAlp",
+   "price": "3849 zł",
+   "original_price": "4494 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Zestaw 64 GB do komputera stacjonarnego, nie pasuje do laptopów. Taktowania i opóźnień źródło nie podaje, a cenę znamy tylko z listy ThinkApple.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Neo 13, 256 GB, srebrny",
+   "url": "https://www.x-kom.pl/p/1507104-laptop-133-i-mniejsze-apple-macbook-neo-a18-pro-8gb-256-mac-os-srebrny.html",
+   "price": "2849 zł",
+   "original_price": "3499 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Najtańszy MacBook z A18 Pro i 8 GB RAM. Taniej niż 3299 zł za żółty wariant z wczorajszego zestawienia. 8 GB wystarczy do prostych zadań, do cięższej pracy to mało.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Air 13 M5, 24 GB RAM, 512 GB SSD, srebrny",
+   "url": "https://www.x-kom.pl/p/1506304-laptop-133-i-mniejsze-apple-macbook-air-m5-24gb-512-mac-os-srebrny-10r-gpu.html",
+   "price": "6666 zł",
+   "original_price": "8299 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Air z 24 GB RAM i 10-rdzeniowym GPU, 1633 zł poniżej ceny wyjściowej. Cena wg zestawienia ThinkApple z 26.11, bez daty końca.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "MacBook Air 13 M2, 16 GB RAM, 1 TB SSD, klawiatura US",
+   "url": "https://lantre.pl/macbook-air-13-6-m2-8-core-cpu-10-core-gpu-16gb-ram-1tb-ssd-klawiatura-us-ksiezycowa-poswiata-starlight-1mn6y3ll-a.html",
+   "price": "3999 zł",
+   "original_price": "6199 zł",
+   "shop": "Lantre",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Starszy układ M2, ale 16 GB RAM i 1 TB dysku za 3999 zł. Klawiatura w układzie US. Przed zakupem sprawdź na stronie, czy to egzemplarz nowy, bo symbol produktu jest nietypowy.",
+   "confidence": "medium"
+  },
+  {
+   "category": "apple",
+   "title": "iPhone Air 1 TB, jasne złoto",
+   "url": "https://www.x-kom.pl/p/1362354-smartfon-telefon-apple-iphone-air-1tb-jasne-zloto.html",
+   "price": "4999 zł",
+   "original_price": "6999 zł",
+   "shop": "x-kom",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena wymaga kodu black-weeks143. 2000 zł poniżej ceny wyjściowej za wariant 1 TB, dostępny też w kolorze białym. Termin działania kodu nie jest podany.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Amazon Echo Dot (5. generacji)",
+   "url": "https://www.amazon.pl/echo-dot/dp/B09B9CX8PW",
+   "price": "180 zł",
+   "original_price": "409 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2024/11/61Nh5ygHaL._AC_SL1000_.jpg",
+   "notes": "Mały głośnik z Alexą, która nie mówi po polsku. Obniżka 56% pochodzi z zestawienia ThinkApple i nie została sprawdzona na Amazonie.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "Govee, żarówka smart E27, 1600 lm",
+   "url": "https://link.amazon/B068fcYk4",
+   "price": "99 zł",
+   "original_price": "145 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/61WD6w-t4fL._AC_SL1500_.jpg",
+   "notes": "Jasna żarówka sterowana z aplikacji. Źródło nie opisuje łączności ani Mattera, sprawdź to przed zakupem do Home Assistant.",
+   "confidence": "medium"
+  },
+  {
+   "category": "smarthome",
+   "title": "MOES, żarówka Matter Wi-Fi E27 RGB",
+   "url": "https://www.homebrainz.pl/p/moes-inteligentna-zarowka-matter",
+   "price": "36,55 zł",
+   "original_price": "48,15 zł",
+   "shop": "homebrainz.pl",
+   "promo_end": null,
+   "image_url": "https://homebrainz.s30.cdn-upgates.com/_cache/3/e/3e076f76a444dc0be8bd3157988b96d4-tuya-matter-wifi-smart-led-e27-dimmable-light-bulbs-rgb-2700k-6500k-wc-860376.webp",
+   "notes": "Tania żarówka E27 z Matterem po Wi-Fi, ściemniana, 2700-6500 K i kolory. Na stronie oznaczona jako dostępna w magazynie, termin obniżki nieznany. Do ceny dolicz wysyłkę.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Parkside, 8 elektronarzędzi 20 V, 3 akumulatory, ładowarka i skrzynia",
+   "url": "https://www.lidl.pl/p/parkside-zestaw-narzedzi-akumulatorowych-20v-z-3-akumulatorami-i-ladowarka-12-elementowy/p100414306",
+   "price": "1099 zł",
+   "original_price": "1699 zł",
+   "shop": "Lidl (online)",
+   "promo_end": "2026-11-30",
+   "image_url": "https://www.agdmaniak.pl/wp-content/uploads/agdmaniak/2026/11/3-33.png",
+   "notes": "W zestawie wiertarko-wkrętarka, pilarka tarczowa, wyrzynarka, szlifierki, pilarka szablasta, klucz udarowy i narzędzie wielofunkcyjne. Ma sens, gdy potrzebujesz kilku z nich. Cena i termin wg agdmaniak.pl.",
+   "confidence": "medium"
+  },
+  {
+   "category": "dzialka",
+   "title": "Bosch, odkurzacz uniwersalny 1000 W, 15 l",
+   "url": "https://taniomam.interia.pl/hitowe-promocje/news-top-3-promocje-na-narzedzia-w-leroy-merlin-black-weeks-z-bos,nId,23574875#odkurzacz",
+   "price": "249 zł",
+   "original_price": null,
+   "shop": "Leroy Merlin",
+   "promo_end": "2026-12-01",
+   "image_url": "https://i.iplsc.com/000NJFDHMY198BXS-C323-F4.webp",
+   "notes": "Odkurzacz warsztatowy 15 l do sprzątania po pracach. Klub daje kupon 50 zł. Ceny wyjściowej artykuł nie podaje.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "SanDisk Extreme Plus microSDXC 256 GB",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-sandisk-extreme-plus-microsdxc-256gb-250mbs-170mbs-1508151.html",
+   "price": "249 zł",
+   "original_price": "399,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Szybka karta (do 250/170 MB/s) do kamer sportowych i dronów, 38% taniej. Cena odczytana z listy promocji kart w MediaMarkt, termin nieznany.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "SanDisk Ultra Plus microSDXC 128 GB",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-sandisk-ultra-plus-microsdxc-128gb-200mbs-1508146.html",
+   "price": "119 zł",
+   "original_price": "179,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Karta 128 GB do 200 MB/s, 34% poniżej ceny wyjściowej. Dobra do kamerki sportowej albo telefonu. Cena z listy promocji MediaMarkt, termin nieznany.",
+   "confidence": "medium"
+  },
+  {
+   "category": "foto",
+   "title": "SanDisk Ultra Plus SDXC 128 GB",
+   "url": "https://mediamarkt.pl/pl/product/_karta-pamieci-sandisk-ultra-plus-sdxc-128gb-200mbs-1508149.html",
+   "price": "149 zł",
+   "original_price": "239,99 zł",
+   "shop": "MediaMarkt",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Pełnowymiarowa karta SD 128 GB do 200 MB/s, 38% taniej. Cena z listy promocji MediaMarkt, termin nieznany.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "SONOFF, 2-kanałowy sterownik podlewania Zigbee",
+   "url": "https://www.pepper.pl/promocje/sonoff-sterownik-2-kanalowy-do-podelwania-wody-zigbee-1394119",
+   "price": "164,80 zł",
+   "original_price": null,
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://static.pepper.pl/threads/raw/viH2t/1394119_1/re/768x768/qt/60/1394119_1.jpg",
+   "notes": "Sterownik dwóch obiegów wody, przyda się na działce od wiosny. Cena z tytułu wpisu Pepper, brak informacji o ZHA / Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Philips Hue, zestaw startowy: mostek i 4 żarówki E27",
+   "url": "https://link.amazon/B042C0O7I",
+   "price": "347 zł",
+   "original_price": "449 zł",
+   "shop": "Amazon.pl",
+   "promo_end": null,
+   "image_url": "https://thinkapple.pl/wp-content/uploads/2026/11/71iT98kiAL._AC_SL1500_-2.jpg",
+   "notes": "Żarówki Hue działają po Zigbee, z mostkiem Hue w Home Assistant, a same żarówki także z ZHA / Zigbee2MQTT. Wariant barwy sprawdź na stronie, cena wg ThinkApple.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Aqara FP1E (PS-S03D), czujnik obecności Zigbee",
+   "url": "https://www.morele.net/aqara-czujnik-obecnosci-presence-sensor-fp1e-zigbee-ps-s03d-14162254/",
+   "price": "197,99 zł",
+   "original_price": null,
+   "shop": "Morele",
+   "promo_end": null,
+   "image_url": "https://images.morele.net/i1064/14162254_0_i1064.jpg",
+   "notes": "Cena katalogowa, bez potwierdzonej promocji. Czujnik wykrywa obecność także bez ruchu. Strona sklepu nie wspomina o ZHA / Zigbee2MQTT.",
+   "confidence": "high"
+  },
+  {
+   "category": "zigbee",
+   "title": "ID3 IG019, gniazdko Zigbee",
+   "url": "https://allegro.pl/produkt/gniazdko-id3-ig-zigbee-b0455da0-05fd-40f8-820f-2142897314ae",
+   "price": "49,99 zł",
+   "original_price": null,
+   "shop": "Allegro",
+   "promo_end": null,
+   "image_url": null,
+   "notes": "Cena katalogowa, gniazdko Zigbee 3.0 działające jako router sieci. Cena dotyczyła oferty, którą Allegro zastąpiło inną z tym samym produktem, więc sprawdź kwotę. Brak informacji o ZHA / Zigbee2MQTT.",
+   "confidence": "medium"
+  },
+  {
+   "category": "zigbee",
+   "title": "Gniazdko szklane Zigbee z pomiarem energii, szare (Z171)",
+   "url": "https://dotykowewlaczniki.pl/gniazda-elektryczne-230v/556-gniazdko-szklane-pojedyncze-230v-zigbee-z-pomiarem-energii-szare",
+   "price": "117,10 zł",
+   "original_price": null,
+   "shop": "dotykowewlaczniki.pl",
+   "promo_end": null,
+   "image_url": "https://dotykowewlaczniki.pl/6755-large_default/gniazdko-szklane-pojedyncze-230v-zigbee-z-pomiarem-energii-szare.jpg",
+   "notes": "Gniazdko podtynkowe, cena katalogowa; kod BLACK10 (-10%) ważny do 29.11. Opis sklepu miesza Zigbee z Wi-Fi i bramką, więc przed zakupem to wyjaśnij. Brak informacji o ZHA / Zigbee2MQTT.",
+   "confidence": "medium"
+  }
+ ],
+ "images": [
+  {
+   "url": "https://www.pepper.pl/promocje/pieluszki-pampers-premium-care-za-22999zl-rozmiar-2-3-4-5-6-7-at-allegro-1379085",
+   "image_url": "https://static.pepper.pl/threads/raw/3gnnw/1379085_1/re/768x768/qt/60/1379085_1.jpg"
+  }
+ ],
+ "searched_products": [
+  "p73867935",
+  "ped1b3ee1",
+  "p9682bec8",
+  "pd3e14cb4",
+  "p9edffea9",
+  "p5c9b10bf",
+  "p8060d80c",
+  "p1ab41a09",
+  "pb63436b4",
+  "pf30de667"
+ ],
+ "leaflets": [
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka - Od czwartku 26.11-02.12",
+   "url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-12-02",
+   "cover_url": "https://app.moja-e-gazetka.pl/261202_261126_biedronka_fflyf/image00.webp",
+   "items": [
+    {
+     "name": "Banany na wagę",
+     "scope": "item",
+     "price": "2,99 zł",
+     "old_price": "6,99 zł",
+     "valid_from": "2026-11-27",
+     "valid_to": "2026-11-28",
+     "page": 8,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce."
+    },
+    {
+     "name": "Ogórek szklarniowy",
+     "scope": "item",
+     "price": "6,99 zł",
+     "old_price": "12,99 zł",
+     "valid_from": "2026-11-26",
+     "valid_to": "2026-11-28",
+     "page": 20,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce."
+    },
+    {
+     "name": "Masło ekstra",
+     "scope": "item",
+     "price": "2,99 zł",
+     "old_price": "5,99 zł",
+     "valid_from": "2026-11-26",
+     "valid_to": "2026-11-28",
+     "page": 11,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce."
+    },
+    {
+     "name": "Margaryna Kasia",
+     "scope": "item",
+     "price": "1,99 zł",
+     "old_price": "4,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 10,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Ćwiartka kurczaka",
+     "scope": "item",
+     "price": "4,99 zł",
+     "old_price": "10,49 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 5,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Ziemniaki jadalne",
+     "scope": "item",
+     "price": "0,99 zł",
+     "old_price": "1,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 20,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Serek homogenizowany Tutti",
+     "scope": "item",
+     "price": "0,99 zł",
+     "old_price": "1,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 6,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Kaki",
+     "scope": "item",
+     "price": "2,49 zł",
+     "old_price": "4,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 8,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Cebula szalotka",
+     "scope": "item",
+     "price": "2,99 zł",
+     "old_price": "5,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 22,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Awokado",
+     "scope": "item",
+     "price": "3,49 zł",
+     "old_price": "6,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 21,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Kiełbasa biała surowa z tymiankiem",
+     "scope": "item",
+     "price": "5,99 zł",
+     "old_price": "11,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 29,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Czarny czosnek",
+     "scope": "item",
+     "price": "6,99 zł",
+     "old_price": "13,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 22,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Krewetki gotowane Marinero",
+     "scope": "item",
+     "price": "11,00 zł",
+     "old_price": "21,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 8,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Kiwi zielone",
+     "scope": "item",
+     "price": "1,25 zł",
+     "old_price": "2,49 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 23,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Ser żółty",
+     "scope": "item",
+     "price": "3,75 zł",
+     "old_price": "6,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 10,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Mleko",
+     "scope": "item",
+     "price": "2,19 zł",
+     "old_price": "3,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 11,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Pomarańcze deserowe",
+     "scope": "item",
+     "price": "3,99 zł",
+     "old_price": "6,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 5,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Pomidory cherry",
+     "scope": "item",
+     "price": "9,99 zł",
+     "old_price": "16,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 22,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Boczek wieprzowy bez kości i skóry",
+     "scope": "item",
+     "price": "9,99 zł",
+     "old_price": "16,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 28,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Jabłka polskie Jonagold",
+     "scope": "item",
+     "price": "2,99 zł",
+     "old_price": "4,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 21,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Mandarynki",
+     "scope": "item",
+     "price": "5,99 zł",
+     "old_price": "9,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 20,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Filet z piersi kurczaka",
+     "scope": "item",
+     "price": "14,99 zł",
+     "old_price": "24,90 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 27,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Pomidor na gałązce",
+     "scope": "item",
+     "price": "7,99 zł",
+     "old_price": "12,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 20,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Sok 100% pomarańcza Riviva",
+     "scope": "item",
+     "price": "2,99 zł",
+     "old_price": "4,79 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 16,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Pieczarki",
+     "scope": "item",
+     "price": "4,99 zł",
+     "old_price": "7,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 21,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Schab wieprzowy bez kości",
+     "scope": "item",
+     "price": "9,99 zł",
+     "old_price": "15,95 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 26,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Kiełbasa krakowska z szynki Tarczyński",
+     "scope": "item",
+     "price": "11,99 zł",
+     "old_price": "18,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 56,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Brokuł",
+     "scope": "item",
+     "price": "3,89 zł",
+     "old_price": "5,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 20,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    },
+    {
+     "name": "Winogrono różowe",
+     "scope": "item",
+     "price": "12,99 zł",
+     "old_price": "19,99 zł",
+     "valid_from": null,
+     "valid_to": null,
+     "page": 22,
+     "notes": "Cena z listy promocji dnia na mpromocje.pl; warunki (karta, limit, sztuka lub kg) sprawdź w gazetce, dokładne dni niepodane."
+    }
+   ]
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka - Lada tradycyjna od czwartku 26.11-02.12",
+   "url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fxjwi/1",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-12-02",
+   "cover_url": "https://app.moja-e-gazetka.pl/261202_261126_biedronka_fxjwi/image00.webp",
+   "items": []
+  },
+  {
+   "shop_id": "s6f0be92e",
+   "shop": "Biedronka",
+   "title": "Biedronka - Hity i inspiracje 30.11-12.12",
+   "url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-30-11-26-12-12-26-yxtkd/1",
+   "valid_from": "2026-11-30",
+   "valid_to": "2026-12-12",
+   "cover_url": "https://app.moja-e-gazetka.pl/261212_261130_biedronka_yxtkd/image00.webp",
+   "items": []
+  }
+ ],
+ "leaflet_hits": [
+  {
+   "product_id": "p56a218bb",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Banany na wagę",
+   "price": "2,99 zł",
+   "old_price": "6,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-27",
+   "valid_to": "2026-11-28",
+   "page": 8,
+   "notes": "Cena za wagę, warunki (karta, limit) nie są podane w źródle.",
+   "alerted": false
+  },
+  {
+   "product_id": "p143b7b6e",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Ogórek szklarniowy",
+   "price": "6,99 zł",
+   "old_price": "12,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": "2026-11-26",
+   "valid_to": "2026-11-28",
+   "page": 20,
+   "notes": "Źródło nie podaje, czy to cena za kg czy sztukę, ani warunków.",
+   "alerted": false
+  },
+  {
+   "product_id": "p32c0ecd9",
+   "shop": "Biedronka",
+   "leaflet_url": "https://mpromocje.pl/gazetki-promocyjne/biedronka/biedronka-26-11-26-02-12-26-fflyf/1",
+   "leaflet_title": "Biedronka - Od czwartku 26.11-02.12",
+   "item_name": "Brokuł",
+   "price": "3,89 zł",
+   "old_price": "5,99 zł",
+   "deal": null,
+   "applies_to": null,
+   "match": "item",
+   "valid_from": null,
+   "valid_to": null,
+   "page": 20,
+   "notes": "Gramatura i dokładne dni promocji niepodane (gazetka 26.11-02.12); na liście masz brokuły 500 g z Lidla.",
+   "alerted": false
+  }
+ ]
+}
